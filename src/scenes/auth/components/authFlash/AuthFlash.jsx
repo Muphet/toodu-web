@@ -1,13 +1,13 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
 
-export default class AuthMessage extends Component {
+export default class AuthFlash extends Component {
   // static propTypes = {};
 
   render() {
     return (
       <p>
-        {this.props.message}
+        {this.props.flash}
       </p>
     );
   }

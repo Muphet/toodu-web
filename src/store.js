@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 
-import messageReducer from "./core/message/messageReducer";
+import projectsReducer from "./core/projects/projectsReducer";
 import authReducer from "./scenes/auth/authReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
   core: combineReducers({
-    message: messageReducer
+    projects: projectsReducer
   }),
   scenes: combineReducers({
     auth: authReducer,

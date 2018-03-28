@@ -24,8 +24,11 @@ class ApiService {
       .then(this.setAuth);
   }
 
+  delete(url) {
+    return axios.delete(url, { headers: AuthService.auth }).then(this.setAuth);
+  }
+
   setAuth(res) {
-    console.log(res);
     AuthService.set(res.headers);
     return res;
   }

@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 import SceneLoader from "../sceneLoader/SceneLoader";
 
-export default class AuthRoute extends Component {
+export default class ProtectedRoute extends Component {
   // static propTypes = {};
 
   state = {
@@ -13,15 +13,24 @@ export default class AuthRoute extends Component {
   };
 
   componentWillMount() {
+    if (this.props.getAuthFromUrl) {
+      AuthService.setFromUrl();
+    }
     if (AuthService.authenticated) {
-      this.setState({ authenticating: false, authenticated: true });
+      this.authenticated();
     } else {
       AuthService.authenticate()
-        .then(() =>
-          this.setState({ authenticating: false, authenticated: true })
-        )
-        .catch(() => this.setState({ authenticating: false }));
+        .then(this.authenticated.bind(this))
+        .catch(this.notAuthenticated.bind(this));
     }
+  }
+
+  authenticated() {
+    this.setState({ authenticating: false, authenticated: true });
+  }
+
+  notAuthenticated() {
+    this.setState({ authenticating: false });
   }
 
   render() {

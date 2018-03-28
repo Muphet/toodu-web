@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
-import * as actions from "./loginFormActions";
+import * as actions from "../../loginActions";
 
 const mapStateToProps = state => ({
-  email: state.scenes.auth.login.loginForm.email,
-  password: state.scenes.auth.login.loginForm.password,
-  errors: state.scenes.auth.login.loginForm.errors,
-  loading: state.scenes.auth.login.loginForm.loading
+  fields: state.scenes.auth.login.fields,
+  errors: state.scenes.auth.login.errors,
+  submitting: state.scenes.auth.login.submitting
 });
 
 export default connect(mapStateToProps, actions);

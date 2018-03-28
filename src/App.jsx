@@ -2,31 +2,26 @@ import "./assets/stylesheets/app.scss";
 
 import React from "react";
 import { Provider } from "react-redux";
-import Loadable from "react-loadable";
 import { Router, Route, Switch } from "react-router-dom";
-import configureStore from "./store";
-import HistoryService from "./services/HistoryService.js";
-import SceneLoader from "./components/sceneLoader/SceneLoader";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import CodeSplittingService from "./services/CodeSplittingService.js";
 
-const asyncScene = path =>
-  Loadable({
-    loader: () => import(`./scenes/${path}`),
-    loading: SceneLoader
-  });
-
-export default function App() {
+export default function App({ store, history }) {
   return (
-    <Provider store={configureStore()}>
-      <Router history={HistoryService.get()}>
+    <Provider store={store}>
+      <Router history={history}>
         <Switch>
           <ProtectedRoute
             exact
             path="/"
-            component={asyncScene("dashboard/Dashboard")}
+            component={CodeSplittingService.scene("dashboard/Dashboard")}
           />
-          <Route path="/auth" component={asyncScene("auth/Auth")} />
-          <Route component={asyncScene("notFound/NotFound")} />
+          <Route
+            path="/auth"
+            component={CodeSplittingService.scene("auth/Auth")}
+          />
+
+          <Route component={CodeSplittingService.scene("notFound/NotFound")} />
         </Switch>
       </Router>
     </Provider>

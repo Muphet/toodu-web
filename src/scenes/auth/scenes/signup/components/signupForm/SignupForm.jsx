@@ -3,73 +3,66 @@ import React, { Component } from "react";
 import signupFormContainer from "./signupFormContainer";
 import AuthField from "../../../../components/authField/AuthField";
 import AuthErrors from "../../../../components/authErrors/AuthErrors";
-import AuthMessage from "../../../../components/authMessage/AuthMessage";
+import AuthFlash from "../../../../components/authFlash/AuthFlash";
 
 export class SignupForm extends Component {
   // static propTypes = {};
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.loading) return;
-    this.props.signup({
-      email: this.props.email,
-      password: this.props.password,
-      password_confirmation: this.props.passwordConfirmation,
-      first_name: this.props.firstName,
-      last_name: this.props.lastName,
-      team_attributes: { name: this.props.teamName }
-    });
+    if (this.props.submitting) return;
+    this.props.signup(this.props.fields);
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <AuthErrors errors={this.props.errors} />
-        <AuthMessage message={this.props.message} />
+        <AuthFlash flash={this.props.flash} />
         <AuthField
           label="What's your e-mail address?"
           name="email"
           type="email"
-          value={this.props.email}
-          onChange={e => this.props.updateEmail(e.target.value)}
+          value={this.props.fields.email}
+          onChange={this.props.updateField}
         />
         <AuthField
           label="What's your first name?"
-          name="first_name"
+          name="firstName"
           type="text"
-          value={this.props.firstName}
-          onChange={e => this.props.updateFirstName(e.target.value)}
+          value={this.props.fields.firstName}
+          onChange={this.props.updateField}
         />
         <AuthField
           label="What's your last name?"
-          name="last_name"
+          name="lastName"
           type="text"
-          value={this.props.lastName}
-          onChange={e => this.props.updateLastName(e.target.value)}
+          value={this.props.fields.lastName}
+          onChange={this.props.updateField}
         />
         <AuthField
           label="What's the name of your company/team?"
-          name="team_name"
+          name="teamName"
           type="text"
-          value={this.props.teamName}
-          onChange={e => this.props.updateTeamName(e.target.value)}
+          value={this.props.fields.teamName}
+          onChange={this.props.updateField}
         />
         <AuthField
           label="Choose your password"
           name="password"
           type="password"
-          value={this.props.password}
-          onChange={e => this.props.updatePassword(e.target.value)}
+          value={this.props.fields.password}
+          onChange={this.props.updateField}
         />
         <AuthField
           label="Confirm your password"
-          name="password_confirmation"
+          name="passwordConfirmation"
           type="password"
-          value={this.props.passwordConfirmation}
-          onChange={e => this.props.updatePasswordConfirmation(e.target.value)}
+          value={this.props.fields.passwordConfirmation}
+          onChange={this.props.updateField}
         />
         <button>
-          {this.props.loading ? "Please wait" : "Sign up"}
+          {this.props.submitting ? "Please wait" : "Sign up"}
         </button>
       </form>
     );

@@ -1,17 +1,18 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import LoginForm from "./components/loginForm/LoginForm";
+import ForgotPasswordForm
+  from "./components/forgotPasswordForm/ForgotPasswordForm";
 
-export default class Login extends Component {
+export default class ForgotPassword extends Component {
   // static propTypes = {};
 
   render() {
     return (
       <div>
-        <h1>Log in</h1>
-        <LoginForm />
-        <Link to="/auth/forgot-password">Forgotten your password?</Link>
+        <h1>Forgotten your password?</h1>
+        <ForgotPasswordForm />
+        <Link to="/auth/login">Go to login</Link>
         <Link to="/auth/signup">Go to signup</Link>
       </div>
     );

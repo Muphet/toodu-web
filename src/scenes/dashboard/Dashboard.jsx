@@ -1,8 +1,7 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Name from "./components/name/Name";
-import Message from "../../components/message/Message";
+import ProjectList from "./components/projectList/ProjectList";
 
 export default class Home extends Component {
   // static propTypes = {};
@@ -12,8 +11,7 @@ export default class Home extends Component {
       <div>
         <h1>Home</h1>
         <Link to="/auth/logout">Log out</Link>
-        <Message />
-        <Name />
+        <ProjectList />
       </div>
     );
   }

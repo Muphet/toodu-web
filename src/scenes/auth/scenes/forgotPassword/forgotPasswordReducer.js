@@ -1,39 +1,34 @@
 import {
   UPDATE_FIELD,
-  SIGNUP_START,
-  SIGNUP_SUCCESS,
-  SIGNUP_ERROR
-} from "./signupConstants";
+  SEND_RESET_EMAIL_START,
+  SEND_RESET_EMAIL_SUCCESS,
+  SEND_RESET_EMAIL_ERROR
+} from "./forgotPasswordConstants";
 
 const defaultState = {
   errors: [],
   flash: "",
   submitting: false,
   fields: {
-    email: "",
-    password: "",
-    passwordConfirmation: "",
-    firstName: "",
-    lastName: "",
-    teamName: ""
+    email: ""
   }
 };
 
-export default function signupReducer(state = defaultState, action) {
+export default function forgotPasswordReducer(state = defaultState, action) {
   switch (action.type) {
     case UPDATE_FIELD:
       return {
         ...state,
         fields: { ...state.fields, [action.field]: action.value }
       };
-    case SIGNUP_START:
+    case SEND_RESET_EMAIL_START:
       return { ...state, submitting: true };
-    case SIGNUP_SUCCESS:
+    case SEND_RESET_EMAIL_SUCCESS:
       return {
         ...defaultState,
-        flash: `We've sent an email verification link to ${action.email}`
+        flash: action.flash
       };
-    case SIGNUP_ERROR:
+    case SEND_RESET_EMAIL_ERROR:
       return { ...state, submitting: false, errors: action.errors };
     default:
       return state;

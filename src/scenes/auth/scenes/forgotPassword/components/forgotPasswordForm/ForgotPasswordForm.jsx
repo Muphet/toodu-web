@@ -1,42 +1,37 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
-import LoginFormContainer from "./loginFormContainer";
+import forgotPasswordFormContainer from "./forgotPasswordFormContainer";
 import AuthField from "../../../../components/authField/AuthField";
 import AuthErrors from "../../../../components/authErrors/AuthErrors";
+import AuthFlash from "../../../../components/authFlash/AuthFlash";
 
-export class LoginForm extends Component {
+export class ForgotPasswordForm extends Component {
   // static propTypes = {};
 
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.submitting) return;
-    this.props.login(this.props.fields);
+    this.props.sendResetEmail(this.props.fields.email);
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <AuthErrors errors={this.props.errors} />
+        <AuthFlash flash={this.props.flash} />
         <AuthField
           label="What's your e-mail address?"
           name="email"
           type="email"
-          value={this.props.email}
-          onChange={this.props.updateField}
-        />
-        <AuthField
-          label="What's your password?"
-          name="password"
-          type="password"
-          value={this.props.password}
+          value={this.props.fields.email}
           onChange={this.props.updateField}
         />
         <button>
-          {this.props.submitting ? "Please wait" : "Log in"}
+          {this.props.submitting ? "Please wait" : "Send reset e-mail"}
         </button>
       </form>
     );
   }
 }
 
-export default LoginFormContainer(LoginForm);
+export default forgotPasswordFormContainer(ForgotPasswordForm);

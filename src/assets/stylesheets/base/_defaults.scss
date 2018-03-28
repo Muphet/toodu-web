@@ -1,4 +1,9 @@
 body {
   font-family: sans-serif;
   color: $text-color;
+  box-sizing: border-box;
+}
+
+*, *:after, *:before {
+  box-sizing: inherit;
 }

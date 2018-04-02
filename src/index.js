@@ -5,7 +5,7 @@ import HistoryService from "./services/HistoryService.js";
 import AuthService from "./services/AuthService.js";
 import configureStore from "./store";
 import App from "./App";
-AuthService.setFromUrl();
+
 const store = configureStore();
 const history = HistoryService.get();
 

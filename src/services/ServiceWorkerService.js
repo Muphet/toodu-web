@@ -6,16 +6,16 @@ class ServiceWorkerService {
 
   register() {
     if (this.shouldRegister()) {
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         navigator.serviceWorker
           .register(this.swUrl)
-          .catch(error => console.error('SW registration error:', error));
+          .catch(error => console.error("SW registration error:", error));
       });
     }
   }
 
   unregister() {
-    if ('serviceWorker' in navigator) {
+    if ("serviceWorker" in navigator) {
       navigator.serviceWorker.ready.then(registration => {
         registration.unregister();
       });
@@ -24,8 +24,8 @@ class ServiceWorkerService {
 
   shouldRegister() {
     return (
-      process.env.NODE_ENV === 'production' &&
-      'serviceWorker' in navigator &&
+      process.env.NODE_ENV === "production" &&
+      "serviceWorker" in navigator &&
       this.publicUrl.origin === window.location.origin
     );
   }

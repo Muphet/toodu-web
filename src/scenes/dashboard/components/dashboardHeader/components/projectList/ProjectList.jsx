@@ -16,7 +16,7 @@ export class ProjectList extends Component {
     return (
       <ul>
         {this.props.projects.map(project => (
-          <li key={project.uuid}>{project.name}</li>
+          <li key={project.id}>{project.name}</li>
         ))}
       </ul>
     );

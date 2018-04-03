@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { openDialog } from "../../../../core/dialog/dialogActions";
+import { openModal } from "../../dashboardActions";
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { openDialog });
+export default connect(mapStateToProps, { openModal });

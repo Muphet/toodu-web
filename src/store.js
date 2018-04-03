@@ -1,16 +1,14 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 
 import projectsReducer from "./core/projects/projectsReducer";
-import dialogReducer from "./core/dialog/dialogReducer";
 
 import authReducer from "./scenes/auth/authReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
   core: combineReducers({
-    projects: projectsReducer,
-    dialog: dialogReducer
+    projects: projectsReducer
   }),
   scenes: combineReducers({
     auth: authReducer,
@@ -19,5 +17,9 @@ const rootReducer = combineReducers({
 });
 
 export default function configureStore(initialState = {}) {
-  return createStore(rootReducer, initialState, applyMiddleware(thunk));
+  const enhancers = compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  );
+  return createStore(rootReducer, initialState, enhancers);
 }

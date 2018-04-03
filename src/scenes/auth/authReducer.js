@@ -4,7 +4,7 @@ import forgotPasswordReducer
   from "./scenes/forgotPassword/forgotPasswordReducer";
 import resetPasswordReducer from "./scenes/resetPassword/resetPasswordReducer";
 
-export default function dashboardReducer(state = {}, action) {
+export default function authReducer(state = {}, action) {
   return {
     login: loginReducer(state.login, action),
     signup: signupReducer(state.signup, action),

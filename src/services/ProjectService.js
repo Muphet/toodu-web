@@ -6,7 +6,7 @@ class ProjectService {
   }
 
   create(project) {
-    ApiService.post("/projects", {
+    return ApiService.post("/projects", {
       name: project.name
     });
   }

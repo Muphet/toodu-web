@@ -1,7 +1,7 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
 import dashboardHeaderContainer from "./dashboardHeaderContainer";
-import ProjectList from "../projectList/ProjectList";
+import ProjectList from "./components/projectList/ProjectList";
 
 export class DashboardHeader extends Component {
   // static propTypes = {};
@@ -9,7 +9,7 @@ export class DashboardHeader extends Component {
   render() {
     return (
       <header>
-        <button onClick={() => this.props.openDialog("NewProject")}>
+        <button onClick={() => this.props.openModal("NewProject")}>
           Add new project
         </button>
         <ProjectList />

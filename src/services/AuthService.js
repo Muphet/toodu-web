@@ -1,5 +1,6 @@
 import qs from "qs";
 import ApiService from "./ApiService";
+import WebSocketService from "./WebSocketService";
 
 class AuthService {
   constructor() {
@@ -34,7 +35,10 @@ class AuthService {
 
   authenticate() {
     return ApiService.get("/auth/validate_token", this.auth)
-      .then(() => this.authenticated = true)
+      .then(() => {
+        this.authenticated = true;
+        WebSocketService.connect();
+      })
       .catch(err => {
         this.clear();
         return Promise.reject(err);

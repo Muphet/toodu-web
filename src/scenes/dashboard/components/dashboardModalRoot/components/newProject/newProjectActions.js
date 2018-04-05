@@ -1,5 +1,5 @@
 import ProjectService from "../../../../../../services/ProjectService.js";
-
+import { closeModal } from "../../../../dashboardActions";
 import {
   UPDATE_FIELD,
   NEW_PROJECT_START,
@@ -20,6 +20,7 @@ export function createProject(project) {
     dispatch({ type: NEW_PROJECT_START });
     ProjectService.create(project)
       .then(res => {
+        dispatch(closeModal());
         dispatch({ type: NEW_PROJECT_SUCCESS });
       })
       .catch(err => {

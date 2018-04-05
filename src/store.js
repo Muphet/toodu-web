@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
+import WebSocketService from "./services/WebSocketService.js";
 
 import projectsReducer from "./core/projects/projectsReducer";
-
 import authReducer from "./scenes/auth/authReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
@@ -21,5 +21,10 @@ export default function configureStore(initialState = {}) {
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   );
-  return createStore(rootReducer, initialState, enhancers);
+
+  const store = createStore(rootReducer, initialState, enhancers);
+
+  WebSocketService.init(store);
+
+  return store;
 }

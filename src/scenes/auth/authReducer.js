@@ -1,14 +1,12 @@
+import { combineReducers } from "redux";
 import loginReducer from "./scenes/login/loginReducer";
 import signupReducer from "./scenes/signup/signupReducer";
-import forgotPasswordReducer
-  from "./scenes/forgotPassword/forgotPasswordReducer";
+import forgotPasswordReducer from "./scenes/forgotPassword/forgotPasswordReducer";
 import resetPasswordReducer from "./scenes/resetPassword/resetPasswordReducer";
 
-export default function authReducer(state = {}, action) {
-  return {
-    login: loginReducer(state.login, action),
-    signup: signupReducer(state.signup, action),
-    forgotPassword: forgotPasswordReducer(state.forgotPassword, action),
-    resetPassword: resetPasswordReducer(state.resetPassword, action)
-  };
-}
+export default combineReducers({
+  login: loginReducer,
+  signup: signupReducer,
+  forgotPassword: forgotPasswordReducer,
+  resetPassword: resetPasswordReducer
+});

@@ -3,7 +3,7 @@ import {
   NEW_PROJECT_START,
   NEW_PROJECT_SUCCESS,
   NEW_PROJECT_ERROR
-} from "./newProjectConstants";
+} from "./newProjectFormConstants";
 
 const defaultState = {
   submitting: false,
@@ -13,7 +13,7 @@ const defaultState = {
   }
 };
 
-export default function newProjectReducer(state = defaultState, action) {
+export default function newProjectFormReducer(state = defaultState, action) {
   switch (action.type) {
     case UPDATE_FIELD:
       return {

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getProjects } from "../../../../../../core/projects/projectsActions";
+import { getProjects } from "../../../../core/projects/projectsActions";
 
 const mapStateToProps = state => ({
   projects: state.core.projects.data,

@@ -1,8 +1,8 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
-import projectListContainer from "./projectListContainer";
+import projectSelectorContainer from "./projectSelectorContainer";
 
-export class ProjectList extends Component {
+export class ProjectSelector extends Component {
   // static propTypes = {};
 
   componentDidMount(e) {
@@ -23,4 +23,4 @@ export class ProjectList extends Component {
   }
 }
 
-export default projectListContainer(ProjectList);
+export default projectSelectorContainer(ProjectSelector);

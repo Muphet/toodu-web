@@ -2,17 +2,17 @@
 import "./dashboardModalRoot.scss";
 import React, { Component } from "react";
 import dashboardModalRootContainer from "./dashboardModalRootContainer";
-import NewProject from "./components/newProject/NewProject";
+import NewProjectForm from "../newProjectForm/NewProjectForm";
 
 export class DashboardModalRoot extends Component {
   // static propTypes = {};
 
-  modalTypes = { NewProject };
+  modalTypes = { NewProjectForm };
 
   render() {
     if (!this.props.activeModal) return null;
 
-    const Modal = this.modalTypes[this.props.activeModal];
+    const ModalContent = this.modalTypes[this.props.activeModal];
 
     return (
       <div className="modal" onClick={this.props.closeModal}>
@@ -21,7 +21,7 @@ export class DashboardModalRoot extends Component {
             <button onClick={this.props.closeModal}>Close</button>
           </header>
           <main className="modal__content">
-            <Modal />
+            <ModalContent />
           </main>
         </div>
       </div>

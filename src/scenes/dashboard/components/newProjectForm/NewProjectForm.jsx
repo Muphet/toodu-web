@@ -1,8 +1,8 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
-import newProjectContainer from "./newProjectContainer";
+import newProjectFormContainer from "./newProjectFormContainer";
 
-export class NewProject extends Component {
+export class NewProjectForm extends Component {
   // static propTypes = {};
 
   handleSubmit(e) {
@@ -26,4 +26,4 @@ export class NewProject extends Component {
   }
 }
 
-export default newProjectContainer(NewProject);
+export default newProjectFormContainer(NewProjectForm);

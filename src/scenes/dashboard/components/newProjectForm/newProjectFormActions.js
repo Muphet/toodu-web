@@ -1,11 +1,11 @@
-import ProjectService from "../../../../../../services/ProjectService.js";
-import { closeModal } from "../../../../dashboardActions";
+import ProjectService from "../../../../services/ProjectService.js";
+import { closeModal } from "../../dashboardActions";
 import {
   UPDATE_FIELD,
   NEW_PROJECT_START,
   NEW_PROJECT_SUCCESS,
   NEW_PROJECT_ERROR
-} from "./newProjectConstants";
+} from "./newProjectFormConstants";
 
 export function updateField(field, value) {
   return {

@@ -1,19 +1,19 @@
+import { combineReducers } from "redux";
 import { OPEN_MODAL, CLOSE_MODAL } from "./dashboardConstants";
-import dashboardModalRootReducer
-  from "./components/dashboardModalRoot/dashboardModalRootReducer";
+import newProjectFormReducer from "./components/newProjectForm/newProjectFormReducer";
 
-const defaultState = {
-  activeModal: null,
-  modals: {}
-};
-
-export default function dashboardReducer(state = defaultState, action) {
+function activeModalReducer(state = null, action) {
   switch (action.type) {
     case OPEN_MODAL:
-      return { ...state, activeModal: action.modal };
+      return action.modal;
     case CLOSE_MODAL:
-      return { ...state, activeModal: null };
+      return null;
     default:
-      return { ...state, modals: dashboardModalRootReducer(state, action) };
+      return state;
   }
 }
+
+export default combineReducers({
+  activeModal: activeModalReducer,
+  newProjectForm: newProjectFormReducer
+});

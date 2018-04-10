@@ -1,9 +1,10 @@
+import ConfigService from "../services/ConfigService";
 import axios from "axios";
 import AuthService from "./AuthService";
 
 class ApiService {
   constructor() {
-    axios.defaults.baseURL = "http://localhost:3000";
+    axios.defaults.baseURL = ConfigService.get("api_base_url");
   }
 
   post(url, data) {

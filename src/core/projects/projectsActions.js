@@ -1,4 +1,4 @@
-import ProjectService from "../../services/ProjectService";
+import projectsApi from "./projectsApi";
 
 import {
   GET_PROJECTS_START,
@@ -9,7 +9,7 @@ import {
 export function getProjects() {
   return dispatch => {
     dispatch({ type: GET_PROJECTS_START });
-    ProjectService.getAll()
+    projectsApi.getAll()
       .then(res => {
         dispatch({ type: GET_PROJECTS_SUCCESS, projects: res.data });
       })

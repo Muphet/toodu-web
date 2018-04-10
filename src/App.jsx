@@ -21,7 +21,7 @@ export default function App({ store, history }) {
             component={CodeSplittingService.scene("auth/Auth")}
           />
 
-          <Route component={CodeSplittingService.scene("notFound/NotFound")} />
+          <Route component={CodeSplittingService.scene("error/Error")} />
         </Switch>
       </Router>
     </Provider>

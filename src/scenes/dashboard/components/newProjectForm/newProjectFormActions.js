@@ -1,4 +1,4 @@
-import ProjectService from "../../../../services/ProjectService.js";
+import projectsApi from "../../../../core/projects/projectsApi.js";
 import { closeModal } from "../../dashboardActions";
 import {
   UPDATE_FIELD,
@@ -18,7 +18,7 @@ export function updateField(field, value) {
 export function createProject(project) {
   return dispatch => {
     dispatch({ type: NEW_PROJECT_START });
-    ProjectService.create(project)
+    projectsApi.create(project)
       .then(res => {
         dispatch(closeModal());
         dispatch({ type: NEW_PROJECT_SUCCESS });

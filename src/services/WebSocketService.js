@@ -1,3 +1,4 @@
+import ConfigService from "../services/ConfigService";
 import qs from "qs";
 import AuthService from "./AuthService";
 
@@ -40,7 +41,7 @@ class WebSocketService {
 
   getUrl() {
     const auth = qs.stringify(AuthService.auth);
-    return `ws://localhost:3000/cable?${auth}`;
+    return ConfigService.get("websocket_url") + `?${auth}`;
   }
 
   isConnected() {
@@ -69,5 +70,5 @@ class WebSocketService {
     console.log(e);
   }
 }
-window.ws = new WebSocketService();
-export default window.ws;
+
+export default new WebSocketService();

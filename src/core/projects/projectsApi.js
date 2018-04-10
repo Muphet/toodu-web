@@ -1,9 +1,9 @@
-import ApiService from "./ApiService";
+import ApiService from "../../services/ApiService";
 
-class ProjectService {
+const projectsApi = {
   getAll() {
     return ApiService.get("/projects");
-  }
+  },
 
   create(project) {
     return ApiService.post("/projects", {
@@ -12,4 +12,4 @@ class ProjectService {
   }
 }
 
-export default new ProjectService();
+export default projectsApi;

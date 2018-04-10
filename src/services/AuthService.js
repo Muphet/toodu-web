@@ -1,3 +1,4 @@
+import ConfigService from "../services/ConfigService";
 import qs from "qs";
 import ApiService from "./ApiService";
 import WebSocketService from "./WebSocketService";
@@ -62,14 +63,14 @@ class AuthService {
       first_name: signupData.firstName,
       last_name: signupData.firstName,
       team_attributes: { name: signupData.teamName },
-      confirm_success_url: "http://localhost:3001/auth/verified"
+      confirm_success_url: ConfigService.get("host") + "/auth/verified"
     });
   }
 
   sendResetEmail(email) {
     return ApiService.post("/auth/password", {
       email,
-      redirect_url: "http://localhost:3001/auth/reset-password"
+      redirect_url: ConfigService.get("host") + "/auth/reset-password"
     });
   }
 

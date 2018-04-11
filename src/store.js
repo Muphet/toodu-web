@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import { routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from "redux-thunk";
 import WebSocketService from "./services/WebSocketService.js";
 
@@ -7,6 +8,7 @@ import authReducer from "./scenes/auth/authReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
+  router: routerReducer,
   core: combineReducers({
     projects: projectsReducer
   }),
@@ -16,9 +18,9 @@ const rootReducer = combineReducers({
   })
 });
 
-export default function configureStore(initialState = {}) {
+export default function configureStore(history, initialState = {}) {
   const enhancers = compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, routerMiddleware(history)),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   );
 

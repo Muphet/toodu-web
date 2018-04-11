@@ -2,14 +2,15 @@ import "./assets/stylesheets/app.scss";
 
 import React from "react";
 import { Provider } from "react-redux";
-import { Router, Route, Switch } from "react-router-dom";
+import { ConnectedRouter } from 'react-router-redux'
+import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import CodeSplittingService from "./services/CodeSplittingService.js";
 
 export default function App({ store, history }) {
   return (
     <Provider store={store}>
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <Switch>
           <ProtectedRoute
             exact
@@ -23,7 +24,7 @@ export default function App({ store, history }) {
 
           <Route component={CodeSplittingService.scene("error/Error")} />
         </Switch>
-      </Router>
+      </ConnectedRouter>
     </Provider>
   );
 }

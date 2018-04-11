@@ -1,5 +1,5 @@
+import { push } from "react-router-redux";
 import AuthService from "../../../../services/AuthService";
-import HistoryService from "../../../../services/HistoryService";
 
 import {
   UPDATE_FIELD,
@@ -21,7 +21,7 @@ export function login({ email, password }) {
     dispatch({ type: LOGIN_START });
     AuthService.login(email, password)
       .then(res => {
-        HistoryService.push("/");
+        dispatch(push("/"));
         dispatch({ type: LOGIN_SUCCESS });
       })
       .catch(err => {

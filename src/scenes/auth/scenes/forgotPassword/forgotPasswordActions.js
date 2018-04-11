@@ -23,7 +23,6 @@ export function sendResetEmail(email) {
         dispatch({ type: SEND_RESET_EMAIL_SUCCESS, flash: res.data.message });
       })
       .catch(err => {
-        console.log(err.response);
         dispatch({
           type: SEND_RESET_EMAIL_ERROR,
           errors: err.response.data.errors

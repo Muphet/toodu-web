@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import createHistory from "history/createBrowserHistory";
 import ServiceWorkerService from "./services/ServiceWorkerService";
-import HistoryService from "./services/HistoryService.js";
 import configureStore from "./store";
 import App from "./App";
 
-const store = configureStore();
-const history = HistoryService.get();
+const history = createHistory();
+const store = configureStore(history);
 
 ReactDOM.render(
   <App store={store} history={history} />,

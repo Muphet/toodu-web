@@ -1,10 +1,10 @@
 // import PropTypes from "prop-types";
-import "./dashboardModalRoot.scss";
+import "./modalRoot.scss";
 import React, { Component } from "react";
-import dashboardModalRootContainer from "./dashboardModalRootContainer";
+import modalRootContainer from "./modalRootContainer";
 import NewProjectModal from "../newProjectModal/NewProjectModal";
 
-export class DashboardModalRoot extends Component {
+export class ModalRoot extends Component {
   // static propTypes = {};
 
   modalTypes = { NewProjectModal };
@@ -29,4 +29,4 @@ export class DashboardModalRoot extends Component {
   }
 }
 
-export default dashboardModalRootContainer(DashboardModalRoot);
+export default modalRootContainer(ModalRoot);

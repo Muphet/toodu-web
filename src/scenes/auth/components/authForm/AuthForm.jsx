@@ -44,7 +44,7 @@ export default class AuthForm extends Component {
   }
 
   success(res) {
-    if(this.unmounted) return;
+    if (this.unmounted) return;
     this.setState({
       submitting: false,
       fields: this.props.fields,
@@ -53,7 +53,7 @@ export default class AuthForm extends Component {
   }
 
   error(err) {
-    if(this.unmounted) return;
+    if (this.unmounted) return;
     this.setState({
       submitting: false,
       errors: err.response.data.errors

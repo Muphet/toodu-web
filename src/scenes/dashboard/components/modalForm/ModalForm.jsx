@@ -42,7 +42,7 @@ export default class ModalForm extends Component {
   }
 
   success(res) {
-    if(this.unmounted) return;
+    if (this.unmounted) return;
     this.setState({
       submitting: false,
       fields: this.props.fields,
@@ -51,8 +51,7 @@ export default class ModalForm extends Component {
   }
 
   error(err) {
-    console.log(err.response)
-    if(this.unmounted) return;
+    if (this.unmounted) return;
     this.setState({
       submitting: false,
       errors: err.response.data.errors

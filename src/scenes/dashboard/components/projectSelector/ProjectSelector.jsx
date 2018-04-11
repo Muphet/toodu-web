@@ -1,5 +1,6 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import projectSelectorContainer from "./projectSelectorContainer";
 
 export class ProjectSelector extends Component {
@@ -16,7 +17,9 @@ export class ProjectSelector extends Component {
     return (
       <ul>
         {this.props.projects.map(project => (
-          <li key={project.id}>{project.name}</li>
+          <li key={project.id}>
+            <Link to={`/app/project/${project.id}`}>{project.name}</Link>
+          </li>
         ))}
       </ul>
     );

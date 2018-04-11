@@ -10,6 +10,6 @@ const projectsApi = {
       name: project.name
     });
   }
-}
+};
 
 export default projectsApi;

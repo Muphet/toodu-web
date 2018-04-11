@@ -1,15 +1,19 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
-import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { routerReducer, routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import WebSocketService from "./services/WebSocketService.js";
 
 import projectsReducer from "./core/projects/projectsReducer";
+import tasksReducer from "./core/tasks/tasksReducer";
+import subTasksReducer from "./core/subTasks/subTasksReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
   router: routerReducer,
   core: combineReducers({
-    projects: projectsReducer
+    projects: projectsReducer,
+    tasks: tasksReducer,
+    subTasks: subTasksReducer
   }),
   scenes: combineReducers({
     dashboard: dashboardReducer

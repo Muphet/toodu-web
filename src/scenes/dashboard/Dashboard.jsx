@@ -1,9 +1,10 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import DashboardHeader from "./components/dashboardHeader/DashboardHeader";
-import ModalRoot
-  from "./components/modalRoot/ModalRoot";
+import Project from "./scenes/project/Project";
+import Task from "./scenes/task/Task";
+import ModalRoot from "./components/modalRoot/ModalRoot";
 
 export default class Dashboard extends Component {
   // static propTypes = {};
@@ -15,6 +16,8 @@ export default class Dashboard extends Component {
         <Link to="/auth/logout">Log out</Link>
         <DashboardHeader />
         <ModalRoot />
+        <Route path="/app/project/:projectId" component={Project} />
+        <Route path="/app/project/:projectId/task/:taskId" component={Task} />
       </div>
     );
   }

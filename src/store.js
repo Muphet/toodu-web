@@ -4,7 +4,6 @@ import thunk from "redux-thunk";
 import WebSocketService from "./services/WebSocketService.js";
 
 import projectsReducer from "./core/projects/projectsReducer";
-import authReducer from "./scenes/auth/authReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
     projects: projectsReducer
   }),
   scenes: combineReducers({
-    auth: authReducer,
     dashboard: dashboardReducer
   })
 });

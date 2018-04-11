@@ -2,12 +2,12 @@
 import "./dashboardModalRoot.scss";
 import React, { Component } from "react";
 import dashboardModalRootContainer from "./dashboardModalRootContainer";
-import NewProjectForm from "../newProjectForm/NewProjectForm";
+import NewProjectModal from "../newProjectModal/NewProjectModal";
 
 export class DashboardModalRoot extends Component {
   // static propTypes = {};
 
-  modalTypes = { NewProjectForm };
+  modalTypes = { NewProjectModal };
 
   render() {
     if (!this.props.activeModal) return null;

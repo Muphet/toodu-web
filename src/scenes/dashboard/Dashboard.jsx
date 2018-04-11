@@ -5,7 +5,7 @@ import DashboardHeader from "./components/dashboardHeader/DashboardHeader";
 import DashboardModalRoot
   from "./components/dashboardModalRoot/DashboardModalRoot";
 
-export default class Home extends Component {
+export default class Dashboard extends Component {
   // static propTypes = {};
 
   render() {

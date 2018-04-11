@@ -1,14 +1,13 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from "react";
 
 export default class AuthFlash extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    flash: PropTypes.string
+  };
 
   render() {
-    return (
-      <p>
-        {this.props.flash}
-      </p>
-    );
+    if (!this.props.flash) return null;
+    return <p>{this.props.flash}</p>
   }
 }

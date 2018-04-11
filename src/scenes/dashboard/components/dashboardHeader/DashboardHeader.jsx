@@ -9,7 +9,7 @@ export class DashboardHeader extends Component {
   render() {
     return (
       <header>
-        <button onClick={() => this.props.openModal("NewProjectForm")}>
+        <button onClick={() => this.props.openModal("NewProjectModal")}>
           Add new project
         </button>
         <ProjectSelector />

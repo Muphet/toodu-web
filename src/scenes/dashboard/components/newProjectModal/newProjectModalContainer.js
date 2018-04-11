@@ -1,8 +1,6 @@
 import { connect } from "react-redux";
 import { closeModal } from "../../dashboardActions";
 
-const mapStateToProps = state => ({
-  activeModal: state.scenes.dashboard.activeModal
-});
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, { closeModal });

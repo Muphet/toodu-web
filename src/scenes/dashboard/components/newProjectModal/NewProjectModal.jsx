@@ -7,7 +7,7 @@ import ModalForm from "../modalForm/ModalForm";
 export class NewProjectModal extends Component {
   // static propTypes = {};
 
-  async createProject(name) {
+  async createProject({ name }) {
     const res = await projectsApi.create({ name });
     this.props.closeModal();
     return res;

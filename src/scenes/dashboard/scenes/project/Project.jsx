@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import projectContainer from "./projectContainer";
 import TaskList from "./components/taskList/TaskList";
+import NewTask from "./components/newTask/NewTask";
 
 export class Project extends Component {
   // static propTypes = {};
@@ -12,6 +13,7 @@ export class Project extends Component {
       <div>
         <h2>{this.props.project.name}</h2>
         <TaskList projectId={this.props.project.id} />
+        <NewTask projectId={this.props.project.id} />
       </div>
     );
   }

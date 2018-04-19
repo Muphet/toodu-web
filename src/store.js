@@ -6,6 +6,7 @@ import WebSocketService from "./services/WebSocketService.js";
 import projectsReducer from "./core/projects/projectsReducer";
 import tasksReducer from "./core/tasks/tasksReducer";
 import subTasksReducer from "./core/subTasks/subTasksReducer";
+import commentsReducer from "./core/comments/commentsReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   core: combineReducers({
     projects: projectsReducer,
     tasks: tasksReducer,
-    subTasks: subTasksReducer
+    subTasks: subTasksReducer,
+    comments: commentsReducer
   }),
   scenes: combineReducers({
     dashboard: dashboardReducer

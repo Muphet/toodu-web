@@ -20,12 +20,12 @@ export default function tasksReducer(state = defaultState, action) {
       return {
         ...state,
         fetching: false,
-        data: UtilService.merge(state.data, action.tasks)
+        data: UtilService.merge(state.data, action.subTasks)
       };
     case GET_SUB_TASKS_FOR_TASK_ERROR:
       return { ...state, fetching: false, error: true };
     case SUB_TASK_CREATED:
-      return { ...state, data: state.data.concat(action.task) };
+      return { ...state, data: state.data.concat(action.subTask) };
     default:
       return state;
   }

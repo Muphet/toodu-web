@@ -1,43 +1,26 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
+import Form from "../../../../../../components/form/Form";
 import commentApi from "../../../../../../core/comments/commentsApi";
 
 export default class NewComment extends Component {
   // static propTypes = {};
 
-  state = {
-    submitting: false,
-    errors: [],
-    fields: {
-      content: ""
-    }
-  }
-
-  async createComment(e) {
-    e.preventDefault();
-    this.setState({ submitting: true });
-    try {
-      await commentApi.create({ ...this.state.fields, taskId: this.props.taskId });
-      this.setState({ submitting: false, fields: { content: "" } });
-    } catch (err) {
-      console.log(err.response)
-      this.setState({ submitting: false, errors: ["There was an error"] });
-    }
-  }
-
-  updateField(name, value) {
-    this.setState({ fields: { [name]: value } })
+  createComment({ content }) {
+    return commentApi.create({ content, taskId: this.props.taskId });
   }
 
   render() {
     return (
-      <form onSubmit={this.createComment.bind(this)}>
-        <input
-          type="text"
-          value={this.state.fields.content}
-          onChange={(e) => this.updateField("content", e.target.value)}
-        />
-      </form>
+      <Form
+        submitText="Send"
+        onSubmit={this.createComment.bind(this)}
+        fields={[{
+          name: "content",
+          type: "text",
+          label: "Type your comment"
+        }]}
+      />
     );
   }
 }

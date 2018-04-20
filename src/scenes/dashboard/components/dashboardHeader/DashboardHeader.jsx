@@ -2,9 +2,14 @@
 import React, { Component } from "react";
 import dashboardHeaderContainer from "./dashboardHeaderContainer";
 import ProjectSelector from "../projectSelector/ProjectSelector";
+import UsersList from "../usersList/UsersList";
 
 export class DashboardHeader extends Component {
   // static propTypes = {};
+
+  static defaultProps = {
+    users: []
+  }
 
   render() {
     return (
@@ -13,6 +18,7 @@ export class DashboardHeader extends Component {
           Add new project
         </button>
         <ProjectSelector />
+        <UsersList />
       </header>
     );
   }

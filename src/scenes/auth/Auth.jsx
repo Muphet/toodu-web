@@ -8,6 +8,7 @@ import Verified from "./scenes/verified/Verified";
 import Logout from "./scenes/logout/Logout";
 import ForgotPassword from "./scenes/forgotPassword/ForgotPassword";
 import ResetPassword from "./scenes/resetPassword/ResetPassword";
+import Invited from "./scenes/invited/Invited";
 
 export default class Auth extends Component {
   // static propTypes = {};
@@ -26,6 +27,7 @@ export default class Auth extends Component {
               component={Verified}
             />
             <Route exact path="/auth/logout" component={Logout} />
+            <Route exact path="/auth/invited" component={Invited} />
             <Route
               exact
               path="/auth/forgot-password"

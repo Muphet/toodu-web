@@ -3,6 +3,8 @@ import { routerReducer, routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import WebSocketService from "./services/WebSocketService.js";
 
+import teamsReducer from "./core/teams/teamsReducer";
+import usersReducer from "./core/users/usersReducer";
 import projectsReducer from "./core/projects/projectsReducer";
 import tasksReducer from "./core/tasks/tasksReducer";
 import subTasksReducer from "./core/subTasks/subTasksReducer";
@@ -12,6 +14,8 @@ import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 const rootReducer = combineReducers({
   router: routerReducer,
   core: combineReducers({
+    team: teamsReducer,
+    users: usersReducer,
     projects: projectsReducer,
     tasks: tasksReducer,
     subTasks: subTasksReducer,

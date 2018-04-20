@@ -8,7 +8,9 @@ class ConfigService {
     try {
       envConfig = require(`../config/${env}.json`);
     } catch (err) {
-      console.warn(`No config file exists for the current environment: expected src/config/${env}.json to exist.`);
+      console.warn(
+        `No config file exists for the current environment: expected src/config/${env}.json to exist.`
+      );
       envConfig = {};
     }
 

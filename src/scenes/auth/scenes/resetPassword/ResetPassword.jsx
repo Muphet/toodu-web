@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../../../services/AuthService";
-import AuthForm from "../../components/authForm/AuthForm";
+import Form from "../../../../components/form/Form";
 
 export default class ResetPassword extends Component {
   // static propTypes = {};
@@ -16,9 +16,9 @@ export default class ResetPassword extends Component {
     return (
       <div>
         <h1>Change your password</h1>
-        <AuthForm
-          buttonText="Reset"
-          handleSubmit={this.resetPassword.bind(this)}
+        <Form
+          submitText="Reset"
+          onSubmit={this.resetPassword.bind(this)}
           fields={[{
             name: "password",
             type: "password",

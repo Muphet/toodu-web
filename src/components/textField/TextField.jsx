@@ -1,9 +1,11 @@
-// import PropTypes from 'prop-types';
-import "./authField.scss";
 import React, { Component } from "react";
 
-export default class AuthField extends Component {
+export default class TextField extends Component {
   // static propTypes = {};
+
+  static defaultProps = {
+    value: ""
+  }
 
   handleChange(e) {
     this.props.onChange(this.props.name, e.target.value);
@@ -11,10 +13,12 @@ export default class AuthField extends Component {
 
   render() {
     return (
-      <div className="auth-field">
-        <label className="auth-field__label" htmlFor={this.props.name}>
-          {this.props.label}
-        </label>
+      <div className={`${this.props.className}__text-field`}>
+        {this.props.label &&
+          <label htmlFor={this.props.name}>
+            {this.props.label}
+          </label>
+        }
         <input
           name={this.props.name}
           id={this.props.name}

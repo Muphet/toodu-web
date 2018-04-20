@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../../../services/AuthService";
-import AuthForm from "../../components/authForm/AuthForm";
+import Form from "../../../../components/form/Form";
 
 export default class Signup extends Component {
   // static propTypes = {};
@@ -16,9 +16,9 @@ export default class Signup extends Component {
     return (
       <div>
         <h1>Sign up</h1>
-        <AuthForm
-          buttonText="Signup"
-          handleSubmit={this.signup.bind(this)}
+        <Form
+          submitText="Signup"
+          onSubmit={this.signup.bind(this)}
           fields={[{
             name: "email",
             type: "email",

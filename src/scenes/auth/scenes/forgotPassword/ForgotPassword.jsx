@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../../../services/AuthService";
-import AuthForm from "../../components/authForm/AuthForm";
+import Form from "../../../../components/form/Form";
 
 export default class ForgotPassword extends Component {
   // static propTypes = {};
@@ -16,9 +16,9 @@ export default class ForgotPassword extends Component {
     return (
       <div>
         <h1>Forgotten your password?</h1>
-        <AuthForm
-          buttonText="Send email"
-          handleSubmit={this.sendResetEmail.bind(this)}
+        <Form
+          submitText="Send email"
+          onSubmit={this.sendResetEmail.bind(this)}
           fields={[{
             name: "email",
             type: "email",

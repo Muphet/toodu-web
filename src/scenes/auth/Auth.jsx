@@ -1,5 +1,4 @@
 // import PropTypes from 'prop-types';
-import "./auth.scss";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";

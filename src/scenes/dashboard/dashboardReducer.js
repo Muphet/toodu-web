@@ -2,7 +2,7 @@ import { OPEN_MODAL, CLOSE_MODAL } from "./dashboardConstants";
 
 const defaultState = {
   activeModal: null
-}
+};
 
 export default function dashboardReducer(state = defaultState, action) {
   switch (action.type) {

@@ -1,7 +1,5 @@
 import { connect } from "react-redux";
-import {
-  getSubTasksForTask
-} from "../../../../../../core/subTasks/subTasksActions";
+import { getSubTasksForTask } from "../../../../../../core/subTasks/subTasksActions";
 
 const mapStateToProps = (state, props) => ({
   fetching: state.core.subTasks.fetching,

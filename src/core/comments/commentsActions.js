@@ -15,7 +15,7 @@ export function getCommentsForTask(taskId) {
         dispatch({ type: GET_COMMENTS_FOR_TASK_SUCCESS, comments: res.data });
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
         dispatch({ type: GET_COMMENTS_FOR_TASK_ERROR });
       });
   };

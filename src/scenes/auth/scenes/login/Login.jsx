@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../../../services/AuthService";
 import loginContainer from "./loginContainer";
-import AuthForm from "../../components/authForm/AuthForm";
+import Form from "../../../../components/form/Form";
 
 export class Login extends Component {
   // static propTypes = {};
@@ -18,9 +18,9 @@ export class Login extends Component {
     return (
       <div>
         <h1>Log in</h1>
-        <AuthForm
-          buttonText="Login"
-          handleSubmit={this.login.bind(this)}
+        <Form
+          submitText="Login"
+          onSubmit={this.login.bind(this)}
           fields={[{
             name: "email",
             type: "email",

@@ -1,7 +1,5 @@
 import { connect } from "react-redux";
-import {
-  getCommentsForTask
-} from "../../../../../../core/comments/commentsActions";
+import { getCommentsForTask } from "../../../../../../core/comments/commentsActions";
 
 const mapStateToProps = (state, props) => ({
   fetching: state.core.comments.fetching,

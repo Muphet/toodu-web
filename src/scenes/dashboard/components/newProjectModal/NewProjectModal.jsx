@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import projectsApi from "../../../../core/projects/projectsApi";
 import newProjectModalContainer from "./newProjectModalContainer";
-import ModalForm from "../modalForm/ModalForm";
+import Form from "../../../../components/form/Form";
 
 export class NewProjectModal extends Component {
   // static propTypes = {};
@@ -17,9 +17,9 @@ export class NewProjectModal extends Component {
     return (
       <div>
         <h3>Create a new project</h3>
-        <ModalForm
-          buttonText="Create"
-          handleSubmit={this.createProject.bind(this)}
+        <Form
+          submitText="Create"
+          onSubmit={this.createProject.bind(this)}
           fields={[{
             name: "name",
             type: "text",

@@ -7,14 +7,12 @@ export class TaskList extends Component {
   static propTypes = {};
 
   async componentDidMount(e) {
-    this.setState({ fetching: true });
     this.props.getTasksForProject();
   }
 
   render() {
-    if (this.props.error) return <p>There was an error</p>;
-    if (this.props.fetching) return <p>Fetching tasks...</p>;
     if (!this.props.tasks.length) return <p>No tasks yet</p>;
+    
     return (
       <ul>
         {this.props.tasks.map(task => (

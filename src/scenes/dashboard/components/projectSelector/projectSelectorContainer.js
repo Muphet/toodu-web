@@ -16,11 +16,15 @@ const sortedProjectsSelector = createSelector(
   })
 );
 
+const starredProjectIdsSelector = createSelector(
+  starsSelector,
+  stars => stars.map((star) => star.project_id)
+);
+
 const mapStateToProps = state => ({
   projects: sortedProjectsSelector(state),
   stars: starsSelector(state),
-  fetching: state.core.projects.fetching,
-  error: state.core.projects.error
+  starredProjectIds: starredProjectIdsSelector(state)
 });
 
 export default connect(mapStateToProps, { getProjects, getStars, destroyStar, createStar });

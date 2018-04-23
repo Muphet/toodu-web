@@ -10,9 +10,8 @@ export class SubTaskList extends Component {
   }
 
   render() {
-    if (this.props.error) return <p>There was an error</p>;
-    if (this.props.fetching) return <p>Fetching sub tasks...</p>;
     if (!this.props.subTasks.length) return <p>No sub tasks yet</p>;
+    
     return (
       <ul>
         {this.props.subTasks.map(subTask => (

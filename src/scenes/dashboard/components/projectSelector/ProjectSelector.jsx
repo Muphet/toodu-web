@@ -17,18 +17,14 @@ export class ProjectSelector extends Component {
   }
 
   render() {
-    if (this.props.error) return <p>There was an error</p>;
-    if (this.props.fetching) return <p>Fetching projects...</p>;
     if (!this.props.projects.length) return <p>No projects yet</p>;
     
-    const starredIds = this.props.stars.map((star) => star.project_id);
-
     return (
       <ul>
         {this.props.projects.map(project => (
           <li key={project.id}>
             <Link to={`/app/project/${project.id}`}>{project.name}</Link>
-            {starredIds.includes(project.id)
+            {this.props.starredProjectIds.includes(project.id)
               ? <button onClick={() => this.unstar(project.id)}>
                   un-star
                 </button>

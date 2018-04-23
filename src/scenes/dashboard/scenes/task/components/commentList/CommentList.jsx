@@ -10,9 +10,8 @@ export class CommentList extends Component {
   }
 
   render() {
-    if (this.props.error) return <p>There was an error</p>;
-    if (this.props.fetching) return <p>Fetching comments...</p>;
     if (!this.props.comments.length) return <p>No comments yet</p>;
+    
     return (
       <ul>
         {this.props.comments.map(comment => (

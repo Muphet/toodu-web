@@ -62,11 +62,10 @@ export default class Form extends Component {
   }
 
   error(err) {
-    console.log(err)
     if (this.unmounted) return;
     this.setState({
       submitting: false,
-      errors: err.response.data.errors,
+      errors: err.response.data.errors.full_messages,
       message: null
     });
   }

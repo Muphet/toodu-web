@@ -7,13 +7,17 @@ import Form from "../../../../components/form/Form";
 export default class Invited extends Component {
   // static propTypes = {};
 
+  componentWillMount() {
+    this.query = qs.parse(this.props.location.search.slice(1));
+  }
+
   async signup(signupData) {
-    const query = qs.parse(this.props.location.search.slice(1));
-    const res = await usersApi.create(signupData, query.invite_token);
+    const res = await usersApi.create(signupData, this.query.invite_token);
     return res;
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <h1>Sign up</h1>
@@ -23,7 +27,8 @@ export default class Invited extends Component {
           fields={[{
             name: "email",
             type: "email",
-            label: "Enter your email address"
+            label: "Enter your email address",
+            initialValue: this.query.email
           },{
             name: "firstName",
             type: "text",

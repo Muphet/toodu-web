@@ -5,7 +5,7 @@ export default class FormErrors extends Component {
   // static propTypes = {};
 
   render() {
-    if (!this.props.errors || !this.props.errors.length) return null;
+    if (!this.props.errors) return null;
 
     return (
       <ul className={`${this.props.className}__errors`}>

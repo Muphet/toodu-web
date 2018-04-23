@@ -62,8 +62,10 @@ class AuthService {
       password_confirmation: signupData.passwordConfirmation,
       first_name: signupData.firstName,
       last_name: signupData.firstName,
-      team_attributes: { name: signupData.teamName },
-      confirm_success_url: ConfigService.get("host") + "/auth/verified"
+      team_attributes: { name: signupData.teamName }
+    }).then(res => {
+      res.data.message = "You have been sent an email with instructions for completing your registration";
+      return res;
     });
   }
 

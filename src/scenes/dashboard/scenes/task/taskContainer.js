@@ -6,7 +6,7 @@ const currentTaskIdSelector = (state, props) => props.match.params.taskId;
 
 const taskSelector = createSelector(
   [ tasksSelector, currentTaskIdSelector ],
-  (tasks, currentTaskId) => tasks.data.find(
+  (tasks, currentTaskId) => tasks.find(
     task => task.id === currentTaskId
   )
 )

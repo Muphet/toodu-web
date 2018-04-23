@@ -6,7 +6,7 @@ const currentProjectIdSelector = (state, props) => props.match.params.projectId;
 
 const currentProjectSelector = createSelector(
   [ projectsSelector, currentProjectIdSelector ],
-  (projects, currentProjectId) => projects.data.find(
+  (projects, currentProjectId) => projects.find(
     project => project.id === currentProjectId
   )
 )

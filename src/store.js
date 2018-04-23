@@ -9,6 +9,7 @@ import projectsReducer from "./core/projects/projectsReducer";
 import tasksReducer from "./core/tasks/tasksReducer";
 import subTasksReducer from "./core/subTasks/subTasksReducer";
 import commentsReducer from "./core/comments/commentsReducer";
+import starsReducer from "./core/stars/starsReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     projects: projectsReducer,
     tasks: tasksReducer,
     subTasks: subTasksReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    stars: starsReducer
   }),
   scenes: combineReducers({
     dashboard: dashboardReducer

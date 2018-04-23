@@ -1,5 +1,4 @@
 // import PropTypes from "prop-types";
-import "./modalRoot.scss";
 import React, { Component } from "react";
 import modalRootContainer from "./modalRootContainer";
 import NewProjectModal from "../newProjectModal/NewProjectModal";

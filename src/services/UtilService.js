@@ -12,6 +12,14 @@ class UtilService {
 
     return arr;
   }
+
+  removeById(data, item) {
+    const index = data.indexOf(data.find(el => el.id === item.id));
+    if (index < 0) return data;
+    return data
+      .slice(0, index)
+      .concat(data.slice(index + 1, data.length));
+  }
 }
 
 export default new UtilService();

@@ -1,10 +1,6 @@
 import ApiService from "../../services/ApiService";
 
 const tasksApi = {
-  getAll() {
-    return ApiService.get("/tasks");
-  },
-
   getForProject(projectId) {
     return ApiService.get("/tasks", { project_id: projectId });
   },

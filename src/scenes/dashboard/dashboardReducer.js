@@ -18,7 +18,7 @@ export default function dashboardReducer(state = defaultState, action) {
     case CLOSE_MODAL:
       return { ...state, activeModal: null };
     case CHANGE_PROJECT:
-      return { ...state, activeProject: action.projectId };
+      return { ...state, activeProject: action.projectId, activeTask: null };
     case CHANGE_TASK:
       return { ...state, activeTask: action.taskId };
     default:

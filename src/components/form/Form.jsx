@@ -1,3 +1,4 @@
+import "./form.scss";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import TextField from "../textField/TextField";

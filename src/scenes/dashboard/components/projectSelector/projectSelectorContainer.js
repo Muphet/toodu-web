@@ -9,7 +9,7 @@ import {
 
 const projectsSelector = state => state.core.projects.data;
 const starsSelector = state => state.core.stars.data;
-const selectedProjectIdSelector = state => state.scenes.dashboard.project;
+const selectedProjectIdSelector = state => state.scenes.dashboard.activeProject;
 
 const sortedProjectsSelector = createSelector(
   [projectsSelector, starsSelector],

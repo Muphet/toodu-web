@@ -9,7 +9,8 @@ import {
 export function getTeam() {
   return dispatch => {
     dispatch({ type: GET_TEAM_START });
-    teamsApi.get()
+    teamsApi
+      .get()
       .then(res => {
         dispatch({ type: GET_TEAM_SUCCESS, team: res.data });
       })

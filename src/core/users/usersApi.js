@@ -17,7 +17,7 @@ const usersApi = {
       email: user.email,
       password: user.password,
       password_confirmation: user.passwordConfirmation
-    })
+    });
   }
 };
 

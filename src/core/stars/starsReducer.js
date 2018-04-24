@@ -24,7 +24,10 @@ export default function starssReducer(state = defaultState, action) {
     case CREATE_STAR_SUCCESS:
       return { ...state, data: state.data.concat(action.star) };
     case DESTROY_STAR_SUCCESS:
-      return { ...state, data: UtilService.removeById(state.data, action.star) };
+      return {
+        ...state,
+        data: UtilService.removeById(state.data, action.star)
+      };
     default:
       return state;
   }

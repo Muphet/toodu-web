@@ -12,7 +12,8 @@ import {
 export function getUsers() {
   return dispatch => {
     dispatch({ type: GET_USERS_START });
-    usersApi.getAll()
+    usersApi
+      .getAll()
       .then(res => {
         dispatch({ type: GET_USERS_SUCCESS, users: res.data });
       })
@@ -25,7 +26,8 @@ export function getUsers() {
 export function getCurrentUser() {
   return dispatch => {
     dispatch({ type: GET_CURRENT_USER_START });
-    usersApi.getCurrent()
+    usersApi
+      .getCurrent()
       .then(res => {
         dispatch({ type: GET_CURRENT_USER_SUCCESS, user: res.data });
       })

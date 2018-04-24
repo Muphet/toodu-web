@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
-import { changeTask } from "./taskActions";
+import { changeTask } from "../../dashboardActions";
 
 const tasksSelector = state => state.core.tasks.data;
-const currentTaskIdSelector = state => state.scenes.dashboard.task;
+const currentTaskIdSelector = state => state.scenes.dashboard.activeTask;
 
 const taskSelector = createSelector(
   [tasksSelector, currentTaskIdSelector],

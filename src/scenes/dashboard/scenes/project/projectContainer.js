@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
-import { changeProject } from "./projectActions";
+import { changeProject } from "../../dashboardActions";
 
 const projectsSelector = state => state.core.projects.data;
-const currentProjectIdSelector = state => state.scenes.dashboard.project;
+const currentProjectIdSelector = state => state.scenes.dashboard.activeProject;
 
 const currentProjectSelector = createSelector(
   [projectsSelector, currentProjectIdSelector],

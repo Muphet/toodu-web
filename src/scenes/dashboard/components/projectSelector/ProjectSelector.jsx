@@ -18,23 +18,27 @@ export class ProjectSelector extends Component {
 
   render() {
     if (!this.props.projects.length) return <p>No projects yet</p>;
-    
+
     return (
-      <ul>
-        {this.props.projects.map(project => (
-          <li key={project.id}>
-            <Link to={`/app/project/${project.id}`}>{project.name}</Link>
-            {this.props.starredProjectIds.includes(project.id)
-              ? <button onClick={() => this.unstar(project.id)}>
-                  un-star
-                </button>
-              : <button onClick={() => this.props.createStar(project.id)}>
-                  star
-                </button>
-            }
-          </li>
-        ))}
-      </ul>
+      <div>
+        {this.props.selectedProject
+          ? <h2>{this.props.selectedProject.name}</h2>
+          : <h2>Select a project</h2>}
+        <ul>
+          {this.props.projects.map(project => (
+            <li key={project.id}>
+              <Link to={`/app/project/${project.id}`}>{project.name}</Link>
+              {this.props.starredProjectIds.includes(project.id)
+                ? <button onClick={() => this.unstar(project.id)}>
+                    un-star
+                  </button>
+                : <button onClick={() => this.props.createStar(project.id)}>
+                    star
+                  </button>}
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }

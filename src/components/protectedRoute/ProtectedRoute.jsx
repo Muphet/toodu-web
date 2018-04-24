@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 import SceneLoader from "../sceneLoader/SceneLoader";
+import protectedRouteContainer from "./protectedRouteContainer.js";
 
-export default class ProtectedRoute extends Component {
+export class ProtectedRoute extends Component {
   // static propTypes = {};
 
   state = {
@@ -16,7 +17,7 @@ export default class ProtectedRoute extends Component {
     if (this.props.getAuthFromUrl) {
       AuthService.setFromUrl();
     }
-    if (AuthService.authenticated) {
+    if (this.state.authenticated) {
       this.authenticated();
     } else {
       AuthService.authenticate()
@@ -39,3 +40,5 @@ export default class ProtectedRoute extends Component {
     else return <Redirect to="/auth/login" />;
   }
 }
+
+export default protectedRouteContainer(ProtectedRoute);

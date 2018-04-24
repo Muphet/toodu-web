@@ -1,4 +1,3 @@
-import UtilService from "../../services/UtilService";
 import {
   GET_TASKS_START,
   GET_TASKS_SUCCESS,

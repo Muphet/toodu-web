@@ -1,12 +1,17 @@
-import ConfigService from "../services/ConfigService";
 import qs from "qs";
 import ApiService from "./ApiService";
 import WebSocketService from "./WebSocketService";
+import { changeAuthenticated } from "../core/auth/authActions";
 
 class AuthService {
   constructor() {
     this.authenticated = false;
+    this.store = null;
     this.auth = this.get();
+  }
+
+  init(store) {
+    this.store = store;
   }
 
   set(auth) {
@@ -30,14 +35,14 @@ class AuthService {
 
   clear() {
     this.auth = {};
-    this.authenticated = false;
+    this.updateAuthenticated(false);
     localStorage.removeItem("auth");
   }
 
   authenticate() {
     return ApiService.get("/auth/validate_token", this.auth)
       .then(() => {
-        this.authenticated = true;
+        this.updateAuthenticated(true);
         WebSocketService.connect();
       })
       .catch(err => {
@@ -46,41 +51,14 @@ class AuthService {
       });
   }
 
-  login(email, password) {
-    return ApiService.post("/auth/sign_in", { email, password });
-  }
-
   logout() {
     this.clear();
     return ApiService.delete("/auth/sign_out");
   }
 
-  signup(signupData) {
-    return ApiService.post("/auth", {
-      email: signupData.email,
-      password: signupData.password,
-      password_confirmation: signupData.passwordConfirmation,
-      first_name: signupData.firstName,
-      last_name: signupData.firstName,
-      team_attributes: { name: signupData.teamName }
-    }).then(res => {
-      res.data.message = "You have been sent an email with instructions for completing your registration";
-      return res;
-    });
-  }
-
-  sendResetEmail(email) {
-    return ApiService.post("/auth/password", {
-      email,
-      redirect_url: ConfigService.get("host") + "/auth/reset-password"
-    });
-  }
-
-  resetPassword(resetData) {
-    return ApiService.put("/auth/password", {
-      password: resetData.password,
-      password_confirmation: resetData.passwordConfirmation
-    });
+  updateAuthenticated(authenticated) {
+    this.authenticated = authenticated;
+    this.store.dispatch(changeAuthenticated(authenticated));
   }
 }
 

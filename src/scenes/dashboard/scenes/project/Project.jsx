@@ -7,8 +7,25 @@ import NewTask from "./components/newTask/NewTask";
 export class Project extends Component {
   // static propTypes = {};
 
+  static defaultProps = {
+    project: {}
+  };
+
+  componentDidMount() {
+    this.props.changeProject(this.props.match.params.projectId);
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevParams = prevProps.match.params;
+    const params = this.props.match.params;
+
+    if (prevParams.projectId !== params.projectId) {
+      this.props.changeProject(params.projectId);
+    }
+  }
+
   render() {
-    if (!this.props.project) return <p>Project not found</p>;
+    if (!this.props.project.id) return <p>Project not found</p>;
     return (
       <div>
         <h2>{this.props.project.name}</h2>

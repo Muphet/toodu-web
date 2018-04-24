@@ -1,0 +1,1 @@
+export const CHANGE_AUTHENTICATED = "core/auth/CHANGE_AUTHENTICATED";

@@ -1,13 +1,13 @@
 import {
   GET_TEAM_START,
   GET_TEAM_SUCCESS,
-  GET_TEAM_ERROR,
+  GET_TEAM_ERROR
 } from "./teamsConstants";
 
 const defaultState = {
   fetching: false,
   error: false,
-  data: []
+  data: null
 };
 
 export default function teamsReducer(state = defaultState, action) {

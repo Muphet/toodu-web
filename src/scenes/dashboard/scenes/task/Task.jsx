@@ -9,6 +9,19 @@ import NewSubTask from "./components/newSubTask/NewSubTask";
 export class Task extends Component {
   // static propTypes = {};
 
+  componentDidMount() {
+    this.props.changeTask(this.props.match.params.taskId);
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevParams = prevProps.match.params;
+    const params = this.props.match.params;
+
+    if (prevParams.taskId !== params.taskId) {
+      this.props.changeTask(params.taskId);
+    }
+  }
+
   render() {
     if (!this.props.task) return <p>Task not found</p>;
     return (

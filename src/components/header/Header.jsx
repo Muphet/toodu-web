@@ -1,16 +1,24 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import headerContainer from "./headerContainer";
 
 export class Header extends Component {
   // static propTypes = {};
 
-  static defaultProps = {
-    team: {},
-    currentUser: {}
+  componentDidMount(e) {
+    if (this.props.authenticated) {
+      this.fetch();
+    }
   }
 
-  componentDidMount(e) {
+  componentDidUpdate(prevProps) {
+    if (this.props.authenticated && !prevProps.authenticated) {
+      this.fetch();
+    }
+  }
+
+  fetch() {
     this.props.getUsers();
     this.props.getCurrentUser();
     this.props.getTeam();
@@ -19,9 +27,12 @@ export class Header extends Component {
   render() {
     return (
       <header>
-        <h1>Toodu</h1>
-        <h4>{this.props.team.name}</h4>
-        <p>Welcome {this.props.currentUser.first_name}</p>
+        {this.props.team ? <h1>{this.props.team.name}</h1> : <h1>Toodu</h1>}
+        {this.props.currentUser &&
+          <div>
+            <p>Welcome {this.props.currentUser.first_name}</p>
+            <Link to="/auth/logout">Log out</Link>
+          </div>}
       </header>
     );
   }

@@ -5,18 +5,18 @@ import { getUsers, getCurrentUser } from "../../core/users/usersActions";
 
 const teamSelector = state => state.core.team.data;
 const usersSelector = state => state.core.users.data;
+const authenticatedSelector = state => state.core.auth.authenticated;
 const currentUserIdSelector = state => state.core.users.currentUserId;
 
 const currentUserSelector = createSelector(
-  [ usersSelector, currentUserIdSelector ],
-  (users, currentUserId) => users.find((user) => (
-    user.id === currentUserId
-  ))
+  [usersSelector, currentUserIdSelector],
+  (users, currentUserId) => users.find(user => user.id === currentUserId)
 );
 
 const mapStateToProps = state => ({
   team: teamSelector(state),
-  currentUser: currentUserSelector(state)
+  currentUser: currentUserSelector(state),
+  authenticated: authenticatedSelector(state)
 });
 
 export default connect(mapStateToProps, { getTeam, getUsers, getCurrentUser });

@@ -25,7 +25,7 @@ export class Task extends Component {
   render() {
     if (!this.props.task) return <p>Task not found</p>;
     return (
-      <div>
+      <div className="dashboard-main__item">
         <h2>{this.props.task.name}</h2>
         <NewSubTask taskId={this.props.task.id} />
         <SubTaskList taskId={this.props.task.id} />

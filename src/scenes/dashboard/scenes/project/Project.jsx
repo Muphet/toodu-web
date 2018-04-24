@@ -27,7 +27,7 @@ export class Project extends Component {
   render() {
     if (!this.props.project.id) return <p>Project not found</p>;
     return (
-      <div>
+      <div className="dashboard-main__item">
         <h2>{this.props.project.name}</h2>
         <TaskList projectId={this.props.project.id} />
         <NewTask projectId={this.props.project.id} />

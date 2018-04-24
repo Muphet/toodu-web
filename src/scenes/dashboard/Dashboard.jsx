@@ -1,4 +1,5 @@
 // import PropTypes from 'prop-types';
+import "./dashboard.scss";
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import DashboardHeader from "./components/dashboardHeader/DashboardHeader";
@@ -13,8 +14,10 @@ export default class Dashboard extends Component {
     return (
       <div>
         <DashboardHeader />
-        <Route path="/app/project/:projectId" component={Project} />
-        <Route path="/app/project/:projectId/task/:taskId" component={Task} />
+        <main className="dashboard-main">
+          <Route path="/app/project/:projectId" component={Project} />
+          <Route path="/app/project/:projectId/task/:taskId" component={Task} />
+        </main>
         <ModalRoot />
       </div>
     );

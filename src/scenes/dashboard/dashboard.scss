@@ -1,16 +1,16 @@
 @import "../../assets/stylesheets/variables.scss";
 
-.auth {
+.dashboard-main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-top: 80px;
+  padding: 15px 0;
 }
 
-.auth__box {
+.dashboard-main__item {
   background: #ffffff;
-  width: 500px;
+  flex: 0 1 500px;
   padding: 20px;
   border-radius: 5px;
   border: 1px solid $grey;
+  margin: 15px;
 }

@@ -1,4 +1,5 @@
 // import PropTypes from "prop-types";
+import "./dashboardHeader.scss";
 import React, { Component } from "react";
 import dashboardHeaderContainer from "./dashboardHeaderContainer";
 import ProjectSelector from "../projectSelector/ProjectSelector";
@@ -9,11 +10,11 @@ export class DashboardHeader extends Component {
 
   static defaultProps = {
     users: []
-  }
+  };
 
   render() {
     return (
-      <header>
+      <header className="dashboard-header">
         <button onClick={() => this.props.openModal("NewProjectModal")}>
           Add new project
         </button>

@@ -1,4 +1,5 @@
 // import PropTypes from 'prop-types';
+import "./header.scss";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import headerContainer from "./headerContainer";
@@ -26,7 +27,7 @@ export class Header extends Component {
 
   render() {
     return (
-      <header>
+      <header className="header">
         {this.props.team ? <h1>{this.props.team.name}</h1> : <h1>Toodu</h1>}
         {this.props.currentUser &&
           <div>

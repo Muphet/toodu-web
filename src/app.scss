@@ -1,12 +1,7 @@
 @import "assets/stylesheets/variables";
-@import "assets/stylesheets/normalize";
+@import "assets/stylesheets/reset";
 
 body {
   font-family: sans-serif;
   color: $text-color;
-  box-sizing: border-box;
-}
-
-*, *:after, *:before {
-  box-sizing: inherit;
 }

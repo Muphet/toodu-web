@@ -5,6 +5,7 @@
   "dependencies": {
     "@bhnywl/custom-react-scripts": "1.2.1",
     "axios": "^0.18.0",
+    "bulma": "^0.7.1",
     "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",

@@ -1,17 +1,15 @@
-@import "../../../../assets/stylesheets/variables.scss";
-
 .project-selector {
   position: relative;
   padding: 10px 20px;
   border-radius: 2px;
-  border: 1px solid $grey;
-  background-color: $body-color;
+  border: 1px solid grey;
+  background-color: lightgrey;
   width: 500px;
 }
 
 .project-selector__options {
   border-radius: 2px;
-  border: 1px solid $grey;
+  border: 1px solid grey;
   position: absolute;
   left: 0;
   right: 0;
@@ -21,9 +19,9 @@
 
 .project-selector__option {
   position: relative;
-  border-bottom: 1px solid $grey;
+  border-bottom: 1px solid grey;
   &:hover {
-    background: $grey;
+    background: grey;
   }
 }
 

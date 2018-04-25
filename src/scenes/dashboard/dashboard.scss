@@ -1,5 +1,3 @@
-@import "../../assets/stylesheets/variables.scss";
-
 .dashboard-main {
   display: flex;
   justify-content: center;
@@ -11,6 +9,6 @@
   flex: 0 1 500px;
   padding: 20px;
   border-radius: 5px;
-  border: 1px solid $grey;
+  border: 1px solid grey;
   margin: 15px;
 }

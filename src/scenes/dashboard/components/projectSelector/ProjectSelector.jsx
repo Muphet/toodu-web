@@ -1,7 +1,11 @@
 // import PropTypes from "prop-types";
 import "./projectSelector.scss";
 import React, { Component } from "react";
+import classNames from "classnames";
 import { Link } from "react-router-dom";
+import starLightIconUrl from "./starLight.svg";
+import starDarkIconUrl from "./starDark.svg";
+import plusIconUrl from "./plus.svg";
 import projectSelectorContainer from "./projectSelectorContainer";
 
 export class ProjectSelector extends Component {
@@ -31,12 +35,12 @@ export class ProjectSelector extends Component {
     this.props.destroyStar(star.id);
   }
 
-  open() {
-    this.setState({ open: true });
+  toggle() {
+    this.setState({ open: !this.state.open });
   }
 
   close(event) {
-   if (event) event.stopPropagation();
+    if (event) event.stopPropagation();
     this.setState({ open: false });
   }
 
@@ -50,42 +54,53 @@ export class ProjectSelector extends Component {
     if (!this.props.projects.length) return <p>No projects yet</p>;
 
     return (
-      <div
-        onClick={this.open.bind(this)}
-        className="project-selector"
-        ref={wrapper => (this.wrapper = wrapper)}
-      >
-        {this.props.selectedProject ? (
-          <h2>{this.props.selectedProject.name}</h2>
-        ) : (
-          <h2>Select a project</h2>
-        )}
-        {this.state.open && (
-          <ul className="project-selector__options">
-            {this.props.projects.map(project => (
-              <li className="project-selector__option" key={project.id}>
-                <Link
-                  onClick={this.close.bind(this)}
-                  className="project-selector__link"
-                  to={`/app/project/${project.id}`}
-                >
-                  {project.name}
-                </Link>
-                <div className="project-selector__actions">
-                  {this.props.starredProjectIds.includes(project.id) ? (
-                    <button onClick={() => this.unstar(project.id)}>
-                      un-star
+      <div className="project-selector" ref={wrapper => this.wrapper = wrapper}>
+        <div
+          className="project-selector-select"
+          onClick={this.toggle.bind(this)}
+        >
+          {this.props.selectedProject
+            ? <h2>{this.props.selectedProject.name}</h2>
+            : <h2>Select a project</h2>}
+        </div>
+
+        <ul
+          className={classNames({
+            "project-selector-options": true,
+            "is-active": this.state.open
+          })}
+        >
+          {this.props.projects.map(project => (
+            <li className="project-selector-option" key={project.id}>
+              <Link
+                onClick={this.close.bind(this)}
+                className="project-selector-link"
+                to={`/app/project/${project.id}`}
+              >
+                {project.name}
+              </Link>
+              <div className="project-selector-actions">
+                {this.props.starredProjectIds.includes(project.id)
+                  ? <button
+                      className="button is-warning is-small"
+                      onClick={() => this.unstar(project.id)}
+                    >
+                      <span className="icon">
+                        <img src={starLightIconUrl} alt="invite a new user" />
+                      </span>
                     </button>
-                  ) : (
-                    <button onClick={() => this.props.createStar(project.id)}>
-                      star
-                    </button>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+                  : <button
+                      className="button is-light is-small"
+                      onClick={() => this.props.createStar(project.id)}
+                    >
+                      <span className="icon">
+                        <img src={starDarkIconUrl} alt="invite a new user" />
+                      </span>
+                    </button>}
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

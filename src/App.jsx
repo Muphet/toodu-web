@@ -1,4 +1,4 @@
-import './app.scss'
+import "bulma/css/bulma.css";
 import React from "react";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";

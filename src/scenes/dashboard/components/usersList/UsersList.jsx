@@ -1,6 +1,7 @@
 // import PropTypes from "prop-types";
 import "./usersList.scss";
 import React, { Component } from "react";
+import plusIconUrl from "./plus.svg";
 import usersListContainer from "./usersListContainer";
 
 export class UsersList extends Component {
@@ -8,21 +9,30 @@ export class UsersList extends Component {
 
   static defaultProps = {
     users: []
-  }
+  };
 
   render() {
     return (
       <div className="users-list">
-        <ul className="users-list__users">
-          {this.props.users.map((user) => (
-            <li className="users-list__user" key={user.id}>
-              <img className="users-list__avatar" src={user.gravatar_url} title={user.first_name} />
+        <button
+          className="button is-success users-list-add"
+          onClick={() => this.props.openModal("NewInviteModal")}
+        >
+          <span className="icon">
+            <img src={plusIconUrl} alt="invite a new user" />
+          </span>
+        </button>
+        <ul className="users-list-users">
+          {this.props.users.map(user => (
+            <li className="users-list-user" key={user.id}>
+              <img
+                className="users-list-avatar"
+                src={user.gravatar_url}
+                title={user.first_name}
+              />
             </li>
           ))}
         </ul>
-        <button onClick={() => this.props.openModal("NewInviteModal")}>
-          Invite a user
-        </button>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 // import PropTypes from "prop-types";
-import "./modalRoot.scss";
 import React, { Component } from "react";
 import modalRootContainer from "./modalRootContainer";
 import NewProjectModal from "../newProjectModal/NewProjectModal";
@@ -16,15 +15,17 @@ export class ModalRoot extends Component {
     const ModalContent = this.modalTypes[this.props.activeModal];
 
     return (
-      <div className="modal" onClick={this.props.closeModal}>
-        <div className="modal__box" onClick={e => e.stopPropagation()}>
-          <header className="modal__header">
-            <button onClick={this.props.closeModal}>Close</button>
-          </header>
-          <main className="modal__content">
-            <ModalContent />
-          </main>
+      <div className="modal is-active">
+        <div className="modal-background" onClick={this.props.closeModal} />
+        <div className="modal-content box">
+          <ModalContent />
         </div>
+        <button
+          className="modal-close is-large"
+          onClick={this.props.closeModal}
+        >
+          Close
+        </button>
       </div>
     );
   }

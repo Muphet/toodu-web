@@ -1,14 +1,24 @@
 .users-list {
   display: flex;
-  align-items: center;
+  margin-left: auto;
 }
 
-.users-list__users {
+.users-list-users {
   display: flex;
-  align-items: center;
 }
 
-.users-list__avatar {
+.users-list-user {
+  margin-left: 5px;
+  width: 36px;
+  height: 36px;
+}
+
+.users-list-avatar {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  width: 30px;
+}
+
+.users-list-add {
+  border-radius: 50%;
 }

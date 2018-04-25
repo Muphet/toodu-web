@@ -1,0 +1,41 @@
+@import "../../../../assets/stylesheets/variables.scss";
+
+.project-selector {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 2px;
+  border: 1px solid $grey;
+  background-color: $body-color;
+  width: 500px;
+}
+
+.project-selector__options {
+  border-radius: 2px;
+  border: 1px solid $grey;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: #ffffff;
+}
+
+.project-selector__option {
+  position: relative;
+  border-bottom: 1px solid $grey;
+  &:hover {
+    background: $grey;
+  }
+}
+
+.project-selector__link {
+  padding: 10px;
+  display: block;
+}
+
+.project-selector__actions {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}

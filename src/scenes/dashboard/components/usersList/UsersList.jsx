@@ -1,4 +1,5 @@
 // import PropTypes from "prop-types";
+import "./usersList.scss";
 import React, { Component } from "react";
 import usersListContainer from "./usersListContainer";
 
@@ -11,10 +12,12 @@ export class UsersList extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
+      <div className="users-list">
+        <ul className="users-list__users">
           {this.props.users.map((user) => (
-            <li key={user.id}>{user.first_name}</li>
+            <li className="users-list__user" key={user.id}>
+              <img className="users-list__avatar" src={user.gravatar_url} title={user.first_name} />
+            </li>
           ))}
         </ul>
         <button onClick={() => this.props.openModal("NewInviteModal")}>

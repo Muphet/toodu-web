@@ -1,0 +1,14 @@
+.users-list {
+  display: flex;
+  align-items: center;
+}
+
+.users-list__users {
+  display: flex;
+  align-items: center;
+}
+
+.users-list__avatar {
+  border-radius: 50%;
+  width: 30px;
+}

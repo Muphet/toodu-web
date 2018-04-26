@@ -1,3 +1,4 @@
+import "./newTask.scss";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import InlineForm from "../../../../../../components/inlineForm/InlineForm";
@@ -16,11 +17,12 @@ export default class NewTask extends Component {
     return (
       <InlineForm
         submitText="Add"
+        className="new-task"
         onSubmit={this.createTask.bind(this)}
         fields={[{
           name: "name",
           type: "text",
-          label: "Enter your new task"
+          label: "Add a new task"
         }]}
       />
     );

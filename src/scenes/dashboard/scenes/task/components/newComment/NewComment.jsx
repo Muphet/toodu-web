@@ -20,7 +20,7 @@ export default class NewComment extends Component {
         fields={[{
           name: "content",
           type: "text",
-          label: "Type your comment"
+          label: "Send a new comment"
         }]}
       />
     );

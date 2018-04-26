@@ -1,0 +1,11 @@
+.task .card:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.task-empty {
+  padding: 20px;
+  font-size: 20px;
+  background: #fafafa;
+  color: #c7c7c7;
+  text-align: center;
+}

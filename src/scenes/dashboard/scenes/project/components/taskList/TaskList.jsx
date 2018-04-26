@@ -15,7 +15,11 @@ export class TaskList extends Component {
   }
 
   render() {
-    if (!this.props.tasks.length) return <p>No tasks yet</p>;
+    if (!this.props.tasks.length) return (
+      <div className="task-empty">
+        <p>No sub tasks yet</p>
+      </div>
+    );
     
     return (
       <table className="table is-fullwidth is-striped">

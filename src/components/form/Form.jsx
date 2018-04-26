@@ -9,6 +9,7 @@ export default class Form extends Component {
   static propTypes = {
     submitText: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    className: PropTypes.string,
     fields: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -79,6 +80,7 @@ export default class Form extends Component {
     return (
       <form
         onSubmit={this.onSubmit.bind(this)}
+        className={this.props.className}
       >
         <FormErrors
           errors={this.state.errors}

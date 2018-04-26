@@ -35,11 +35,7 @@ export class Project extends Component {
         <header className="card-header">
           <h2 className="card-header-title">{this.props.project.name}</h2>
         </header>
-        <div className="card-content">
-          <div className="content">
-            <NewTask projectId={this.props.project.id} />
-          </div>
-        </div>
+        <NewTask projectId={this.props.project.id} />
         <div className="card-table">
           <div className="content">
             <TaskList projectId={this.props.project.id} />

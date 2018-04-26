@@ -16,11 +16,12 @@ export default class NewSubTask extends Component {
     return (
       <InlineForm
         submitText="Add"
+        className="new-task"
         onSubmit={this.createSubTask.bind(this)}
         fields={[{
           name: "name",
           type: "text",
-          label: "Enter your sub task"
+          label: "Add a new sub task"
         }]}
       />
     );

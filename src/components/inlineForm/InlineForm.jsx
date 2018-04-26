@@ -7,11 +7,12 @@ import FormMessage from "../formMessage/FormMessage";
 export default class InlineForm extends Form {
   render() {
     const field = this.props.fields[0];
-    const value = this.state.fields[field.name];
+    const value = this.state.fields[field.name] || "";
 
     return (
       <form
         onSubmit={this.onSubmit.bind(this)}
+        className={this.props.className}
       >
         <FormErrors
           errors={this.state.errors}

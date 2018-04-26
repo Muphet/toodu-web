@@ -14,12 +14,16 @@ export class SubTaskList extends Component {
   }
 
   render() {
-    if (!this.props.subTasks.length) return <p>No sub tasks yet</p>;
+    if (!this.props.subTasks.length) return (
+      <div className="task-empty">
+        <p>No sub tasks yet</p>
+      </div>
+    );
     
     return (
       <table className="table is-fullwidth is-striped">
         <tbody>
-        {this.props.subTasks.map(subTask => (
+          {this.props.subTasks.map(subTask => (
             <tr key={subTask.id}>
               <td>
                 {subTask.name}

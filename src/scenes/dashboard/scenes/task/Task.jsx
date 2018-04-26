@@ -42,21 +42,9 @@ export class Task extends Component {
             </div>
           </div>
         </div>
-        <div className="card">
-          <header className="card-header">
-            <h2 className="card-header-title">Comments</h2>
-          </header>
-          <div className="card-content">
-            <div className="content">
-              <div className="card-content">
-                <NewComment taskId={this.props.task.id} />
-              </div>
-              <div className="card-content">
-                <CommentList taskId={this.props.task.id} />
-              </div>
-            </div>
-          </div>
-        </div>
+        
+        <CommentList taskId={this.props.task.id} />
+        <NewComment taskId={this.props.task.id} />
       </div>
     );
   }

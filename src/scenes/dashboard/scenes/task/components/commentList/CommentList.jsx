@@ -20,15 +20,24 @@ export class CommentList extends Component {
     return (
       <ul className="comment-list">
         {this.props.comments.map(comment => (
-          <li className="media" key={comment.id}>
-            <div className="media-left">
-              <figure className="image is-48x48">
-                <img className="comment-list-avatar" src={comment.user.gravatar_url} alt="avatar" />
-              </figure>
-            </div>
-            <div className="media-content">
-              <p className="title is-4">{comment.user.first_name}</p>
-              <p className="subtitle is-6">{comment.content}</p>
+          <li className="card">
+            <div className="card-content">
+              <div className="media" key={comment.id}>
+                <div className="media-left">
+                  <figure className="image is-48x48">
+                    <img className="comment-list-avatar" src={comment.user.gravatar_url} alt="avatar" />
+                  </figure>
+                </div>
+                <div className="media-content">
+                  <p className="title is-6">{comment.user.first_name}</p>
+                  <p className="subtitle is-6">
+                    <time datetime={comment.created_at}>{comment.created_at}</time>
+                  </p>
+                </div>
+              </div>
+              <div className="content comment-list-content">
+                <p>{comment.content}</p>
+              </div>
             </div>
           </li>
         ))}

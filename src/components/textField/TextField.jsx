@@ -27,15 +27,25 @@ export default class TextField extends Component {
           </label>
         }
         <div className="control">
-          <input
-            name={this.props.name}
-            className="input"
-            id={this.props.name}
-            type={this.props.type}
-            value={this.props.value}
-            onChange={this.handleChange.bind(this)}
-            placeholder={this.props.label}
-          />
+          {this.props.type === "textarea"
+            ? <textarea
+                name={this.props.name}
+                className="textarea"
+                id={this.props.name}
+                value={this.props.value}
+                onChange={this.handleChange.bind(this)}
+                placeholder={this.props.label}
+              />
+            : <input
+                name={this.props.name}
+                className="input"
+                id={this.props.name}
+                type={this.props.type}
+                value={this.props.value}
+                onChange={this.handleChange.bind(this)}
+                placeholder={this.props.label}
+              />
+          }
         </div>
       </div>
     );

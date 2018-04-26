@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import InlineForm from "../../../../../../components/inlineForm/InlineForm";
+import Form from "../../../../../../components/form/Form";
 import commentApi from "../../../../../../core/comments/commentsApi";
 
 export default class NewComment extends Component {
@@ -14,12 +14,12 @@ export default class NewComment extends Component {
 
   render() {
     return (
-      <InlineForm
+      <Form
         submitText="Send"
         onSubmit={this.createComment.bind(this)}
         fields={[{
           name: "content",
-          type: "text",
+          type: "textarea",
           label: "Send a new comment"
         }]}
       />

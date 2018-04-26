@@ -13,7 +13,7 @@ export default class Form extends Component {
     fields: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(["text", "email", "password"]).isRequired,
+        type: PropTypes.oneOf(["text", "email", "password", "textarea"]).isRequired,
         label: PropTypes.string,
         initialValue: PropTypes.string
       })

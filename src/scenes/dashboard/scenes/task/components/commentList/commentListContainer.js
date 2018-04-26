@@ -7,18 +7,22 @@ const usersSelector = state => state.core.users.data;
 const currentTaskIdSelector = (state, props) => props.taskId;
 
 const commentsForCurrentTaskSelector = createSelector(
-  [commentsSelector, currentTaskIdSelector, usersSelector],
-  (comments, currentTaskId, users) =>
-    comments
-      .filter(comment => comment.parent_id === currentTaskId)
-      .map((comment) => {
-        comment.user = users.find((user) => user.id === comment.user_id);
-        return comment;
-      })
+  [commentsSelector, currentTaskIdSelector],
+  (comments, currentTaskId) =>
+    comments.filter(comment => comment.parent_id === currentTaskId)
+);
+
+const commentsForCurrentTaskWithUserSelector = createSelector(
+  [commentsForCurrentTaskSelector, usersSelector],
+  (comments, users) =>
+    comments.map(comment => {
+      comment.user = users.find(user => user.id === comment.user_id);
+      return comment;
+    })
 );
 
 const mapStateToProps = (state, props) => ({
-  comments: commentsForCurrentTaskSelector(state, props)
+  comments: commentsForCurrentTaskWithUserSelector(state, props)
 });
 
 export default connect(mapStateToProps, { getCommentsForTask });

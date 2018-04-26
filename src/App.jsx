@@ -26,6 +26,11 @@ export default function App({ store, history }) {
               component={CodeSplittingService.scene("dashboard/Dashboard")}
             />
 
+            <ProtectedRoute
+              path="/settings"
+              component={CodeSplittingService.scene("settings/Settings")}
+            />
+
             <Route component={CodeSplittingService.scene("error/Error")} />
           </Switch>
         </React.Fragment>

@@ -9,9 +9,9 @@ export class Header extends Component {
     getUsers: PropTypes.func.isRequired,
     getCurrentUser: PropTypes.func.isRequired,
     getTeam: PropTypes.func.isRequired,
+    authenticated: PropTypes.bool.isRequired,
     team: PropTypes.object,
-    currentUser: PropTypes.object,
-    authenticated: PropTypes.object
+    currentUser: PropTypes.object
   };
 
   state = {
@@ -38,6 +38,10 @@ export class Header extends Component {
 
   toggleNav() {
     this.setState({ navOpen: !this.state.navOpen });
+  }
+
+  closeNav() {
+    this.setState({ navOpen: false });
   }
 
   render() {
@@ -72,7 +76,10 @@ export class Header extends Component {
                   Logged in as {this.props.currentUser.first_name}
                 </p>
                 <div className="navbar-dropdown">
-                  <Link to="/auth/logout" className="navbar-item">
+                  <Link onClick={this.closeNav.bind(this)} to="/settings/profile" className="navbar-item">
+                    Profile settings
+                  </Link>
+                  <Link onClick={this.closeNav.bind(this)} to="/auth/logout" className="navbar-item">
                     Logout
                   </Link>
                 </div>

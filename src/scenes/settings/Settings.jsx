@@ -1,14 +1,14 @@
-// import PropTypes from 'prop-types';
+import "./settings.scss";
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import Profile from "./scenes/profile/Profile";
 
 export default class Settings extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   render() {
     return (
-      <div className="container">
+      <div className="container is-fluid  settings-container ">
         <div className="columns">
 
           <div className="column is-3">

@@ -9,8 +9,10 @@ export default class DashboardHeader extends Component {
   render() {
     return (
       <header className="dashboard-header">
-        <ProjectSelector />
-        <UsersList />
+        <div className="container is-fluid  ">
+          <ProjectSelector />
+          <UsersList />
+        </div>
       </header>
     );
   }

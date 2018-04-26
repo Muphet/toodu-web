@@ -15,7 +15,7 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <div className="container auth">
+      <div className="container is-fluid  auth">
         <div className="column is-6 is-offset-3">
           <Switch>
             <Route exact path="/auth/login" component={Login} />

@@ -13,7 +13,7 @@ export default class Dashboard extends Component {
     return (
       <div>
         <DashboardHeader />
-        <main className="container is-fluid">
+        <main className="container is-fluid  ">
           <div className="columns">
             <div className="column is-6">
               <Route path="/app/project/:projectId" component={Project} />

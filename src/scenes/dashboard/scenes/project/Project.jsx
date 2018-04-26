@@ -27,10 +27,20 @@ export class Project extends Component {
   render() {
     if (!this.props.project.id) return <p>Project not found</p>;
     return (
-      <div className="dashboard-main__item">
-        <h2>{this.props.project.name}</h2>
-        <TaskList projectId={this.props.project.id} />
-        <NewTask projectId={this.props.project.id} />
+      <div className="card">
+        <header className="card-header">
+          <h2 className="card-header-title">{this.props.project.name}</h2>
+        </header>
+        <div className="card-content">
+          <div className="content">
+            <NewTask projectId={this.props.project.id} />
+          </div>
+        </div>
+        <div className="card-table">
+          <div className="content">
+            <TaskList projectId={this.props.project.id} />
+          </div>
+        </div>
       </div>
     );
   }

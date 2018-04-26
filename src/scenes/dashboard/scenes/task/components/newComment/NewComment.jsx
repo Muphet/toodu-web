@@ -1,25 +1,25 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Form from "../../../../../../components/form/Form";
+import InlineForm from "../../../../../../components/inlineForm/InlineForm";
 import commentApi from "../../../../../../core/comments/commentsApi";
 
 export default class NewComment extends Component {
   // static propTypes = {};
 
-  createComment({ content }) {
+  createComment(content) {
     return commentApi.create({ content, taskId: this.props.taskId });
   }
 
   render() {
     return (
-      <Form
+      <InlineForm
         submitText="Send"
         onSubmit={this.createComment.bind(this)}
-        fields={[{
+        field={{
           name: "content",
           type: "text",
           label: "Type your comment"
-        }]}
+        }}
       />
     );
   }

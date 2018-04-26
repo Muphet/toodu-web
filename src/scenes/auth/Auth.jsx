@@ -1,4 +1,5 @@
 // import PropTypes from 'prop-types';
+import "./auth.scss";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";
@@ -15,8 +16,8 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <div className="auth">
-        <div className="auth__box">
+      <div className="container auth">
+        <div className="column is-6 is-offset-3">
           <Switch>
             <Route exact path="/auth/login" component={Login} />
             <Route exact path="/auth/signup" component={Signup} />

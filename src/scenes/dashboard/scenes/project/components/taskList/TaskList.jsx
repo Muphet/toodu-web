@@ -14,15 +14,19 @@ export class TaskList extends Component {
     if (!this.props.tasks.length) return <p>No tasks yet</p>;
     
     return (
-      <ul>
-        {this.props.tasks.map(task => (
-          <li key={task.id}>
-            <Link to={`/app/project/${this.props.projectId}/task/${task.id}`}>
-              {task.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <table className="table is-fullwidth is-striped">
+        <tbody>
+          {this.props.tasks.map(task => (
+            <tr key={task.id}>
+              <td>
+                <Link to={`/app/project/${this.props.projectId}/task/${task.id}`}>
+                  {task.name}
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   }
 }

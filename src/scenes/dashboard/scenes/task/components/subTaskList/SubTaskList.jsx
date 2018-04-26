@@ -13,13 +13,17 @@ export class SubTaskList extends Component {
     if (!this.props.subTasks.length) return <p>No sub tasks yet</p>;
     
     return (
-      <ul>
+      <table className="table is-fullwidth is-striped">
+        <tbody>
         {this.props.subTasks.map(subTask => (
-          <li key={subTask.id}>
-            {subTask.name}
-          </li>
-        ))}
-      </ul>
+            <tr key={subTask.id}>
+              <td>
+                {subTask.name}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   }
 }

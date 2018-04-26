@@ -25,12 +25,26 @@ export class Task extends Component {
   render() {
     if (!this.props.task) return <p>Task not found</p>;
     return (
-      <div className="dashboard-main__item">
-        <h2>{this.props.task.name}</h2>
-        <NewSubTask taskId={this.props.task.id} />
-        <SubTaskList taskId={this.props.task.id} />
-        <NewComment taskId={this.props.task.id} />
-        <CommentList taskId={this.props.task.id} />
+      <div className="card">
+        <header className="card-header">
+          <h2 className="card-header-title">{this.props.task.name}</h2>
+        </header>
+        <div className="card-content">
+          <div className="content">
+            <NewSubTask taskId={this.props.task.id} />
+          </div>
+        </div>
+        <div className="card-table">
+          <div className="content">
+            <SubTaskList taskId={this.props.task.id} />
+          </div>
+        </div>
+        <div className="card-content">
+          <div className="content">
+            <NewComment taskId={this.props.task.id} />
+            <CommentList taskId={this.props.task.id} />
+          </div>
+        </div>
       </div>
     );
   }

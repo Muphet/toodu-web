@@ -1,25 +1,25 @@
 // import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Form from "../../../../../../components/form/Form";
+import InlineForm from "../../../../../../components/inlineForm/InlineForm";
 import tasksApi from "../../../../../../core/tasks/tasksApi";
 
 export default class NewTask extends Component {
   // static propTypes = {};
 
-  createTask({ name }) {
+  createTask(name) {
     return tasksApi.create({ name, projectId: this.props.projectId });
   }
 
   render() {
     return (
-      <Form
+      <InlineForm
         submitText="Add"
         onSubmit={this.createTask.bind(this)}
-        fields={[{
+        field={{
           name: "name",
           type: "text",
           label: "Enter your new task"
-        }]}
+        }}
       />
     );
   }

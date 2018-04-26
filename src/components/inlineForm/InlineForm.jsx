@@ -5,19 +5,17 @@ import TextField from "../textField/TextField";
 import FormErrors from "../formErrors/FormErrors";
 import FormMessage from "../formMessage/FormMessage";
 
-export default class Form extends Component {
+export default class InlineForm extends Component {
   static propTypes = {
     submitText: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
-    fields: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(["text", "email", "password"]).isRequired,
-        label: PropTypes.string,
-        initialValue: PropTypes.string
-      })
-    )
+    field: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(["text", "email", "password"]).isRequired,
+      label: PropTypes.string,
+      initialValue: PropTypes.string
+    })
   };
 
   static defaultProps = {
@@ -30,18 +28,15 @@ export default class Form extends Component {
     submitting: false,
     errors: null,
     message: null,
-    fields: this.props.fields.reduce((fields, field) => {
-      fields[field.name] = field.initialValue;
-      return fields;
-    }, {})
+    field: this.props.field.initialValue || ""
   };
 
   componentWillUnmount() {
     this.unmounted = true;
   }
 
-  updateField(name, value) {
-    this.setState({ fields: { ...this.state.fields, [name]: value } });
+  updateField(value) {
+    this.setState({ field: value });
   }
 
   onSubmit(e) {
@@ -54,7 +49,7 @@ export default class Form extends Component {
       flash: null
     });
     this.props
-      .onSubmit(this.state.fields)
+      .onSubmit(this.state.field)
       .then(this.success.bind(this))
       .catch(this.error.bind(this));
   }
@@ -63,7 +58,7 @@ export default class Form extends Component {
     if (this.unmounted) return;
     this.setState({
       submitting: false,
-      fields: this.props.fields,
+      field: this.props.field.initialValue || "",
       message: res.data.message,
       errors: null
     });
@@ -92,20 +87,24 @@ export default class Form extends Component {
           message={this.state.message}
           className={this.props.className}
         />
-        {this.props.fields.map(field => (
-          <TextField
-            key={field.name}
-            label={field.label}
-            name={field.name}
-            type={field.type}
-            value={this.state.fields[field.name]}
-            onChange={this.updateField.bind(this)}
-            className={this.props.className}
-          />
-        ))}
-        <button className={classNames({"button": true, "is-fullwidth": true, "is-info": true, "is-loading": this.state.submitting})}>
-          {this.props.submitText}
-        </button>
+        <div className="field has-addons">
+          <div className="control is-expanded">
+            <input
+              name={this.props.field.name}
+              className="input"
+              id={this.props.field.name}
+              type={this.props.field.type}
+              value={this.state.field}
+              onChange={(e) => this.updateField(e.target.value)}
+              placeholder={this.props.field.label}
+            />
+          </div>
+          <div className="control">
+            <button className={classNames({"button": true, "is-fullwidth": true, "is-info": true, "is-loading": this.state.submitting})}>
+              {this.props.submitText}
+            </button>
+          </div>
+        </div>
       </form>
     );
   }

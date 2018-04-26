@@ -13,19 +13,23 @@ export default class TextField extends Component {
 
   render() {
     return (
-      <div className={`${this.props.className}__text-field`}>
+      <div className="field">
         {this.props.label &&
-          <label htmlFor={this.props.name}>
+          <label htmlFor={this.props.name} className="label">
             {this.props.label}
           </label>
         }
-        <input
-          name={this.props.name}
-          id={this.props.name}
-          type={this.props.type}
-          value={this.props.value}
-          onChange={this.handleChange.bind(this)}
-        />
+        <div className="control">
+          <input
+            name={this.props.name}
+            className="input"
+            id={this.props.name}
+            type={this.props.type}
+            value={this.props.value}
+            onChange={this.handleChange.bind(this)}
+            placeholder={this.props.label}
+          />
+        </div>
       </div>
     );
   }

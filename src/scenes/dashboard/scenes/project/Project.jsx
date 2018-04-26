@@ -1,11 +1,15 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import projectContainer from "./projectContainer";
 import TaskList from "./components/taskList/TaskList";
 import NewTask from "./components/newTask/NewTask";
 
 export class Project extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    changeProject: PropTypes.func.isRequired,
+    project: PropTypes.object.isRequired
+  };
 
   static defaultProps = {
     project: {}

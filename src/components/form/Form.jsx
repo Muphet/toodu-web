@@ -9,7 +9,6 @@ export default class Form extends Component {
   static propTypes = {
     submitText: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    className: PropTypes.string.isRequired,
     fields: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -18,12 +17,6 @@ export default class Form extends Component {
         initialValue: PropTypes.string
       })
     )
-  };
-
-  static defaultProps = {
-    submitText: "Submit",
-    submittingText: "Submitting...",
-    className: "form"
   };
 
   state = {
@@ -47,19 +40,23 @@ export default class Form extends Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.state.submitting) return;
+    this.submitStart();
+    this.props
+      .onSubmit(this.state.fields)
+      .then(this.submitSuccess.bind(this))
+      .catch(this.submitError.bind(this));
+  }
+
+  submitStart() {
     this.setState({
       submitting: true,
       errors: null,
       message: null,
       flash: null
     });
-    this.props
-      .onSubmit(this.state.fields)
-      .then(this.success.bind(this))
-      .catch(this.error.bind(this));
   }
 
-  success(res) {
+  submitSuccess(res) {
     if (this.unmounted) return;
     this.setState({
       submitting: false,
@@ -69,7 +66,7 @@ export default class Form extends Component {
     });
   }
 
-  error(err) {
+  submitError(err) {
     if (this.unmounted) return;
     this.setState({
       submitting: false,
@@ -82,15 +79,12 @@ export default class Form extends Component {
     return (
       <form
         onSubmit={this.onSubmit.bind(this)}
-        className={this.props.className}
       >
         <FormErrors
           errors={this.state.errors}
-          className={this.props.className}
         />
         <FormMessage
           message={this.state.message}
-          className={this.props.className}
         />
         {this.props.fields.map(field => (
           <TextField
@@ -100,10 +94,12 @@ export default class Form extends Component {
             type={field.type}
             value={this.state.fields[field.name]}
             onChange={this.updateField.bind(this)}
-            className={this.props.className}
           />
         ))}
-        <button className={classNames({"button": true, "is-fullwidth": true, "is-info": true, "is-loading": this.state.submitting})}>
+        <button className={classNames(
+          "button is-fullwidth is-info",
+          { "is-loading": this.state.submitting }
+        )}>
           {this.props.submitText}
         </button>
       </form>

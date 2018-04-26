@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import lockIconUrl from "../../lock.svg";
@@ -6,7 +5,7 @@ import authApi from "../../../../core/auth/authApi";
 import Form from "../../../../components/form/Form";
 
 export default class ForgotPassword extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   async sendResetEmail({ email }) {
     const res = await authApi.sendResetEmail(email);
@@ -22,7 +21,7 @@ export default class ForgotPassword extends Component {
         </div>
         <div className="box auth-box">
           <figure className="avatar">
-            <img src={lockIconUrl} />
+            <img src={lockIconUrl} alt="" />
           </figure>
           <Form
             submitText="Send email"

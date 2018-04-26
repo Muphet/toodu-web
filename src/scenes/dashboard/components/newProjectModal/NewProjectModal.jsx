@@ -1,11 +1,10 @@
-// import PropTypes from "prop-types";
 import React, { Component } from "react";
 import projectsApi from "../../../../core/projects/projectsApi";
 import newProjectModalContainer from "./newProjectModalContainer";
 import Form from "../../../../components/form/Form";
 
 export class NewProjectModal extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   async createProject({ name }) {
     const res = await projectsApi.create({ name });

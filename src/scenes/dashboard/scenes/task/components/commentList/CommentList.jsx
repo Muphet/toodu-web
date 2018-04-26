@@ -1,10 +1,14 @@
-// import PropTypes from "prop-types";
 import "./commentList.scss";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import commentListContainer from "./commentListContainer.js";
 
 export class CommentList extends Component {
-  static propTypes = {};
+  static propTypes = {
+    getCommentsForTask: PropTypes.func.isRequired,
+    taskId: PropTypes.string.isRequired,
+    comments: PropTypes.array.isRequired
+  };
 
   async componentDidMount(e) {
     this.props.getCommentsForTask(this.props.taskId);
@@ -19,7 +23,7 @@ export class CommentList extends Component {
           <li className="media" key={comment.id}>
             <div className="media-left">
               <figure className="image is-48x48">
-                <img src={comment.user.gravatar_url} alt="Placeholder image" />
+                <img src={comment.user.gravatar_url} alt="avatar" />
               </figure>
             </div>
             <div className="media-content">

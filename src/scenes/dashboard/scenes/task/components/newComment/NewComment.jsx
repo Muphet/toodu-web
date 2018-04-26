@@ -1,12 +1,14 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import InlineForm from "../../../../../../components/inlineForm/InlineForm";
 import commentApi from "../../../../../../core/comments/commentsApi";
 
 export default class NewComment extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    taskId: PropTypes.string.isRequired
+  };
 
-  createComment(content) {
+  createComment({content}) {
     return commentApi.create({ content, taskId: this.props.taskId });
   }
 
@@ -15,11 +17,11 @@ export default class NewComment extends Component {
       <InlineForm
         submitText="Send"
         onSubmit={this.createComment.bind(this)}
-        field={{
+        fields={[{
           name: "content",
           type: "text",
           label: "Type your comment"
-        }}
+        }]}
       />
     );
   }

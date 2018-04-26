@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userIconUrl from "../../user.svg";
@@ -7,7 +7,9 @@ import loginContainer from "./loginContainer";
 import Form from "../../../../components/form/Form";
 
 export class Login extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    loginSuccess: PropTypes.func.isRequired
+  };
 
   async login({ email, password }) {
     const res = await authApi.login(email, password);
@@ -24,7 +26,7 @@ export class Login extends Component {
         </div>
         <div className="box auth-box">
           <figure className="avatar">
-            <img src={userIconUrl} />
+            <img src={userIconUrl} alt="" />
           </figure>
           <Form
             submitText="Login"

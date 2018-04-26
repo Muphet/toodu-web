@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import taskContainer from "./taskContainer";
 import SubTaskList from "./components/subTaskList/SubTaskList";
@@ -7,7 +7,11 @@ import NewComment from "./components/newComment/NewComment";
 import NewSubTask from "./components/newSubTask/NewSubTask";
 
 export class Task extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    changeTask: PropTypes.func.isRequired,
+    task: PropTypes.object.isRequired
+  };
 
   componentDidMount() {
     this.props.changeTask(this.props.match.params.taskId);

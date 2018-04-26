@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import "./auth.scss";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -12,7 +11,7 @@ import ResetPassword from "./scenes/resetPassword/ResetPassword";
 import Invited from "./scenes/invited/Invited";
 
 export default class Auth extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   render() {
     return (

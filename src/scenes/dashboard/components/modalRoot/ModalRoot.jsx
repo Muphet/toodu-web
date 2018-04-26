@@ -1,11 +1,13 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import modalRootContainer from "./modalRootContainer";
 import NewProjectModal from "../newProjectModal/NewProjectModal";
 import NewInviteModal from "../newInviteModal/NewInviteModal";
 
 export class ModalRoot extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    activeModal: PropTypes.string
+  };
 
   modalTypes = { NewProjectModal, NewInviteModal };
 

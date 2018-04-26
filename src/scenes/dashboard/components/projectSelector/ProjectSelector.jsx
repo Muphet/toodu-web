@@ -1,15 +1,23 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import "./projectSelector.scss";
 import React, { Component } from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import starLightIconUrl from "./starLight.svg";
 import starDarkIconUrl from "./starDark.svg";
-import plusIconUrl from "./plus.svg";
 import projectSelectorContainer from "./projectSelectorContainer";
 
 export class ProjectSelector extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    getProjects: PropTypes.func.isRequired,
+    getStars: PropTypes.func.isRequired,
+    destroyStar: PropTypes.func.isRequired,
+    createStar: PropTypes.func.isRequired,
+    stars: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    starredProjectIds: PropTypes.array.isRequired,
+    selectedProject: PropTypes.object
+  };
 
   state = {
     open: false

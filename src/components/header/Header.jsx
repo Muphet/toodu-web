@@ -1,28 +1,18 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import headerContainer from "./headerContainer";
 
-function BurgerIcon(props) {
-  return (
-    <a
-      role="button"
-      onClick={props.onClick}
-      className={classNames({
-        "navbar-burger": true,
-        "is-active": props.navOpen
-      })}
-    >
-      <span aria-hidden="true" />
-      <span aria-hidden="true" />
-      <span aria-hidden="true" />
-    </a>
-  );
-}
-
 export class Header extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    getUsers: PropTypes.func.isRequired,
+    getCurrentUser: PropTypes.func.isRequired,
+    getTeam: PropTypes.func.isRequired,
+    team: PropTypes.object,
+    currentUser: PropTypes.object,
+    authenticated: PropTypes.object
+  };
 
   state = {
     navOpen: false
@@ -47,7 +37,6 @@ export class Header extends Component {
   }
 
   toggleNav() {
-    console.log("tog");
     this.setState({ navOpen: !this.state.navOpen });
   }
 
@@ -58,20 +47,24 @@ export class Header extends Component {
           <Link className="navbar-item" to="/app">
             {this.props.team ? <h1>{this.props.team.name}</h1> : <h1>Toodu</h1>}
           </Link>
-          <BurgerIcon
+          <a
+            role="button"
             onClick={this.toggleNav.bind(this)}
-            navOpen={this.state.navOpen}
-          />
+            className={classNames("navbar-burger", {
+              "is-active": this.state.navOpen
+            })}
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </a>
         </div>
 
         <div
-          className={classNames({
-            "navbar-menu": true,
+          className={classNames("navbar-menu", {
             "is-active": this.state.navOpen
           })}
         >
-          <div className="navbar-start" />
-
           <div className="navbar-end">
             {this.props.currentUser &&
               <div className="navbar-item has-dropdown is-hoverable">

@@ -1,11 +1,14 @@
-// import PropTypes from "prop-types";
 import "./usersList.scss";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import plusIconUrl from "./plus.svg";
 import usersListContainer from "./usersListContainer";
 
 export class UsersList extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    openModal: PropTypes.func.isRequired,
+    users: PropTypes.array.isRequired
+  };
 
   static defaultProps = {
     users: []
@@ -27,6 +30,7 @@ export class UsersList extends Component {
             <li className="users-list-user" key={user.id}>
               <img
                 className="users-list-avatar"
+                alt="avatar"
                 src={user.gravatar_url}
                 title={user.first_name}
               />

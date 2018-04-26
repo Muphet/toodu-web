@@ -1,9 +1,13 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import subTaskListContainer from "./subTaskListContainer.js";
 
 export class SubTaskList extends Component {
-  static propTypes = {};
+  static propTypes = {
+    getSubTasksForTask: PropTypes.func.isRequired,
+    taskId: PropTypes.string.isRequired,
+    subTasks: PropTypes.array.isRequired
+  };
 
   async componentDidMount(e) {
     this.props.getSubTasksForTask(this.props.taskId);

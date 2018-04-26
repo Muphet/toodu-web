@@ -1,7 +1,14 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 export default class TextField extends Component {
-  // static propTypes = {};
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string
+  };
 
   static defaultProps = {
     value: ""

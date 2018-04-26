@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import qs from "qs";
 import userIconUrl from "../../user.svg";
@@ -6,7 +5,7 @@ import usersApi from "../../../../core/users/usersApi";
 import Form from "../../../../components/form/Form";
 
 export default class Invited extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   componentWillMount() {
     this.query = qs.parse(this.props.location.search.slice(1));
@@ -26,7 +25,7 @@ export default class Invited extends Component {
         </div>
         <div className="box auth-box">
           <figure className="avatar">
-            <img src={userIconUrl} />
+            <img src={userIconUrl} alt="" />
           </figure>
           <Form
             submitText="Signup"

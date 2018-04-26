@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userIconUrl from "../../user.svg";
@@ -6,7 +5,7 @@ import authApi from "../../../../core/auth/authApi";
 import Form from "../../../../components/form/Form";
 
 export default class Signup extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   async signup(signupData) {
     const res = await authApi.signup(signupData);
@@ -22,7 +21,7 @@ export default class Signup extends Component {
         </div>
         <div className="box auth-box">
           <figure className="avatar">
-            <img src={userIconUrl} />
+            <img src={userIconUrl} alt="" />
           </figure>
           <Form
             submitText="Signup"

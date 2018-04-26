@@ -7,7 +7,7 @@ import Task from "./scenes/task/Task";
 import ModalRoot from "./components/modalRoot/ModalRoot";
 
 export default class Dashboard extends Component {
-  // static propTypes = {};
+  static propTypes = {};
 
   render() {
     return (

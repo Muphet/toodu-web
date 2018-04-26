@@ -1,10 +1,14 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import taskListContainer from "./taskListContainer.js";
 
 export class TaskList extends Component {
-  static propTypes = {};
+  static propTypes = {
+    getTasksForProject: PropTypes.func.isRequired,
+    tasks: PropTypes.array.isRequired,
+    projectId: PropTypes.string.isRequired
+  };
 
   async componentDidMount(e) {
     this.props.getTasksForProject();

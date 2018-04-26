@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function SceneLoader() {
-  return <p>Loading...</p>
+  return (
+    <div className="pageloader">
+      <span className="title">Loading...</span>
+    </div>
+  )
 }

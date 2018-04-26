@@ -8,7 +8,7 @@ export default class NewComment extends Component {
     taskId: PropTypes.string.isRequired
   };
 
-  createComment({content}) {
+  createComment({ content }) {
     return commentApi.create({ content, taskId: this.props.taskId });
   }
 
@@ -17,11 +17,13 @@ export default class NewComment extends Component {
       <Form
         submitText="Send"
         onSubmit={this.createComment.bind(this)}
-        fields={[{
-          name: "content",
-          type: "textarea",
-          label: "Send a new comment"
-        }]}
+        fields={[
+          {
+            name: "content",
+            type: "textarea",
+            label: "post a new comment"
+          }
+        ]}
       />
     );
   }

@@ -32,9 +32,6 @@ export class Project extends Component {
     if (!this.props.project.id) return <p>Project not found</p>;
     return (
       <div className="card">
-        <header className="card-header">
-          <h2 className="card-header-title">{this.props.project.name}</h2>
-        </header>
         <NewTask projectId={this.props.project.id} />
         <div className="card-table">
           <div className="content">

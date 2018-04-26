@@ -59,7 +59,8 @@ export class ProjectSelector extends Component {
   }
 
   render() {
-    if (!this.props.projects.length) return <p>No projects yet</p>;
+    if (!this.props.projects.length)
+      return <h2 className="project-selector-select">No projects found...</h2>;
 
     return (
       <div className="project-selector" ref={wrapper => this.wrapper = wrapper}>

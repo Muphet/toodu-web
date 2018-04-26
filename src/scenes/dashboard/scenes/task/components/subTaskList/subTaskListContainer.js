@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
-import { getSubTasksForTask } from "../../../../../../core/subTasks/subTasksActions";
+import {
+  getSubTasksForTask
+} from "../../../../../../core/subTasks/subTasksActions";
 
 const subTasksSelector = state => state.core.subTasks.data;
 const currentTaskIdSelector = (state, props) => props.taskId;
@@ -8,7 +10,9 @@ const currentTaskIdSelector = (state, props) => props.taskId;
 const subTasksForCurrentTaskSelector = createSelector(
   [subTasksSelector, currentTaskIdSelector],
   (subTasks, currentTaskId) =>
-    subTasks.filter(subTask => subTask.task_id === currentTaskId)
+    subTasks
+      .filter(subTask => subTask.task_id === currentTaskId)
+      .sort((a, b) => (a.completed ? 1 : -1))
 );
 
 const mapStateToProps = (state, props) => ({

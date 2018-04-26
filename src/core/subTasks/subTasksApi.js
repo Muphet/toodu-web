@@ -10,6 +10,12 @@ const subTasksApi = {
       name: subTask.name,
       task_id: subTask.taskId
     });
+  },
+
+  update(subTask) {
+    return ApiService.put(`/tasks/${subTask.taskId}/sub_tasks/${subTask.id}`, {
+      completed: subTask.completed
+    });
   }
 };
 

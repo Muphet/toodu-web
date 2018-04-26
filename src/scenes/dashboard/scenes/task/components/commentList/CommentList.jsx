@@ -15,28 +15,38 @@ export class CommentList extends Component {
   }
 
   render() {
-    if (!this.props.comments.length) return <p>No comments yet</p>;
-    console.log(this.props.comments)
+    if (!this.props.comments.length) return null;
+
     return (
       <ul className="comment-list">
         {this.props.comments.map(comment => (
-          <li className="card">
+          <li className="card" key={comment.id}>
             <div className="card-content">
               <div className="media" key={comment.id}>
                 <div className="media-left">
-                  <figure className="image is-48x48">
-                    <img className="comment-list-avatar" src={comment.user.gravatar_url} alt="avatar" />
+                  <figure className="image is-32x32">
+                    <img
+                      className="comment-list-avatar"
+                      src={comment.user.gravatar_url}
+                      alt="avatar"
+                    />
                   </figure>
                 </div>
                 <div className="media-content">
-                  <p className="title is-6">{comment.user.first_name}</p>
-                  <p className="subtitle is-6">
-                    <time datetime={comment.created_at}>{comment.created_at}</time>
+                  <p className="has-text-weight-bold">
+                    {comment.user.first_name}
                   </p>
+                  <time
+                    className="comment-list-time"
+                    dateTime={comment.created_at}
+                  >
+                    {(() => {
+                      const date = new Date(comment.created_at);
+                      return date.toLocaleDateString();
+                    })()}
+                  </time>
+                  <p>{comment.content}</p>
                 </div>
-              </div>
-              <div className="content comment-list-content">
-                <p>{comment.content}</p>
               </div>
             </div>
           </li>

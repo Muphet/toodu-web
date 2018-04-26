@@ -10,6 +10,12 @@ const tasksApi = {
       name: task.name,
       project_id: task.projectId
     });
+  },
+
+  update(task) {
+    return ApiService.put(`/tasks/${task.id}`, {
+      completed: task.completed
+    });
   }
 };
 

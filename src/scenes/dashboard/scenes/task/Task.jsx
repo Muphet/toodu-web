@@ -42,7 +42,7 @@ export class Task extends Component {
             </div>
           </div>
         </div>
-        
+
         <CommentList taskId={this.props.task.id} />
         <NewComment taskId={this.props.task.id} />
       </div>

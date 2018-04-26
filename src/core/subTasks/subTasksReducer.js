@@ -3,7 +3,8 @@ import {
   GET_SUB_TASKS_FOR_TASK_START,
   GET_SUB_TASKS_FOR_TASK_SUCCESS,
   GET_SUB_TASKS_FOR_TASK_ERROR,
-  SUB_TASK_CREATED
+  SUB_TASK_CREATED,
+  SUB_TASK_UPDATED
 } from "./subTasksConstants";
 
 const defaultState = {
@@ -26,6 +27,8 @@ export default function tasksReducer(state = defaultState, action) {
       return { ...state, fetching: false, error: true };
     case SUB_TASK_CREATED:
       return { ...state, data: state.data.concat(action.subTask) };
+    case SUB_TASK_UPDATED:
+      return { ...state, data: UtilService.merge(state.data, action.subTask) };
     default:
       return state;
   }

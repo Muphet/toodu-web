@@ -1,8 +1,10 @@
+import UtilService from "../../services/UtilService";
 import {
   GET_TASKS_START,
   GET_TASKS_SUCCESS,
   GET_TASKS_ERROR,
-  TASK_CREATED
+  TASK_CREATED,
+  TASK_UPDATED
 } from "./tasksConstants";
 
 const defaultState = {
@@ -21,6 +23,8 @@ export default function tasksReducer(state = defaultState, action) {
       return { ...state, fetchingAll: false, errorAll: true };
     case TASK_CREATED:
       return { ...state, data: state.data.concat(action.task) };
+    case TASK_UPDATED:
+      return { ...state, data: UtilService.merge(state.data, action.task) };
     default:
       return state;
   }

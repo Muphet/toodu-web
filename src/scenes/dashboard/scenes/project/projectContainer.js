@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
+import { getProject } from "../../../../core/projects/projectsActions";
 import { changeProject } from "../../dashboardActions";
 
 const projectsSelector = state => state.core.projects.data;
@@ -15,4 +16,4 @@ const mapStateToProps = (state, props) => ({
   project: currentProjectSelector(state, props)
 });
 
-export default connect(mapStateToProps, { changeProject });
+export default connect(mapStateToProps, { changeProject, getProject });

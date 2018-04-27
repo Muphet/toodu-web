@@ -9,7 +9,7 @@ const currentTaskIdSelector = (state, props) => props.taskId;
 const commentsForCurrentTaskSelector = createSelector(
   [commentsSelector, currentTaskIdSelector],
   (comments, currentTaskId) =>
-    comments.filter(comment => comment.parent_id === currentTaskId)
+    comments.filter(comment => comment.task_id === currentTaskId)
 );
 
 const commentsForCurrentTaskWithUserSelector = createSelector(

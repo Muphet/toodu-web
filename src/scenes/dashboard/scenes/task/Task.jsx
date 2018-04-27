@@ -1,5 +1,8 @@
+import "react-day-picker/lib/style.css";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import DayPicker from "react-day-picker";
+import tasksApi from "../../../../core/tasks/tasksApi";
 import taskContainer from "./taskContainer";
 import SubTaskList from "./components/subTaskList/SubTaskList";
 import CommentList from "./components/commentList/CommentList";
@@ -26,11 +29,18 @@ export class Task extends Component {
     }
   }
 
+  handleDayPickerClick(day) {
+    tasksApi.update(this.props.task.id, { due_date: day });
+  }
+
   render() {
     if (!this.props.task) return <p>Task not found</p>;
+    console.log(this.props.task);
     return (
       <div>
-        <h2 className="card-header-title">{this.props.task.name}</h2>
+        <h2>{this.props.task.name}</h2>
+        <p>Due on {this.props.task.due_date}</p>
+        <DayPicker onDayClick={this.handleDayPickerClick.bind(this)} />
 
         <NewSubTask taskId={this.props.task.id} />
         <SubTaskList taskId={this.props.task.id} />

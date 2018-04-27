@@ -3,7 +3,10 @@ import projectsApi from "./projectsApi";
 import {
   GET_PROJECTS_START,
   GET_PROJECTS_SUCCESS,
-  GET_PROJECTS_ERROR
+  GET_PROJECTS_ERROR,
+  GET_PROJECT_START,
+  GET_PROJECT_SUCCESS,
+  GET_PROJECT_ERROR
 } from "./projectsConstants";
 
 export function getProjects() {
@@ -16,6 +19,20 @@ export function getProjects() {
       })
       .catch(err => {
         dispatch({ type: GET_PROJECTS_ERROR });
+      });
+  };
+}
+
+export function getProject(id) {
+  return dispatch => {
+    dispatch({ type: GET_PROJECT_START });
+    projectsApi
+      .getOne(id)
+      .then(res => {
+        dispatch({ type: GET_PROJECT_SUCCESS, project: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: GET_PROJECT_ERROR });
       });
   };
 }

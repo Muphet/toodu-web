@@ -17,12 +17,12 @@ export class Project extends Component {
 
   componentDidMount() {
     this.props.changeProject(this.props.match.params.projectId);
+    this.props.getProject(this.props.match.params.projectId);
   }
 
   componentDidUpdate(prevProps) {
     const prevParams = prevProps.match.params;
     const params = this.props.match.params;
-
     if (prevParams.projectId !== params.projectId) {
       this.props.changeProject(params.projectId);
     }

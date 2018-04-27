@@ -26,12 +26,7 @@ export class CommentList extends Component {
               alt="avatar"
             />
             <p>{comment.user.first_name}</p>
-            <time>
-              {(() => {
-                const date = new Date(comment.created_at);
-                return date.toLocaleDateString();
-              })()}
-            </time>
+            <time>{comment.created_at}</time>
             <p>{comment.content}</p>
           </li>
         ))}

@@ -1,10 +1,7 @@
 import PropTypes from "prop-types";
-import "./projectSelector.scss";
 import React, { Component } from "react";
-import classNames from "classnames";
+
 import { Link } from "react-router-dom";
-import starLightIconUrl from "./starLight.svg";
-import starDarkIconUrl from "./starDark.svg";
 import projectSelectorContainer from "./projectSelectorContainer";
 
 export class ProjectSelector extends Component {
@@ -59,28 +56,21 @@ export class ProjectSelector extends Component {
   }
 
   render() {
-    if (!this.props.projects.length)
-      return <h2 className="project-selector-select">No projects found...</h2>;
+    if (!this.props.projects.length) return <h2>No projects found...</h2>;
 
     return (
-      <div className="project-selector" ref={wrapper => this.wrapper = wrapper}>
-        <div
-          className="project-selector-select"
-          onClick={this.toggle.bind(this)}
-        >
-          {this.props.selectedProject
-            ? <h2>{this.props.selectedProject.name}</h2>
-            : <h2>Select a project</h2>}
+      <div ref={wrapper => (this.wrapper = wrapper)}>
+        <div onClick={this.toggle.bind(this)}>
+          {this.props.selectedProject ? (
+            <h2>{this.props.selectedProject.name}</h2>
+          ) : (
+            <h2>Select a project</h2>
+          )}
         </div>
 
-        <ul
-          className={classNames({
-            "project-selector-options": true,
-            "is-active": this.state.open
-          })}
-        >
+        <ul>
           {this.props.projects.map(project => (
-            <li className="project-selector-option" key={project.id}>
+            <li key={project.id}>
               <Link
                 onClick={this.close.bind(this)}
                 className="project-selector-link"
@@ -88,24 +78,16 @@ export class ProjectSelector extends Component {
               >
                 {project.name}
               </Link>
-              <div className="project-selector-actions">
-                {this.props.starredProjectIds.includes(project.id)
-                  ? <button
-                      className="button is-warning is-small"
-                      onClick={() => this.unstar(project.id)}
-                    >
-                      <span className="icon">
-                        <img src={starLightIconUrl} alt="invite a new user" />
-                      </span>
-                    </button>
-                  : <button
-                      className="button is-light is-small"
-                      onClick={() => this.props.createStar(project.id)}
-                    >
-                      <span className="icon">
-                        <img src={starDarkIconUrl} alt="invite a new user" />
-                      </span>
-                    </button>}
+              <div>
+                {this.props.starredProjectIds.includes(project.id) ? (
+                  <button onClick={() => this.unstar(project.id)}>
+                    unstar
+                  </button>
+                ) : (
+                  <button onClick={() => this.props.createStar(project.id)}>
+                    star
+                  </button>
+                )}
               </div>
             </li>
           ))}

@@ -1,8 +1,7 @@
-import "./taskList.scss";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
+
 import taskApi from "../../../../../../core/tasks/tasksApi.js";
 import taskListContainer from "./taskListContainer.js";
 
@@ -34,33 +33,20 @@ export class TaskList extends Component {
       );
 
     return (
-      <table className="table is-fullwidth is-striped">
-        <tbody>
-          {this.props.tasks.map(task => (
-            <tr className="task-list-task" key={task.id}>
-              <td className="task-list-checkbox">
-                <input
-                  checked={task.completed}
-                  onChange={e => this.updateComplete(task.id, e.target.checked)}
-                  type="checkbox"
-                />
-              </td>
-              <td
-                className={classNames("task-list-task", {
-                  "is-active": task.id === this.props.currentTaskId,
-                  "is-completed": task.completed
-                })}
-              >
-                <Link
-                  to={`/app/project/${this.props.projectId}/task/${task.id}`}
-                >
-                  {task.name}
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ul className="table is-fullwidth is-striped">
+        {this.props.tasks.map(task => (
+          <li key={task.id}>
+            <input
+              checked={task.completed}
+              onChange={e => this.updateComplete(task.id, e.target.checked)}
+              type="checkbox"
+            />
+            <Link to={`/app/project/${this.props.projectId}/task/${task.id}`}>
+              {task.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     );
   }
 }

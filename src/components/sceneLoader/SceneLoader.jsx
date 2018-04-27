@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default function SceneLoader() {
   return (
-    <div className="pageloader">
-      <span className="title">Loading...</span>
+    <div>
+      <h1 className="title">Loading...</h1>
     </div>
-  )
+  );
 }

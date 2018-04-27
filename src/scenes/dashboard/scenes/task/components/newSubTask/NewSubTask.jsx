@@ -8,7 +8,7 @@ export default class NewSubTask extends Component {
     taskId: PropTypes.string.isRequired
   };
 
-  createSubTask({name}) {
+  createSubTask({ name }) {
     return subTasksApi.create({ name, taskId: this.props.taskId });
   }
 
@@ -18,11 +18,13 @@ export default class NewSubTask extends Component {
         submitText="Add"
         className="new-task"
         onSubmit={this.createSubTask.bind(this)}
-        fields={[{
-          name: "name",
-          type: "text",
-          label: "Add a new sub task"
-        }]}
+        fields={[
+          {
+            name: "name",
+            type: "text",
+            label: "Add a new sub task"
+          }
+        ]}
       />
     );
   }

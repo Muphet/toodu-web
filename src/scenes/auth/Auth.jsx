@@ -1,4 +1,3 @@
-import "./auth.scss";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";
@@ -15,33 +14,31 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <div className="container is-fluid  auth">
-        <div className="column is-6 is-offset-3">
-          <Switch>
-            <Route exact path="/auth/login" component={Login} />
-            <Route exact path="/auth/signup" component={Signup} />
-            <ProtectedRoute
-              exact
-              getAuthFromUrl
-              path="/auth/verified"
-              component={Verified}
-            />
-            <Route exact path="/auth/logout" component={Logout} />
-            <Route exact path="/auth/invited" component={Invited} />
-            <Route
-              exact
-              path="/auth/forgot-password"
-              component={ForgotPassword}
-            />
-            <ProtectedRoute
-              exact
-              getAuthFromUrl
-              path="/auth/reset-password"
-              component={ResetPassword}
-            />
-            <Redirect to="/auth/login" />
-          </Switch>
-        </div>
+      <div>
+        <Switch>
+          <Route exact path="/auth/login" component={Login} />
+          <Route exact path="/auth/signup" component={Signup} />
+          <ProtectedRoute
+            exact
+            getAuthFromUrl
+            path="/auth/verified"
+            component={Verified}
+          />
+          <Route exact path="/auth/logout" component={Logout} />
+          <Route exact path="/auth/invited" component={Invited} />
+          <Route
+            exact
+            path="/auth/forgot-password"
+            component={ForgotPassword}
+          />
+          <ProtectedRoute
+            exact
+            getAuthFromUrl
+            path="/auth/reset-password"
+            component={ResetPassword}
+          />
+          <Redirect to="/auth/login" />
+        </Switch>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import classNames from "classnames";
+
 import TextField from "../textField/TextField";
 import FormErrors from "../formErrors/FormErrors";
 import FormMessage from "../formMessage/FormMessage";
@@ -13,7 +13,8 @@ export default class Form extends Component {
     fields: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(["text", "email", "password", "textarea"]).isRequired,
+        type: PropTypes.oneOf(["text", "email", "password", "textarea"])
+          .isRequired,
         label: PropTypes.string,
         initialValue: PropTypes.string
       })
@@ -82,12 +83,8 @@ export default class Form extends Component {
         onSubmit={this.onSubmit.bind(this)}
         className={this.props.className}
       >
-        <FormErrors
-          errors={this.state.errors}
-        />
-        <FormMessage
-          message={this.state.message}
-        />
+        <FormErrors errors={this.state.errors} />
+        <FormMessage message={this.state.message} />
         {this.props.fields.map(field => (
           <TextField
             key={field.name}
@@ -98,12 +95,7 @@ export default class Form extends Component {
             onChange={this.updateField.bind(this)}
           />
         ))}
-        <button className={classNames(
-          "button is-fullwidth is-info",
-          { "is-loading": this.state.submitting }
-        )}>
-          {this.props.submitText}
-        </button>
+        <button>{this.props.submitText}</button>
       </form>
     );
   }

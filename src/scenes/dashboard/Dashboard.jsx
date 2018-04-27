@@ -13,16 +13,8 @@ export default class Dashboard extends Component {
     return (
       <div>
         <DashboardHeader />
-        <main className="container is-fluid  ">
-          <div className="columns">
-            <div className="column is-6">
-              <Route path="/app/project/:projectId" component={Project} />
-            </div>
-            <div className="column is-6">
-              <Route path="/app/project/:projectId/task/:taskId" component={Task} />
-            </div>
-          </div>
-        </main>
+        <Route path="/app/project/:projectId" component={Project} />
+        <Route path="/app/project/:projectId/task/:taskId" component={Task} />
         <ModalRoot />
       </div>
     );

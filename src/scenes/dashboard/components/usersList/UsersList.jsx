@@ -1,7 +1,5 @@
-import "./usersList.scss";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import plusIconUrl from "./plus.svg";
 import usersListContainer from "./usersListContainer";
 
 export class UsersList extends Component {
@@ -16,20 +14,14 @@ export class UsersList extends Component {
 
   render() {
     return (
-      <div className="users-list">
-        <button
-          className="button is-success users-list-add"
-          onClick={() => this.props.openModal("NewInviteModal")}
-        >
-          <span className="icon">
-            <img src={plusIconUrl} alt="invite a new user" />
-          </span>
+      <div>
+        <button onClick={() => this.props.openModal("NewInviteModal")}>
+          invite
         </button>
-        <ul className="users-list-users">
+        <ul>
           {this.props.users.map(user => (
-            <li className="users-list-user" key={user.id}>
+            <li key={user.id}>
               <img
-                className="users-list-avatar"
                 alt="avatar"
                 src={user.gravatar_url}
                 title={user.first_name}

@@ -17,17 +17,12 @@ export class ModalRoot extends Component {
     const ModalContent = this.modalTypes[this.props.activeModal];
 
     return (
-      <div className="modal is-active">
-        <div className="modal-background" onClick={this.props.closeModal} />
-        <div className="modal-content box">
+      <div>
+        <div onClick={this.props.closeModal} />
+        <div>
           <ModalContent />
         </div>
-        <button
-          className="modal-close is-large"
-          onClick={this.props.closeModal}
-        >
-          Close
-        </button>
+        <button onClick={this.props.closeModal}>Close</button>
       </div>
     );
   }

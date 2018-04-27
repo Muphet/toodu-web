@@ -19,11 +19,13 @@ export class NewProjectModal extends Component {
         <Form
           submitText="Create"
           onSubmit={this.createProject.bind(this)}
-          fields={[{
-            name: "name",
-            type: "text",
-            label: "Enter a name for your project"
-          }]}
+          fields={[
+            {
+              name: "name",
+              type: "text",
+              label: "Enter a name for your project"
+            }
+          ]}
         />
       </div>
     );

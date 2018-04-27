@@ -10,7 +10,7 @@ export default class FormErrors extends Component {
     if (!this.props.errors) return null;
 
     return (
-      <ul className="notification is-danger">
+      <ul>
         {this.props.errors.map(error => <li key={error}>{error}</li>)}
       </ul>
     );

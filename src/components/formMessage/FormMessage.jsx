@@ -8,6 +8,6 @@ export default class FormMessage extends Component {
 
   render() {
     if (!this.props.message) return null;
-    return <p className="notification is-success">{this.props.message}</p>
+    return <p>{this.props.message}</p>
   }
 }

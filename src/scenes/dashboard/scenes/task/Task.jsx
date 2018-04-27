@@ -1,4 +1,3 @@
-import "./task.scss";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import taskContainer from "./taskContainer";
@@ -30,18 +29,11 @@ export class Task extends Component {
   render() {
     if (!this.props.task) return <p>Task not found</p>;
     return (
-      <div className="task">
-        <div className="card">
-          <header className="card-header">
-            <h2 className="card-header-title">{this.props.task.name}</h2>
-          </header>
-          <NewSubTask taskId={this.props.task.id} />
-          <div className="card-table">
-            <div className="content">
-              <SubTaskList taskId={this.props.task.id} />
-            </div>
-          </div>
-        </div>
+      <div>
+        <h2 className="card-header-title">{this.props.task.name}</h2>
+
+        <NewSubTask taskId={this.props.task.id} />
+        <SubTaskList taskId={this.props.task.id} />
 
         <CommentList taskId={this.props.task.id} />
         <NewComment taskId={this.props.task.id} />

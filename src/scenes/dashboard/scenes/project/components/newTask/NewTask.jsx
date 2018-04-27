@@ -1,4 +1,3 @@
-import "./newTask.scss";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import InlineForm from "../../../../../../components/inlineForm/InlineForm";
@@ -9,7 +8,7 @@ export default class NewTask extends Component {
     projectId: PropTypes.string.isRequired
   };
 
-  createTask({name}) {
+  createTask({ name }) {
     return tasksApi.create({ name, projectId: this.props.projectId });
   }
 
@@ -19,11 +18,13 @@ export default class NewTask extends Component {
         submitText="Add"
         className="new-task"
         onSubmit={this.createTask.bind(this)}
-        fields={[{
-          name: "name",
-          type: "text",
-          label: "Add a new task"
-        }]}
+        fields={[
+          {
+            name: "name",
+            type: "text",
+            label: "Add a new task"
+          }
+        ]}
       />
     );
   }

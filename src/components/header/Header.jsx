@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
+
 import headerContainer from "./headerContainer";
 
 export class Header extends Component {
@@ -12,10 +12,6 @@ export class Header extends Component {
     authenticated: PropTypes.bool.isRequired,
     team: PropTypes.object,
     currentUser: PropTypes.object
-  };
-
-  state = {
-    navOpen: false
   };
 
   componentDidMount(e) {
@@ -36,56 +32,34 @@ export class Header extends Component {
     this.props.getTeam();
   }
 
-  toggleNav() {
-    this.setState({ navOpen: !this.state.navOpen });
-  }
-
-  closeNav() {
-    this.setState({ navOpen: false });
-  }
-
   render() {
     return (
-      <header className="navbar is-primary">
-        <div className="container is-fluid  ">
-          <div className="navbar-brand">
-            <Link className="navbar-item" to="/app">
-              {this.props.team ? <h1>{this.props.team.name}</h1> : <h1>Toodu</h1>}
+      <header>
+        <div>
+          <div>
+            <Link to="/app">
+              {this.props.team ? (
+                <h1>{this.props.team.name}</h1>
+              ) : (
+                <h1>Toodu</h1>
+              )}
             </Link>
-            <a
-              role="button"
-              onClick={this.toggleNav.bind(this)}
-              className={classNames("navbar-burger", {
-                "is-active": this.state.navOpen
-              })}
-            >
-              <span aria-hidden="true" />
-              <span aria-hidden="true" />
-              <span aria-hidden="true" />
-            </a>
           </div>
 
-          <div
-            className={classNames("navbar-menu", {
-              "is-active": this.state.navOpen
-            })}
-          >
-            <div className="navbar-end">
-              {this.props.currentUser &&
-                <div className="navbar-item has-dropdown is-hoverable">
-                  <p className="navbar-link">
-                    Logged in as {this.props.currentUser.first_name}
-                  </p>
-                  <div className="navbar-dropdown">
-                    <Link onClick={this.closeNav.bind(this)} to="/settings/profile" className="navbar-item">
-                      Profile settings
-                    </Link>
-                    <Link onClick={this.closeNav.bind(this)} to="/auth/logout" className="navbar-item">
-                      Logout
-                    </Link>
-                  </div>
-                </div>}
-            </div>
+          <div>
+            {this.props.currentUser && (
+              <div>
+                <p className="navbar-link">
+                  Logged in as {this.props.currentUser.first_name}
+                </p>
+                <Link to="/settings/profile" className="navbar-item">
+                  Profile settings
+                </Link>
+                <Link to="/auth/logout" className="navbar-item">
+                  Logout
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </header>

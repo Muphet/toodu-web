@@ -33,11 +33,7 @@ export class Project extends Component {
     return (
       <div className="card">
         <NewTask projectId={this.props.project.id} />
-        <div className="card-table">
-          <div className="content">
-            <TaskList projectId={this.props.project.id} />
-          </div>
-        </div>
+        <TaskList projectId={this.props.project.id} />
       </div>
     );
   }

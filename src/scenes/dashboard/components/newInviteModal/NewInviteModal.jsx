@@ -19,11 +19,13 @@ export class NewInviteModal extends Component {
         <Form
           submitText="Create"
           onSubmit={this.createInvite.bind(this)}
-          fields={[{
-            name: "email",
-            type: "email",
-            label: "Enter the email for your Invite"
-          }]}
+          fields={[
+            {
+              name: "email",
+              type: "email",
+              label: "Enter the email for your Invite"
+            }
+          ]}
         />
       </div>
     );

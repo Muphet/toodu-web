@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import UsersList from "../usersList/UsersList";
 
 import headerContainer from "./headerContainer";
 
@@ -45,6 +46,8 @@ export class Header extends Component {
               )}
             </Link>
           </div>
+
+          <UsersList />
 
           <div>
             {this.props.currentUser && (

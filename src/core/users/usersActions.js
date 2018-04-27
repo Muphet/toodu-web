@@ -27,7 +27,7 @@ export function getCurrentUser() {
   return dispatch => {
     dispatch({ type: GET_CURRENT_USER_START });
     usersApi
-      .getCurrent()
+      .getOne("current")
       .then(res => {
         dispatch({ type: GET_CURRENT_USER_SUCCESS, user: res.data });
       })

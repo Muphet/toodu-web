@@ -5,6 +5,10 @@ const starsApi = {
     return ApiService.get("/stars", params);
   },
 
+  getOne(id) {
+    return ApiService.get(`/stars/${id}`);
+  },
+
   create(star) {
     return ApiService.post("/stars", star);
   },

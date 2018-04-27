@@ -5,12 +5,20 @@ const usersApi = {
     return ApiService.get("/users", params);
   },
 
-  getCurrent() {
-    return ApiService.get("/users/current");
+  getOne(id) {
+    return ApiService.get(`/users/${id}`);
   },
 
   create(user) {
     return ApiService.post("/users", user);
+  },
+
+  update(id, user) {
+    return ApiService.post(`/users/${id}`, user);
+  },
+
+  destroy(id) {
+    return ApiService.post(`/users/${id}`);
   }
 };
 

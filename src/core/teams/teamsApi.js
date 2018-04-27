@@ -1,9 +1,17 @@
 import ApiService from "../../services/ApiService";
 
-const tasksApi = {
-  get() {
-    return ApiService.get("/teams/current");
+const teamsApi = {
+  getOne(id) {
+    return ApiService.get(`/teams/${id}`);
+  },
+
+  update(id, team) {
+    return ApiService.put(`/teams/${id}`, team);
+  },
+
+  destroy(id) {
+    return ApiService.put(`/teams/${id}`);
   }
 };
 
-export default tasksApi;
+export default teamsApi;

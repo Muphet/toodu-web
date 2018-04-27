@@ -5,12 +5,20 @@ const tasksApi = {
     return ApiService.get("/tasks", params);
   },
 
+  getOne(id) {
+    return ApiService.get(`/tasks/${id}`);
+  },
+
   create(task) {
     return ApiService.post("/tasks", task);
   },
 
   update(id, task) {
     return ApiService.put(`/tasks/${id}`, task);
+  },
+
+  destroy(id) {
+    return ApiService.put(`/tasks/${id}`);
   }
 };
 

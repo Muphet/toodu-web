@@ -10,7 +10,7 @@ export function getTeam() {
   return dispatch => {
     dispatch({ type: GET_TEAM_START });
     teamsApi
-      .get()
+      .getOne("current")
       .then(res => {
         dispatch({ type: GET_TEAM_SUCCESS, team: res.data });
       })

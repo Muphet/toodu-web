@@ -16,7 +16,7 @@ export function getStars() {
   return dispatch => {
     dispatch({ type: GET_STARS_START });
     starsApi
-      .getAll()
+      .get()
       .then(res => {
         dispatch({ type: GET_STARS_SUCCESS, stars: res.data });
       })
@@ -26,11 +26,11 @@ export function getStars() {
   };
 }
 
-export function createStar(projectId) {
+export function createStar(star) {
   return dispatch => {
     dispatch({ type: CREATE_STAR_START });
     starsApi
-      .create(projectId)
+      .create(star)
       .then(res => {
         dispatch({ type: CREATE_STAR_SUCCESS, star: res.data });
       })

@@ -18,8 +18,7 @@ export class TaskList extends Component {
   }
 
   updateComplete(taskId, completed) {
-    taskApi.update({
-      id: taskId,
+    taskApi.update(taskId, {
       completed
     });
   }

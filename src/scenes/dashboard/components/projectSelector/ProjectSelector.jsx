@@ -84,7 +84,11 @@ export class ProjectSelector extends Component {
                     unstar
                   </button>
                 ) : (
-                  <button onClick={() => this.props.createStar(project.id)}>
+                  <button
+                    onClick={() =>
+                      this.props.createStar({ projcet_id: project.id })
+                    }
+                  >
                     star
                   </button>
                 )}

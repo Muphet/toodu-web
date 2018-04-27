@@ -1,21 +1,16 @@
 import ApiService from "../../services/ApiService";
 
 const subTasksApi = {
-  getForTask(taskId) {
-    return ApiService.get(`/tasks/${taskId}/sub_tasks`);
+  get(params) {
+    return ApiService.get("/sub_tasks", params);
   },
 
   create(subTask) {
-    return ApiService.post(`/tasks/${subTask.taskId}/sub_tasks`, {
-      name: subTask.name,
-      task_id: subTask.taskId
-    });
+    return ApiService.post("/sub_tasks", subTask);
   },
 
-  update(subTask) {
-    return ApiService.put(`/tasks/${subTask.taskId}/sub_tasks/${subTask.id}`, {
-      completed: subTask.completed
-    });
+  update(id, subTask) {
+    return ApiService.put(`/sub_tasks/${id}`, subTask);
   }
 };
 

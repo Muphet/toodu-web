@@ -10,7 +10,7 @@ export function getTasksForProject(projectId) {
   return dispatch => {
     dispatch({ type: GET_TASKS_START });
     tasksApi
-      .getForProject(projectId)
+      .get({ project_id: projectId })
       .then(res => {
         dispatch({ type: GET_TASKS_SUCCESS, tasks: res.data });
       })

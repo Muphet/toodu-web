@@ -9,7 +9,7 @@ export default class NewSubTask extends Component {
   };
 
   createSubTask({ name }) {
-    return subTasksApi.create({ name, taskId: this.props.taskId });
+    return subTasksApi.create({ name, task_id: this.props.taskId });
   }
 
   render() {

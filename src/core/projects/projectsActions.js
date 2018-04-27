@@ -10,7 +10,7 @@ export function getProjects() {
   return dispatch => {
     dispatch({ type: GET_PROJECTS_START });
     projectsApi
-      .getAll()
+      .get()
       .then(res => {
         dispatch({ type: GET_PROJECTS_SUCCESS, projects: res.data });
       })

@@ -13,7 +13,7 @@ export function getUsers() {
   return dispatch => {
     dispatch({ type: GET_USERS_START });
     usersApi
-      .getAll()
+      .get()
       .then(res => {
         dispatch({ type: GET_USERS_SUCCESS, users: res.data });
       })

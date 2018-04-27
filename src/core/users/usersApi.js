@@ -1,23 +1,16 @@
 import ApiService from "../../services/ApiService";
 
 const usersApi = {
-  getAll() {
-    return ApiService.get("/users");
+  get(params) {
+    return ApiService.get("/users", params);
   },
 
   getCurrent() {
     return ApiService.get("/users/current");
   },
 
-  create(user, inviteToken) {
-    return ApiService.post("/users", {
-      invite_token: inviteToken,
-      first_name: user.firstName,
-      last_name: user.lastName,
-      email: user.email,
-      password: user.password,
-      password_confirmation: user.passwordConfirmation
-    });
+  create(user) {
+    return ApiService.post("/users", user);
   }
 };
 

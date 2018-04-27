@@ -9,7 +9,7 @@ export default class NewTask extends Component {
   };
 
   createTask({ name }) {
-    return tasksApi.create({ name, projectId: this.props.projectId });
+    return tasksApi.create({ name, project_id: this.props.projectId });
   }
 
   render() {

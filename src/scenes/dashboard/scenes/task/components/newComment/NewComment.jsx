@@ -9,7 +9,7 @@ export default class NewComment extends Component {
   };
 
   createComment({ content }) {
-    return commentApi.create({ content, taskId: this.props.taskId });
+    return commentApi.create({ content, task_id: this.props.taskId });
   }
 
   render() {

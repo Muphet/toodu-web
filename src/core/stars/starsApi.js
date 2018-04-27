@@ -1,14 +1,12 @@
 import ApiService from "../../services/ApiService";
 
 const starsApi = {
-  getAll() {
-    return ApiService.get("/stars");
+  get(params) {
+    return ApiService.get("/stars", params);
   },
 
-  create(projectId) {
-    return ApiService.post("/stars", {
-      project_id: projectId
-    });
+  create(star) {
+    return ApiService.post("/stars", star);
   },
 
   destroy(id) {

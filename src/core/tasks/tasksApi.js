@@ -1,21 +1,16 @@
 import ApiService from "../../services/ApiService";
 
 const tasksApi = {
-  getForProject(projectId) {
-    return ApiService.get("/tasks", { project_id: projectId });
+  get(params) {
+    return ApiService.get("/tasks", params);
   },
 
   create(task) {
-    return ApiService.post("/tasks", {
-      name: task.name,
-      project_id: task.projectId
-    });
+    return ApiService.post("/tasks", task);
   },
 
-  update(task) {
-    return ApiService.put(`/tasks/${task.id}`, {
-      completed: task.completed
-    });
+  update(id, task) {
+    return ApiService.put(`/tasks/${id}`, task);
   }
 };
 

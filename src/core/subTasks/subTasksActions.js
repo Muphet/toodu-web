@@ -10,7 +10,7 @@ export function getSubTasksForTask(taskId) {
   return dispatch => {
     dispatch({ type: GET_SUB_TASKS_FOR_TASK_START });
     subTasksApi
-      .getForTask(taskId)
+      .get({ task_id: taskId })
       .then(res => {
         dispatch({ type: GET_SUB_TASKS_FOR_TASK_SUCCESS, subTasks: res.data });
       })

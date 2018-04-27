@@ -1,14 +1,12 @@
 import ApiService from "../../services/ApiService";
 
 const commentsApi = {
-  getForTask(taskId) {
-    return ApiService.get(`/tasks/${taskId}/comments`);
+  get(params) {
+    return ApiService.get("/comments", params);
   },
 
   create(comment) {
-    return ApiService.post(`/tasks/${comment.taskId}/comments`, {
-      content: comment.content
-    });
+    return ApiService.post(`/comments`, comment);
   }
 };
 

@@ -14,14 +14,18 @@ export class UsersList extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.openModal("NewInviteModal")}>
+      <div className="usersList">
+        <button
+          className="usersList__button"
+          onClick={() => this.props.openModal("NewInviteModal")}
+        >
           invite
         </button>
-        <ul>
+        <ul className="usersList__users">
           {this.props.users.map(user => (
-            <li key={user.id}>
+            <li className="usersList__user" key={user.id}>
               <img
+                className="usersList__avatar"
                 alt="avatar"
                 src={user.gravatar_url}
                 title={user.first_name}

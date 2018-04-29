@@ -34,33 +34,38 @@ export class Header extends Component {
 
   render() {
     return (
-      <header>
-        <div>
-          <div>
-            <Link to="/app">
-              {this.props.team ? (
-                <h1>{this.props.team.name}</h1>
-              ) : (
-                <h1>Toodu</h1>
-              )}
-            </Link>
-          </div>
+      <header className="header">
+        <div className="header__container container">
+          <ul className="header__start">
+            <li>
+              <Link to="/app">
+                {this.props.team
+                  ? <h1>{this.props.team.name}</h1>
+                  : <h1>Toodu</h1>}
+              </Link>
+            </li>
+          </ul>
 
-          <div>
-            {this.props.currentUser && (
-              <div>
-                <p className="navbar-link">
+          <ul className="header__end">
+            {this.props.currentUser &&
+              <li className="has-dropdown">
+                <p>
                   Logged in as {this.props.currentUser.first_name}
                 </p>
-                <Link to="/settings/profile" className="navbar-item">
-                  Profile settings
-                </Link>
-                <Link to="/auth/logout" className="navbar-item">
-                  Logout
-                </Link>
-              </div>
-            )}
-          </div>
+                <ul className="dropdown">
+                  <li>
+                    <Link to="/settings/profile" className="navbar-item">
+                      Profile settings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/auth/logout" className="navbar-item">
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </li>}
+          </ul>
         </div>
       </header>
     );

@@ -13,8 +13,10 @@ export default class Dashboard extends Component {
     return (
       <div>
         <DashboardHeader />
-        <Route path="/app/project/:projectId" component={Project} />
-        <Route path="/app/project/:projectId/task/:taskId" component={Task} />
+        <div className="container">
+          <Route path="/app/project/:projectId" component={Project} />
+          <Route path="/app/project/:projectId/task/:taskId" component={Task} />
+        </div>
         <ModalRoot />
       </div>
     );

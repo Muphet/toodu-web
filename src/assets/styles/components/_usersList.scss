@@ -1,0 +1,16 @@
+.usersList {
+  display: flex;
+}
+
+.usersList__users {
+  display: flex;
+}
+
+.usersList__user {
+  margin-left: 5px;
+}
+
+.usersList__avatar {
+  border-radius: 50%;
+  width: 35px;
+}

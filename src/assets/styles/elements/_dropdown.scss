@@ -1,0 +1,15 @@
+.dropdown {
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  color: #1a1a1a;
+  min-width: 100%;
+}
+
+.has-dropdown {
+  position: relative;
+}
+
+.has-dropdown:hover .dropdown {
+  display: block;
+}

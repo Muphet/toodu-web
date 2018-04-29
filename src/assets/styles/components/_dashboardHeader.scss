@@ -1,0 +1,16 @@
+.dashboardHeader {
+  background-color: #F4F7FA;
+  border-bottom: 1px solid #DAE1E9;
+  padding: 12px 0;
+}
+
+.dashboardHeader__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboardHeader__start {
+  display: flex;
+  align-items: center;
+}

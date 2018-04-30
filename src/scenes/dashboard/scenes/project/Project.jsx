@@ -30,8 +30,9 @@ export class Project extends Component {
 
   render() {
     if (!this.props.project.id) return <p>Project not found</p>;
+
     return (
-      <div className="card">
+      <div className="content__col content__col--half">
         <NewTask projectId={this.props.project.id} />
         <TaskList projectId={this.props.project.id} />
       </div>

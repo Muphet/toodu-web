@@ -1,4 +1,3 @@
-import "./assets/styles/app.scss";
 import React from "react";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
@@ -11,29 +10,27 @@ export default function App({ store, history }) {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <React.Fragment>
+        <div className="app">
           <Header />
-
-          <Switch>
-            <Route
-              path="/auth"
-              component={CodeSplittingService.scene("auth/Auth")}
-            />
-
-            <Redirect exact from="/" to="/app" />
-            <ProtectedRoute
-              path="/app"
-              component={CodeSplittingService.scene("dashboard/Dashboard")}
-            />
-
-            <ProtectedRoute
-              path="/settings"
-              component={CodeSplittingService.scene("settings/Settings")}
-            />
-
-            <Route component={CodeSplittingService.scene("error/Error")} />
-          </Switch>
-        </React.Fragment>
+          <main className="app__main">
+            <Switch>
+              <Redirect exact from="/" to="/app" />
+              <ProtectedRoute
+                path="/app"
+                component={CodeSplittingService.scene("dashboard/Dashboard")}
+              />
+              <ProtectedRoute
+                path="/settings"
+                component={CodeSplittingService.scene("settings/Settings")}
+              />
+              <Route
+                path="/auth"
+                component={CodeSplittingService.scene("auth/Auth")}
+              />
+              <Route component={CodeSplittingService.scene("error/Error")} />
+            </Switch>
+          </main>
+        </div>
       </ConnectedRouter>
     </Provider>
   );

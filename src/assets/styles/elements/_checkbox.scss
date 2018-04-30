@@ -1,0 +1,16 @@
+.checkbox__input {
+  display: none;
+}
+
+.checkbox__label {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+  border: 1px solid #e7e7e7;
+}
+
+.checkbox__input:checked + .checkbox__label {
+  background-color: #0667d0;
+}

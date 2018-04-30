@@ -1,22 +1,30 @@
-*, *:before, *:after {
-	box-sizing: inherit;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 html,
 body {
-	margin: 0;
+  margin: 0;
   height: 100%;
-	box-sizing: border-box;
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
 }
 
-pre,code,kbd,samp {
-	font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+pre,
+code,
+kbd,
+samp {
+  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier,
+    monospace;
 }
 
 a {
-	text-decoration: inherit;
-	color: inherit;
+  text-decoration: inherit;
+  color: inherit;
 }
 
 p,
@@ -26,26 +34,26 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	font-size: inherit;
-	font-weight: inherit;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 ul,
 ol {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 img {
-	display: inline-block;
-	border: 0;
-	max-width: 100%;
-	height: auto;
-	vertical-align: middle;
+  display: inline-block;
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 figure {
-	margin: 0;
+  margin: 0;
 }

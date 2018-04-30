@@ -1,0 +1,40 @@
+.sceneLoader {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d8eafd;
+  opacity: 0;
+  animation: sceneLoader__fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes sceneLoader__fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sceneLoader__loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top: 3px solid #0667d0;
+  animation: sceneLoader__load 0.8s linear infinite;
+}
+
+@keyframes sceneLoader__load {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

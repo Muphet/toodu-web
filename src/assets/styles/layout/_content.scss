@@ -1,0 +1,30 @@
+.content {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+}
+
+.content--stacked {
+  flex-direction: column;
+}
+
+.content--center {
+  justify-content: center;
+}
+
+.content__col {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.content__col:first-child {
+  margin-left: 0;
+}
+
+.content__col:last-child {
+  margin-right: 0;
+}
+
+.content__col--half {
+  flex-basis: 50%;
+}

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 import taskApi from "../../../../../../core/tasks/tasksApi.js";
 import taskListContainer from "./taskListContainer.js";
@@ -26,21 +27,34 @@ export class TaskList extends Component {
   render() {
     if (!this.props.tasks.length)
       return (
-        <div className="task-empty">
+        <div className="empty">
           <p>No sub tasks yet</p>
         </div>
       );
 
     return (
-      <ul className="table is-fullwidth is-striped">
+      <ul className="taskList">
         {this.props.tasks.map(task => (
-          <li key={task.id}>
-            <input
-              checked={task.completed}
-              onChange={e => this.updateComplete(task.id, e.target.checked)}
-              type="checkbox"
-            />
-            <Link to={`/app/project/${this.props.projectId}/task/${task.id}`}>
+          <li
+            key={task.id}
+            className={classNames("taskList__task", {
+              "taskList__task--completed": task.completed
+            })}
+          >
+            <div className="checkbox taskList__checkbox">
+              <input
+                className="checkbox__input"
+                checked={task.completed}
+                id={`task_${task.id}`}
+                onChange={e => this.updateComplete(task.id, e.target.checked)}
+                type="checkbox"
+              />
+              <label className="checkbox__label" htmlFor={`task_${task.id}`} />
+            </div>
+            <Link
+              to={`/app/project/${this.props.projectId}/task/${task.id}`}
+              className="taskList__link"
+            >
               {task.name}
             </Link>
           </li>

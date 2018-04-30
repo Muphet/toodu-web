@@ -7,10 +7,13 @@
 
 @import "elements/checkbox";
 @import "elements/dropdown";
+@import "elements/modal";
 
-@import "components/header";
+@import "components/commentList";
 @import "components/dashboardHeader";
+@import "components/header";
 @import "components/newTask";
+@import "components/projectList";
 @import "components/sceneLoader";
 @import "components/task";
 @import "components/taskList";

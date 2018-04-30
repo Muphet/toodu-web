@@ -12,10 +12,11 @@ import {
 export function getProjects() {
   return dispatch => {
     dispatch({ type: GET_PROJECTS_START });
-    projectsApi
+    return projectsApi
       .get()
       .then(res => {
         dispatch({ type: GET_PROJECTS_SUCCESS, projects: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_PROJECTS_ERROR });
@@ -26,10 +27,11 @@ export function getProjects() {
 export function getProject(id) {
   return dispatch => {
     dispatch({ type: GET_PROJECT_START });
-    projectsApi
+    return projectsApi
       .getOne(id)
       .then(res => {
         dispatch({ type: GET_PROJECT_SUCCESS, project: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_PROJECT_ERROR });

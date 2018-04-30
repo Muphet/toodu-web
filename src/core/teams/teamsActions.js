@@ -9,10 +9,11 @@ import {
 export function getTeam() {
   return dispatch => {
     dispatch({ type: GET_TEAM_START });
-    teamsApi
+    return teamsApi
       .getOne("current")
       .then(res => {
         dispatch({ type: GET_TEAM_SUCCESS, team: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_TEAM_ERROR });

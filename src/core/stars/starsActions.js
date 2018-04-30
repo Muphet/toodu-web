@@ -15,10 +15,11 @@ import {
 export function getStars() {
   return dispatch => {
     dispatch({ type: GET_STARS_START });
-    starsApi
+    return starsApi
       .get()
       .then(res => {
         dispatch({ type: GET_STARS_SUCCESS, stars: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_STARS_ERROR });
@@ -29,10 +30,11 @@ export function getStars() {
 export function createStar(star) {
   return dispatch => {
     dispatch({ type: CREATE_STAR_START });
-    starsApi
+    return starsApi
       .create(star)
       .then(res => {
         dispatch({ type: CREATE_STAR_SUCCESS, star: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: CREATE_STAR_ERROR });
@@ -43,10 +45,11 @@ export function createStar(star) {
 export function destroyStar(id) {
   return dispatch => {
     dispatch({ type: DESTROY_STAR_START });
-    starsApi
+    return starsApi
       .destroy(id)
       .then(res => {
         dispatch({ type: DESTROY_STAR_SUCCESS, star: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: DESTROY_STAR_ERROR });

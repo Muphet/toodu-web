@@ -9,10 +9,11 @@ import {
 export function getTasksForProject(projectId) {
   return dispatch => {
     dispatch({ type: GET_TASKS_START });
-    tasksApi
+    return tasksApi
       .get({ project_id: projectId })
       .then(res => {
         dispatch({ type: GET_TASKS_SUCCESS, tasks: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_TASKS_ERROR });

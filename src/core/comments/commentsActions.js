@@ -9,13 +9,13 @@ import {
 export function getCommentsForTask(taskId) {
   return dispatch => {
     dispatch({ type: GET_COMMENTS_FOR_TASK_START });
-    commentsApi
+    return commentsApi
       .get({ task_id: taskId })
       .then(res => {
         dispatch({ type: GET_COMMENTS_FOR_TASK_SUCCESS, comments: res.data });
+        return res.data;
       })
       .catch(err => {
-        console.log(err);
         dispatch({ type: GET_COMMENTS_FOR_TASK_ERROR });
       });
   };

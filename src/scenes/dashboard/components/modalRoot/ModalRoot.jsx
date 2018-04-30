@@ -18,12 +18,14 @@ export class ModalRoot extends Component {
     const ModalContent = this.modalTypes[this.props.activeModal];
 
     return (
-      <div>
-        <div onClick={this.props.closeModal} />
-        <div>
+      <div className="modal">
+        <div className="modal__overlay" onClick={this.props.closeModal} />
+        <div className="modal__box">
           <ModalContent />
         </div>
-        <button onClick={this.props.closeModal}>Close</button>
+        <button className="modal__close" onClick={this.props.closeModal}>
+          Close
+        </button>
       </div>
     );
   }

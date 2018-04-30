@@ -12,10 +12,11 @@ import {
 export function getUsers() {
   return dispatch => {
     dispatch({ type: GET_USERS_START });
-    usersApi
+    return usersApi
       .get()
       .then(res => {
         dispatch({ type: GET_USERS_SUCCESS, users: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_USERS_ERROR });
@@ -26,10 +27,11 @@ export function getUsers() {
 export function getCurrentUser() {
   return dispatch => {
     dispatch({ type: GET_CURRENT_USER_START });
-    usersApi
+    return usersApi
       .getOne("current")
       .then(res => {
         dispatch({ type: GET_CURRENT_USER_SUCCESS, user: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_CURRENT_USER_ERROR });

@@ -9,10 +9,11 @@ import {
 export function getSubTasksForTask(taskId) {
   return dispatch => {
     dispatch({ type: GET_SUB_TASKS_FOR_TASK_START });
-    subTasksApi
+    return subTasksApi
       .get({ task_id: taskId })
       .then(res => {
         dispatch({ type: GET_SUB_TASKS_FOR_TASK_SUCCESS, subTasks: res.data });
+        return res.data;
       })
       .catch(err => {
         dispatch({ type: GET_SUB_TASKS_FOR_TASK_ERROR });

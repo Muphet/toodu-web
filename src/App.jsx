@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/header/Header";
+import ModalRoot from "./components/modalRoot/ModalRoot";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import CodeSplittingService from "./services/CodeSplittingService.js";
 
@@ -30,6 +31,7 @@ export default function App({ store, history }) {
               <Route component={CodeSplittingService.scene("error/Error")} />
             </Switch>
           </main>
+          <ModalRoot />
         </div>
       </ConnectedRouter>
     </Provider>

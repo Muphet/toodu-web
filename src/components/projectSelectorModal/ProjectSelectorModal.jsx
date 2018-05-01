@@ -12,8 +12,7 @@ export class ProjectSelectorModal extends Component {
     createStar: PropTypes.func.isRequired,
     stars: PropTypes.array.isRequired,
     projects: PropTypes.array.isRequired,
-    starredProjectIds: PropTypes.array.isRequired,
-    selectedProject: PropTypes.object
+    starredProjectIds: PropTypes.array.isRequired
   };
 
   state = {

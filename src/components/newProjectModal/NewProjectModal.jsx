@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import projectsApi from "../../../../core/projects/projectsApi";
+import projectsApi from "../../core/projects/projectsApi";
 import newProjectModalContainer from "./newProjectModalContainer";
-import Form from "../../../../components/form/Form";
+import Form from "../form/Form";
 
 export class NewProjectModal extends Component {
   static propTypes = {};

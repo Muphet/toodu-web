@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import invitesApi from "../../../../core/invites/invitesApi";
+import invitesApi from "../../core/invites/invitesApi";
 import newInviteModalContainer from "./newInviteModalContainer";
-import Form from "../../../../components/form/Form";
+import Form from "../form/Form";
 
 export class NewInviteModal extends Component {
   static propTypes = {};

@@ -1,22 +1,4 @@
-import {
-  CLOSE_MODAL,
-  OPEN_MODAL,
-  CHANGE_PROJECT,
-  CHANGE_TASK
-} from "./dashboardConstants";
-
-export function openModal(modal) {
-  return {
-    type: OPEN_MODAL,
-    modal
-  };
-}
-
-export function closeModal() {
-  return {
-    type: CLOSE_MODAL
-  };
-}
+import { CHANGE_PROJECT, CHANGE_TASK } from "./dashboardConstants";
 
 export function changeProject(projectId) {
   return {

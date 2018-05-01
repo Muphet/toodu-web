@@ -7,15 +7,15 @@ import ProjectSelectorModal from "../projectSelectorModal/ProjectSelectorModal";
 
 export class ModalRoot extends Component {
   static propTypes = {
-    activeModal: PropTypes.string
+    modal: PropTypes.string
   };
 
   modalTypes = { NewProjectModal, NewInviteModal, ProjectSelectorModal };
 
   render() {
-    if (!this.props.activeModal) return null;
+    if (!this.props.modal) return null;
 
-    const ModalContent = this.modalTypes[this.props.activeModal];
+    const ModalContent = this.modalTypes[this.props.modal];
 
     return (
       <div className="modal">

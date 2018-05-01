@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import dashboardHeaderContainer from "./dashboardHeaderContainer";
-import UsersList from "../usersList/UsersList";
 
 export class DashboardHeader extends Component {
   static propTypes = {
@@ -14,8 +13,12 @@ export class DashboardHeader extends Component {
         <div className="dashboardHeader__container container">
           <div className="dashboardHeader__start">
             <h2>
-              {this.props.selectedProject && this.props.selectedProject.name}
+              {this.props.selectedProject
+                ? this.props.selectedProject.name
+                : "Select a project..."}
             </h2>
+          </div>
+          <div className="dashboardHeader__end">
             <button
               onClick={() => this.props.openModal("ProjectSelectorModal")}
             >
@@ -24,9 +27,6 @@ export class DashboardHeader extends Component {
             <button onClick={() => this.props.openModal("NewProjectModal")}>
               Create Project
             </button>
-          </div>
-          <div className="dashboardHeader__end">
-            <UsersList />
           </div>
         </div>
       </header>

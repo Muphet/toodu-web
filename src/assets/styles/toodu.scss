@@ -1,3 +1,4 @@
+@import "base/variables";
 @import "base/normalize";
 @import "base/base";
 
@@ -5,16 +6,10 @@
 @import "layout/container";
 @import "layout/content";
 
-@import "elements/checkbox";
 @import "elements/dropdown";
 @import "elements/modal";
 
-@import "components/commentList";
 @import "components/dashboardHeader";
 @import "components/header";
-@import "components/newTask";
-@import "components/projectList";
 @import "components/sceneLoader";
-@import "components/task";
-@import "components/taskList";
 @import "components/usersList";

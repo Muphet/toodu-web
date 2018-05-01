@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
-
 import taskApi from "../../../../../../core/tasks/tasksApi.js";
 import taskListContainer from "./taskListContainer.js";
 
@@ -33,28 +31,19 @@ export class TaskList extends Component {
       );
 
     return (
-      <ul className="taskList">
+      <ul>
         {this.props.tasks.map(task => (
-          <li
-            key={task.id}
-            className={classNames("taskList__task", {
-              "taskList__task--completed": task.completed
-            })}
-          >
-            <div className="checkbox taskList__checkbox">
+          <li key={task.id}>
+            <div>
               <input
-                className="checkbox__input"
                 checked={task.completed}
                 id={`task_${task.id}`}
                 onChange={e => this.updateComplete(task.id, e.target.checked)}
                 type="checkbox"
               />
-              <label className="checkbox__label" htmlFor={`task_${task.id}`} />
+              <label htmlFor={`task_${task.id}`} />
             </div>
-            <Link
-              to={`/app/project/${this.props.projectId}/task/${task.id}`}
-              className="taskList__link"
-            >
+            <Link to={`/app/project/${this.props.projectId}/task/${task.id}`}>
               {task.name}
             </Link>
           </li>

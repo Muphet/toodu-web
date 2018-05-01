@@ -1,9 +1,23 @@
 .dropdown {
   position: absolute;
   display: none;
-  background-color: #fff;
-  color: #1a1a1a;
-  min-width: 100%;
+  right: -20px;
+  top: 100%;
+  background-color: $white;
+  color: $black;
+  width: 250px;
+  border-radius: $borderRadius;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  &:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: -6px;
+    right: 22px;
+    background: $white;
+    transform: rotate(45deg);
+  }
 }
 
 .has-dropdown {
@@ -12,4 +26,12 @@
 
 .has-dropdown:hover .dropdown {
   display: block;
+}
+
+.dropdown__item a {
+  display: block;
+  padding: 10px 15px;
+  &:hover {
+    background: $lightGrey;
+  }
 }

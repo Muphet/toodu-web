@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import classNames from "classnames";
 
 import subTaskApi from "../../../../../../core/subTasks/subTasksApi.js";
 import subTaskListContainer from "./subTaskListContainer.js";
@@ -32,17 +31,11 @@ export class SubTaskList extends Component {
       );
 
     return (
-      <ul className="taskList taskList--subtasks">
+      <ul>
         {this.props.subTasks.map(subTask => (
-          <li
-            key={subTask.id}
-            className={classNames("taskList__task", {
-              "taskList__task--completed": subTask.completed
-            })}
-          >
-            <div className="checkbox taskList__checkbox">
+          <li key={subTask.id}>
+            <div>
               <input
-                className="checkbox__input"
                 checked={subTask.completed}
                 id={`subTask_${subTask.id}`}
                 onChange={e =>
@@ -50,10 +43,7 @@ export class SubTaskList extends Component {
                 }
                 type="checkbox"
               />
-              <label
-                className="checkbox__label"
-                htmlFor={`subTask_${subTask.id}`}
-              />
+              <label htmlFor={`subTask_${subTask.id}`} />
             </div>
             {subTask.name}
           </li>

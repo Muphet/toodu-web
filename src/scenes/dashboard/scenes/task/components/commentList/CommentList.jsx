@@ -17,18 +17,14 @@ export class CommentList extends Component {
     if (!this.props.comments.length) return null;
 
     return (
-      <ul className="commentList">
+      <ul>
         {this.props.comments.map(comment => (
-          <li key={comment.id} className="commentList__comment">
-            <img
-              className="commentList__avatar"
-              src={comment.user.gravatar_url}
-              alt="avatar"
-            />
-            <div className="commentList__wrapper">
-              <h6 className="commentList__name">{comment.user.first_name}</h6>
-              <time className="commentList__time">{comment.created_at}</time>
-              <p className="commentList__content">{comment.content}</p>
+          <li key={comment.id}>
+            <img src={comment.user.gravatar_url} alt="avatar" />
+            <div>
+              <h6>{comment.user.first_name}</h6>
+              <time>{comment.created_at}</time>
+              <p>{comment.content}</p>
             </div>
           </li>
         ))}

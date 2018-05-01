@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import UsersList from "../usersList/UsersList";
 import headerContainer from "./headerContainer";
 
 export class Header extends Component {
@@ -36,36 +36,44 @@ export class Header extends Component {
     return (
       <header className="header">
         <div className="header__container container">
-          <ul className="header__start">
-            <li>
+          <div className="header__start">
+            <h1 className="header__title">
               <Link to="/app">
-                {this.props.team
-                  ? <h1>{this.props.team.name}</h1>
-                  : <h1>Toodu</h1>}
+                {this.props.team ? (
+                  <h1>{this.props.team.name}</h1>
+                ) : (
+                  <h1>Toodu</h1>
+                )}
               </Link>
-            </li>
-          </ul>
+            </h1>
+          </div>
 
-          <ul className="header__end">
-            {this.props.currentUser &&
-              <li className="has-dropdown">
-                <p>
-                  Logged in as {this.props.currentUser.first_name}
-                </p>
+          {this.props.currentUser && (
+            <div className="header__end">
+              <UsersList />
+              <div className="has-dropdown">
+                <div className="header__user">
+                  <img
+                    src={this.props.currentUser.gravatar_url}
+                    alt="Your avatar"
+                    className="header__avatar"
+                  />
+                </div>
                 <ul className="dropdown">
-                  <li>
+                  <li className="dropdown__item">
                     <Link to="/settings/profile" className="navbar-item">
                       Profile settings
                     </Link>
                   </li>
-                  <li>
+                  <li className="dropdown__item">
                     <Link to="/auth/logout" className="navbar-item">
                       Logout
                     </Link>
                   </li>
                 </ul>
-              </li>}
-          </ul>
+              </div>
+            </div>
+          )}
         </div>
       </header>
     );

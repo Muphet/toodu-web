@@ -16,7 +16,6 @@ export default class NewSubTask extends Component {
     return (
       <InlineForm
         submitText="Add"
-        className="newTask"
         onSubmit={this.createSubTask.bind(this)}
         fields={[
           {

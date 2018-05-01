@@ -2,6 +2,7 @@
 *:before,
 *:after {
   box-sizing: inherit;
+  background-repeat: no-repeat;
 }
 
 html,
@@ -9,17 +10,17 @@ body {
   margin: 0;
   height: 100%;
   box-sizing: border-box;
-  background-color: #fafafa;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", sans-serif;
+  background-color: $lightestGrey;
+  color: $black;
+  font-family: $sansSerif;
+  line-height: 1.5;
 }
 
 pre,
 code,
 kbd,
 samp {
-  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier,
-    monospace;
+  font-family: $mono;
 }
 
 a {
@@ -56,4 +57,35 @@ img {
 
 figure {
   margin: 0;
+}
+
+::selection {
+  text-shadow: none;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }

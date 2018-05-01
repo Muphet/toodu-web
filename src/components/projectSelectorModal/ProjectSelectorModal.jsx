@@ -60,12 +60,10 @@ export class ProjectSelectorModal extends Component {
           placeholder="Search for a project..."
         />
         <main>
-          <ul className="projectList">
-            {!projects.length && (
-              <li className="projectList__project">No projects found...</li>
-            )}
+          <ul>
+            {!projects.length && <li>No projects found...</li>}
             {projects.map(project => (
-              <li key={project.id} className="projectList__project">
+              <li key={project.id}>
                 <Link to={`/app/project/${project.id}`}>{project.name}</Link>
                 <div>
                   {this.props.starredProjectIds.includes(project.id) ? (

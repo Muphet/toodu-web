@@ -1,7 +1,7 @@
 .dashboardHeader {
-  background-color: #F4F7FA;
-  border-bottom: 1px solid #DAE1E9;
-  padding: 12px 0;
+  background-color: $lightBlue;
+  border-bottom: 1px solid darken($lightBlue, 5%);
+  padding: 24px 0;
 }
 
 .dashboardHeader__container {
@@ -10,7 +10,8 @@
   align-items: center;
 }
 
-.dashboardHeader__start {
+.dashboardHeader__start,
+.dashboardHeader__end {
   display: flex;
   align-items: center;
 }

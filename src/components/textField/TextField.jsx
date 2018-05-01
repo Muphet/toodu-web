@@ -20,7 +20,7 @@ export default class TextField extends Component {
 
   render() {
     return (
-      <div className="field">
+      <div>
         {this.props.label && (
           <label htmlFor={this.props.name} className="label">
             {this.props.label}

@@ -48,8 +48,8 @@ export class Task extends Component {
     console.log(this.state);
     return (
       <div className="content__col content__col--half">
-        <div className="task">
-          <header className="task__header">
+        <div>
+          <header>
             <h2>{this.props.task.name}</h2>
             <p onClick={this.showDatePicker.bind(this)}>
               Due on {this.props.task.due_date}

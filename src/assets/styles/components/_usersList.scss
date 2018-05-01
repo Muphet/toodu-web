@@ -1,16 +1,39 @@
 .usersList {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 .usersList__users {
   display: flex;
+  flex-direction: row-reverse;
 }
 
 .usersList__user {
-  margin-left: 5px;
+  margin-left: -12px;
 }
 
 .usersList__avatar {
+  box-sizing: content-box;
   border-radius: 50%;
-  width: 35px;
+  width: 25px;
+  border: 3px solid $blue;
+}
+
+.usersList__button {
+  box-sizing: content-box;
+  border: 3px solid $blue;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: $green;
+  background-image: url("../icons/plus-white.svg");
+  background-size: 16px;
+  background-position: center;
+
+  &:hover {
+    background-color: lighten($green, 5%);
+  }
 }

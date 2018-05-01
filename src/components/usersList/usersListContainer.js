@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { openModal } from "../../../../core/modal/modalActions";
+import { openModal } from "../../core/modal/modalActions";
 
 const usersSelector = state => state.core.users.data;
 

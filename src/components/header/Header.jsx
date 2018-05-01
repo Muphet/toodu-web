@@ -61,12 +61,12 @@ export class Header extends Component {
                 </div>
                 <ul className="dropdown">
                   <li className="dropdown__item">
-                    <Link to="/settings/profile" className="navbar-item">
+                    <Link to="/settings/profile" className="dropdown__link">
                       Profile settings
                     </Link>
                   </li>
                   <li className="dropdown__item">
-                    <Link to="/auth/logout" className="navbar-item">
+                    <Link to="/auth/logout" className="dropdown__link">
                       Logout
                     </Link>
                   </li>

@@ -1,0 +1,23 @@
+@function brightness($color) {
+  @return (red($color) + green($color) + blue($color)) / (255 * 3);
+}
+
+@function brightnessRatio($base, $color) {
+  @return abs(brightness($base) - brightness($color));
+}
+
+@function contrast($base, $light: $white, $dark: $black) {
+  @return if(
+    brightnessRatio($base, $light) + 0.4 > brightnessRatio($base, $dark),
+    $light,
+    $dark
+  );
+}
+
+@function invertContrast($base, $light: $white, $dark: $black) {
+  @return if(
+    brightnessRatio($base, $light) + 0.4 > brightnessRatio($base, $dark),
+    $dark,
+    $light
+  );
+}

@@ -1,0 +1,38 @@
+$button-colors: (
+  blue: $blue,
+  green: $green,
+  grey: $mediumGrey
+);
+
+.button {
+  appearance: none;
+  border: none;
+  border-radius: $borderRadius;
+  display: inline-block;
+  color: $white;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+.button:disabled {
+  background: $lightGrey !important;
+  color: $black !important;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@each $name, $color in $button-colors {
+  .button--#{$name} {
+    background: $color;
+    color: contrast($color);
+    text-shadow: 1px 1px 2px rgba(invertContrast($color), 0.5);
+
+    &:hover {
+      background: lighten($color, 5%);
+    }
+
+    &:active {
+      background: darken($color, 5%);
+    }
+  }
+}

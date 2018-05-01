@@ -19,14 +19,20 @@ export class DashboardHeader extends Component {
             </h2>
           </div>
           <div className="dashboardHeader__end">
-            <button
-              onClick={() => this.props.openModal("ProjectSelectorModal")}
-            >
-              Select Project
-            </button>
-            <button onClick={() => this.props.openModal("NewProjectModal")}>
-              Create Project
-            </button>
+            <div className="dashboardHeader__actions">
+              <button
+                className="dashboardHeader__action button button--blue"
+                onClick={() => this.props.openModal("ProjectSelectorModal")}
+              >
+                Select Project
+              </button>
+              <button
+                className="dashboardHeader__action button button--green"
+                onClick={() => this.props.openModal("NewProjectModal")}
+              >
+                Create Project
+              </button>
+            </div>
           </div>
         </div>
       </header>

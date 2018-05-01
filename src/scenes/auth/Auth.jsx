@@ -14,7 +14,7 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <div>
+      <main className="container content content--center">
         <Switch>
           <Route exact path="/auth/login" component={Login} />
           <Route exact path="/auth/signup" component={Signup} />
@@ -39,7 +39,7 @@ export default class Auth extends Component {
           />
           <Redirect to="/auth/login" />
         </Switch>
-      </div>
+      </main>
     );
   }
 }

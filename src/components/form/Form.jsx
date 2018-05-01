@@ -9,7 +9,6 @@ export default class Form extends Component {
   static propTypes = {
     submitText: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    className: PropTypes.string,
     fields: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -72,17 +71,14 @@ export default class Form extends Component {
     if (this.unmounted) return;
     this.setState({
       submitting: false,
-      errors: err.response.data.errors.full_messages,
+      errors: err.response.data.errors,
       message: null
     });
   }
 
   render() {
     return (
-      <form
-        onSubmit={this.onSubmit.bind(this)}
-        className={this.props.className}
-      >
+      <form onSubmit={this.onSubmit.bind(this)} className="form">
         <FormErrors errors={this.state.errors} />
         <FormMessage message={this.state.message} />
         {this.props.fields.map(field => (
@@ -95,7 +91,11 @@ export default class Form extends Component {
             onChange={this.updateField.bind(this)}
           />
         ))}
-        <button>{this.props.submitText}</button>
+        <div className="form__buttons">
+          <button className="button button--green form__button">
+            {this.props.submitText}
+          </button>
+        </div>
       </form>
     );
   }

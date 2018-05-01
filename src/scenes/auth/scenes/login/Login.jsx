@@ -19,24 +19,38 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        <Form
-          submitText="Login"
-          onSubmit={this.login.bind(this)}
-          fields={[
-            {
-              name: "email",
-              type: "email",
-              label: "Enter your email address"
-            },
-            {
-              name: "password",
-              type: "password",
-              label: "Enter your password"
-            }
-          ]}
-        />
-        <Link to="/auth/forgot-password">Forgotten your password?</Link>
-        <Link to="/auth/signup">Go to signup</Link>
+        <div className="authBox">
+          <header className="authBox__header">
+            <figure className="authBox__icon authBox__icon--user" />
+            <h1 className="authBox__title">Log in</h1>
+          </header>
+          <main className="authBox__body">
+            <Form
+              submitText="Login"
+              onSubmit={this.login.bind(this)}
+              fields={[
+                {
+                  name: "email",
+                  type: "email",
+                  label: "Enter your email address"
+                },
+                {
+                  name: "password",
+                  type: "password",
+                  label: "Enter your password"
+                }
+              ]}
+            />
+          </main>
+        </div>
+        <div className="authLinks">
+          <Link className="authLinks__link" to="/auth/forgot-password">
+            Forgotten your password?
+          </Link>
+          <Link className="authLinks__link" to="/auth/signup">
+            Go to signup
+          </Link>
+        </div>
       </div>
     );
   }

@@ -12,10 +12,17 @@ export default class Verified extends Component {
   render() {
     return (
       <div>
-        <h1 className="subtitle">Your email has been verified</h1>
-        <Link to="/" className="button is-info is-fullwidth">
-          Get started
-        </Link>
+        <div className="authBox">
+          <header className="authBox__header">
+            <figure className="authBox__icon authBox__icon--user" />
+            <h1 className="authBox__title">Your email has been verified</h1>
+          </header>
+          <main className="authBox__body">
+            <Link to="/" className="button button--green">
+              Get started
+            </Link>
+          </main>
+        </div>
       </div>
     );
   }

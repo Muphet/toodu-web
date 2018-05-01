@@ -48,7 +48,7 @@ export class ProjectSelectorModal extends Component {
       : this.props.projects;
 
     return (
-      <div className="modal__content">
+      <div>
         <header className="modal__header">
           <h2 className="modal__title">Select a project</h2>
         </header>
@@ -66,19 +66,16 @@ export class ProjectSelectorModal extends Component {
               <li key={project.id}>
                 <Link to={`/app/project/${project.id}`}>{project.name}</Link>
                 <div>
-                  {this.props.starredProjectIds.includes(project.id) ? (
-                    <button onClick={() => this.unstar(project.id)}>
-                      unstar
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() =>
-                        this.props.createStar({ project_id: project.id })
-                      }
-                    >
-                      star
-                    </button>
-                  )}
+                  {this.props.starredProjectIds.includes(project.id)
+                    ? <button onClick={() => this.unstar(project.id)}>
+                        unstar
+                      </button>
+                    : <button
+                        onClick={() =>
+                          this.props.createStar({ project_id: project.id })}
+                      >
+                        star
+                      </button>}
                 </div>
               </li>
             ))}

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 export default class FormErrors extends Component {
   static propTypes = {
-    errors: PropTypes.array
+    errors: PropTypes.object
   };
 
   render() {
@@ -11,7 +11,9 @@ export default class FormErrors extends Component {
 
     return (
       <ul>
-        {this.props.errors.map(error => <li key={error}>{error}</li>)}
+        {Object.keys(this.props.errors).map(field => (
+          <li key={field}>{`${field} ${this.props.errors[field][0]}`}</li>
+        ))}
       </ul>
     );
   }

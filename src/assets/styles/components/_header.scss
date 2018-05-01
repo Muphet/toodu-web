@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
 }
 
 .header__title {
@@ -29,5 +30,23 @@
 
 .header__avatar {
   border-radius: 50%;
-  width: 25px;
+  width: 30px;
+}
+
+.header__inviteButton {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: $green;
+  background-image: url("../icons/plus-white.svg");
+  background-size: 16px;
+  background-position: center;
+
+  &:hover {
+    background-color: lighten($green, 5%);
+  }
 }

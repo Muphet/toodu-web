@@ -12,7 +12,7 @@ export class DashboardHeader extends Component {
       <header className="dashboardHeader">
         <div className="dashboardHeader__container container">
           <div className="dashboardHeader__start">
-            <h2>
+            <h2 className="dashboardHeader__title">
               {this.props.selectedProject
                 ? this.props.selectedProject.name
                 : "Select a project..."}

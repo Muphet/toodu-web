@@ -15,18 +15,22 @@ export class NewInviteModal extends Component {
   render() {
     return (
       <div>
-        <h3>Create a new invite</h3>
-        <Form
-          submitText="Create"
-          onSubmit={this.createInvite.bind(this)}
-          fields={[
-            {
-              name: "email",
-              type: "email",
-              label: "Enter the email for your Invite"
-            }
-          ]}
-        />
+        <header className="modal__header">
+          <h3>Invite a new user to your team</h3>
+        </header>
+        <main className="modal__body">
+          <Form
+            submitText="Create"
+            onSubmit={this.createInvite.bind(this)}
+            fields={[
+              {
+                name: "email",
+                type: "email",
+                label: "Enter the email of your invite"
+              }
+            ]}
+          />
+        </main>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
 import { getTeam } from "../../core/teams/teamsActions";
+import { openModal } from "../../core/modal/modalActions";
 import { getUsers, getCurrentUser } from "../../core/users/usersActions";
 
 const teamSelector = state => state.core.team.data;
@@ -19,4 +20,9 @@ const mapStateToProps = state => ({
   authenticated: authenticatedSelector(state)
 });
 
-export default connect(mapStateToProps, { getTeam, getUsers, getCurrentUser });
+export default connect(mapStateToProps, {
+  getTeam,
+  getUsers,
+  getCurrentUser,
+  openModal
+});

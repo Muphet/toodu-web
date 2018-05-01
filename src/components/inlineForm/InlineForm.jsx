@@ -10,22 +10,23 @@ export default class InlineForm extends Form {
     const value = this.state.fields[field.name] || "";
 
     return (
-      <form
-        onSubmit={this.onSubmit.bind(this)}
-        className={this.props.className}
-      >
+      <form onSubmit={this.onSubmit.bind(this)} className="inlineForm">
         <FormErrors errors={this.state.errors} />
         <FormMessage message={this.state.message} />
-        <input
-          name={field.name}
-          className="input"
-          id={field.name}
-          type={field.type}
-          value={value}
-          onChange={e => this.updateField(field.name, e.target.value)}
-          placeholder={field.label}
-        />
-        <button>{this.props.submitText}</button>
+        <div className="inlineForm__container">
+          <input
+            name={field.name}
+            className="input inlineForm__input"
+            id={field.name}
+            type={field.type}
+            value={value}
+            onChange={e => this.updateField(field.name, e.target.value)}
+            placeholder={field.label}
+          />
+          <button className="button button--green inlineForm__button">
+            {this.props.submitText}
+          </button>
+        </div>
       </form>
     );
   }

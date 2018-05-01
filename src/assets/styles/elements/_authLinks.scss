@@ -1,0 +1,15 @@
+.authLinks {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.authLinks__link {
+  color: $blue;
+  font-weight: bold;
+  font-size: 13px;
+  margin: 8px;
+  &:hover {
+    text-decoration: underline;
+  }
+}

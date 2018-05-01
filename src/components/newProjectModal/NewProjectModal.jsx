@@ -15,18 +15,22 @@ export class NewProjectModal extends Component {
   render() {
     return (
       <div>
-        <h3>Create a new project</h3>
-        <Form
-          submitText="Create"
-          onSubmit={this.createProject.bind(this)}
-          fields={[
-            {
-              name: "name",
-              type: "text",
-              label: "Enter a name for your project"
-            }
-          ]}
-        />
+        <header className="modal__header">
+          <h3>Create a new project</h3>
+        </header>
+        <main className="modal__body">
+          <Form
+            submitText="Create"
+            onSubmit={this.createProject.bind(this)}
+            fields={[
+              {
+                name: "name",
+                type: "text",
+                label: "Enter a name for your project"
+              }
+            ]}
+          />
+        </main>
       </div>
     );
   }

@@ -1,0 +1,45 @@
+.task {
+  background-color: $white;
+  border: 1px solid $mediumGrey;
+  border-radius: $borderRadius;
+}
+
+.task__header {
+  border-bottom: 2px solid $mediumGrey;
+  margin-bottom: 16px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task__body {
+  padding: 16px;
+}
+
+.task__footer {
+  padding: 16px 32px;
+  background-color: lighten($lightBlue, 3%);
+  border-top: 1px solid darken($lightBlue, 3%);
+}
+
+.task__dueDate {
+  position: relative;
+  border: 1px solid $mediumGrey;
+  border-radius: 20px;
+  padding: 6px 16px 6px 40px;
+  background-image: url("../icons/calendar.svg");
+  background-position: 16px center;
+  background-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: $lightGrey;
+  }
+}
+
+.task__datePicker {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  top: 40px;
+}

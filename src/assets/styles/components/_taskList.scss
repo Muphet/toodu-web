@@ -15,12 +15,16 @@
   z-index: 2;
 }
 
-.taskList__link {
+.taskList__link,
+.taskList__name {
   display: block;
   padding: 12px 20px 12px 70px;
   background: $white;
   border: 1px solid $mediumGrey;
   border-radius: $borderRadius;
+}
+
+.taskList__link {
   transition: background-color ease-out 0.2s;
   &:hover {
     background-color: $lightBlue;

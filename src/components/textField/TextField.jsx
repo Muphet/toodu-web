@@ -7,7 +7,8 @@ export default class TextField extends Component {
     value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    label: PropTypes.string
+    label: PropTypes.string,
+    showLabel: PropTypes.bool
   };
 
   static defaultProps = {
@@ -19,13 +20,20 @@ export default class TextField extends Component {
   }
 
   render() {
+    const Input =
+      this.props.type === "textarea"
+        ? props => <textarea {...props} />
+        : props => <input {...props} />;
+
     return (
       <div className="textField">
         {this.props.label &&
-          <label className="textField__label" htmlFor={this.props.name}>
-            {this.props.label}
-          </label>}
-        <input
+          this.props.showLabel && (
+            <label className="textField__label" htmlFor={this.props.name}>
+              {this.props.label}
+            </label>
+          )}
+        <Input
           className="textField__input input"
           name={this.props.name}
           id={this.props.name}

@@ -23,17 +23,18 @@ export class SubTaskList extends Component {
   render() {
     if (!this.props.subTasks.length)
       return (
-        <div>
+        <div className="empty">
           <p>No sub tasks yet</p>
         </div>
       );
 
     return (
-      <ul>
+      <ul className="taskList">
         {this.props.subTasks.map(subTask => (
-          <li key={subTask.id}>
-            <div>
+          <li className="taskList__task" key={subTask.id}>
+            <div className="checkbox taskList__checkbox">
               <input
+                className="checkbox__input"
                 checked={subTask.completed}
                 id={`subTask_${subTask.id}`}
                 onChange={e =>
@@ -41,9 +42,12 @@ export class SubTaskList extends Component {
                 }
                 type="checkbox"
               />
-              <label htmlFor={`subTask_${subTask.id}`} />
+              <label
+                className="checkbox__label"
+                htmlFor={`subTask_${subTask.id}`}
+              />
             </div>
-            {subTask.name}
+            <div className="taskList__name">{subTask.name}</div>
           </li>
         ))}
       </ul>

@@ -15,6 +15,7 @@ export default class Form extends Component {
         type: PropTypes.oneOf(["text", "email", "password", "textarea"])
           .isRequired,
         label: PropTypes.string,
+        showLabel: PropTypes.bool,
         initialValue: PropTypes.string
       })
     )
@@ -87,6 +88,7 @@ export default class Form extends Component {
             label={field.label}
             name={field.name}
             type={field.type}
+            showLabel={field.showLabel}
             value={this.state.fields[field.name]}
             onChange={this.updateField.bind(this)}
           />

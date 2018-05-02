@@ -1,0 +1,50 @@
+.commentList {
+  margin-bottom: 32px;
+}
+
+.commentList__comment {
+  display: flex;
+  align-items: flex-start;
+  margin: 16px 0;
+}
+
+.commentList__wrapper {
+  position: relative;
+  padding: 12px;
+  border: 1px solid $mediumGrey;
+  flex: 1;
+  background: $white;
+  border-radius: $borderRadius;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid $mediumGrey;
+    border-top: 1px solid $mediumGrey;
+    transform: rotate(-45deg);
+    left: -6px;
+    top: 17px;
+    background: $white;
+  }
+}
+
+.commentList__avatar {
+  width: 40px;
+  border-radius: $borderRadius;
+  margin-right: 16px;
+}
+
+.commentList__name {
+  font-weight: bold;
+  line-height: 1;
+}
+
+.commentList__time {
+  color: $darkGrey;
+  font-size: 13px;
+}
+
+.commentList__content {
+  padding-top: 10px;
+}

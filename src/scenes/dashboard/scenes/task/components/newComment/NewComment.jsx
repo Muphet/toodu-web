@@ -22,7 +22,8 @@ export default class NewComment extends Component {
           {
             name: "content",
             type: "textarea",
-            label: "post a new comment"
+            label: "Post a new comment",
+            showLabel: false
           }
         ]}
       />

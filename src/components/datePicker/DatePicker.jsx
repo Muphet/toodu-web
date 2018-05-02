@@ -6,6 +6,7 @@ import DayPicker from "react-day-picker";
 export default class FormErrors extends Component {
   static propTypes = {
     hidden: PropTypes.bool,
+    className: PropTypes.string,
     onCancel: PropTypes.func.isRequired,
     onConfirm: PropTypes.func.isRequired
   };
@@ -30,7 +31,7 @@ export default class FormErrors extends Component {
     if (this.props.hidden) return null;
 
     return (
-      <div className="datePicker">
+      <div className={"datePicker " + this.props.className}>
         <DayPicker
           onDayClick={this.handleDaySelect.bind(this)}
           selectedDays={this.state.day}

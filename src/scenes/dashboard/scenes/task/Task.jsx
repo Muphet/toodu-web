@@ -49,26 +49,36 @@ export class Task extends Component {
     if (!this.props.task) return <p>Task not found</p>;
     return (
       <div className="content__col content__col--half">
-        <div>
-          <header>
-            <h2>{this.props.task.name}</h2>
-            <p onClick={this.showDatePicker.bind(this)}>
-              {this.props.task.due_date
-                ? `Due on ${this.props.task.due_date}`
-                : "Set a due date"}
-            </p>
-            <DatePicker
-              hidden={!this.state.showDatePicker}
-              onConfirm={this.handleDatePick.bind(this)}
-              onCancel={this.hideDatePicker.bind(this)}
-            />
+        <div className="task">
+          <header className="task__header">
+            <h2 className="task__title">{this.props.task.name}</h2>
+            <div
+              className="task__actions"
+              onClick={this.showDatePicker.bind(this)}
+            >
+              <div className="task__dueDate">
+                <p>
+                  {this.props.task.due_date
+                    ? this.props.task.due_date
+                    : "Not set"}
+                </p>
+                <DatePicker
+                  hidden={!this.state.showDatePicker}
+                  onConfirm={this.handleDatePick.bind(this)}
+                  onCancel={this.hideDatePicker.bind(this)}
+                  className="task__datePicker"
+                />
+              </div>
+            </div>
           </header>
-
-          <NewSubTask taskId={this.props.task.id} />
-          <SubTaskList taskId={this.props.task.id} />
-
-          <CommentList taskId={this.props.task.id} />
-          <NewComment taskId={this.props.task.id} />
+          <main className="task__body">
+            <NewSubTask taskId={this.props.task.id} />
+            <SubTaskList taskId={this.props.task.id} />
+          </main>
+          <footer className="task__footer">
+            <CommentList taskId={this.props.task.id} />
+            <NewComment taskId={this.props.task.id} />
+          </footer>
         </div>
       </div>
     );

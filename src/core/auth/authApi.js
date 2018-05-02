@@ -10,7 +10,7 @@ const authApi = {
     const { teamName, ...data } = signupData;
     return ApiService.post("/auth", {
       ...data,
-      teamAttributes: { teamName }
+      teamAttributes: { name: teamName }
     }).then(res => {
       res.data.message =
         "You have been sent an email with instructions for completing your registration";

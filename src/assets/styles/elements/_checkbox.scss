@@ -21,7 +21,4 @@
   background-color: lighten($blue, 30%);
   border-color: $blue;
   background-image: url("../icons/check-white.svg");
-  &:hover {
-    background-image: none;
-  }
 }

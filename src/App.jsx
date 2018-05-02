@@ -15,9 +15,9 @@ export default function App({ store, history }) {
           <Header />
           <main className="app__main">
             <Switch>
-              <Redirect exact from="/" to="/app" />
+              <Redirect exact from="/" to="/dashboard" />
               <ProtectedRoute
-                path="/app"
+                path="/dashboard"
                 component={CodeSplittingService.scene("dashboard/Dashboard")}
               />
               <ProtectedRoute

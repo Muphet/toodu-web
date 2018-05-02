@@ -7,9 +7,13 @@
   margin-bottom: 6px;
 }
 
+.taskList__task--active {
+  border: 1px solid $blue;
+}
+
 .taskList__checkbox {
   position: absolute;
-  left: 20px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
@@ -18,7 +22,7 @@
 .taskList__link,
 .taskList__name {
   display: block;
-  padding: 12px 20px 12px 70px;
+  padding: 12px 20px 12px 60px;
   background-color: $white;
   border: 1px solid $mediumGrey;
   border-radius: $borderRadius;
@@ -31,7 +35,8 @@
   }
 }
 
-.taskList__link--completed {
+.taskList__link--completed,
+.taskList__name--completed {
   opacity: 0.6;
   text-decoration: line-through;
 }

@@ -14,9 +14,12 @@ export default class Dashboard extends Component {
       <div>
         <DashboardHeader />
         <main className="container content content--center">
-          <Route path="/app/project/:projectId" component={Project} />
-          <Route path="/app/project/:projectId/task/:taskId" component={Task} />
-          <Route exact path="/app/:project?" component={DashboardEmpty} />
+          <Route path="/dashboard/project/:projectId" component={Project} />
+          <Route
+            path="/dashboard/project/:projectId/task/:taskId"
+            component={Task}
+          />
+          <Route exact path="/dashboard/:project?" component={DashboardEmpty} />
         </main>
       </div>
     );

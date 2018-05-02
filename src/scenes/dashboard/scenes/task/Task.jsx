@@ -27,6 +27,10 @@ export class Task extends Component {
     this.props.changeTask(this.props.match.params.taskId);
   }
 
+  componentWillUnmount() {
+    this.props.changeTask(null);
+  }
+
   componentDidUpdate(prevProps) {
     const prevParams = prevProps.match.params;
     const params = this.props.match.params;
@@ -92,12 +96,12 @@ export class Task extends Component {
                 className="task__user"
                 onClick={this.showUserPicker.bind(this)}
               >
-                {this.props.assignedUser && (
+                {this.props.assignedUser &&
                   <img
                     className="task__userAvatar"
+                    alt={`${this.props.assignedUser.first_name}'s avatar`}
                     src={this.props.assignedUser.gravatar_url}
-                  />
-                )}
+                  />}
                 <UserPicker
                   hidden={!this.state.showUserPicker}
                   onConfirm={this.handleUserPick.bind(this)}

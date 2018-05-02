@@ -62,36 +62,32 @@ export class ProjectSelectorModal extends Component {
         />
         <main>
           <ul className="projectSelector">
-            {!projects.length && (
+            {!projects.length &&
               <li className="empty">
                 <p>No projects found...</p>
-              </li>
-            )}
+              </li>}
             {projects.map(project => (
               <li key={project.id} className="projectSelector__project">
                 <Link
                   className="projectSelector__link"
                   onClick={this.props.closeModal}
-                  to={`/app/project/${project.id}`}
+                  to={`/dashboard/project/${project.id}`}
                 >
                   {project.name}
                 </Link>
                 <div className="projectSelector__actions">
-                  {this.props.starredProjectIds.includes(project.id) ? (
-                    <button
-                      title="Unstar this project"
-                      className="projectSelector__action projectSelector__action--unstar"
-                      onClick={() => this.unstar(project.id)}
-                    />
-                  ) : (
-                    <button
-                      title="Star this project"
-                      className="projectSelector__action projectSelector__action--star"
-                      onClick={() =>
-                        this.props.createStar({ project_id: project.id })
-                      }
-                    />
-                  )}
+                  {this.props.starredProjectIds.includes(project.id)
+                    ? <button
+                        title="Unstar this project"
+                        className="projectSelector__action projectSelector__action--unstar"
+                        onClick={() => this.unstar(project.id)}
+                      />
+                    : <button
+                        title="Star this project"
+                        className="projectSelector__action projectSelector__action--star"
+                        onClick={() =>
+                          this.props.createStar({ project_id: project.id })}
+                      />}
                 </div>
               </li>
             ))}

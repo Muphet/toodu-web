@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import dashboardHeaderContainer from "./dashboardHeaderContainer";
 
 export class DashboardHeader extends Component {
@@ -14,7 +15,11 @@ export class DashboardHeader extends Component {
           <div className="dashboardHeader__start">
             <h2 className="dashboardHeader__title">
               {this.props.selectedProject
-                ? this.props.selectedProject.name
+                ? <Link
+                    to={`/dashboard/project/${this.props.selectedProject.id}`}
+                  >
+                    {this.props.selectedProject.name}
+                  </Link>
                 : "Select a project..."}
             </h2>
           </div>

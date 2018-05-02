@@ -20,6 +20,10 @@ export class Project extends Component {
     this.props.getProject(this.props.match.params.projectId);
   }
 
+  componentWillUnmount() {
+    this.props.changeProject(null);
+  }
+
   componentDidUpdate(prevProps) {
     const prevParams = prevProps.match.params;
     const params = this.props.match.params;

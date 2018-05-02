@@ -36,17 +36,15 @@ export class Header extends Component {
         <div className="header__container container">
           <div className="header__start">
             <h1 className="header__title">
-              <Link to="/app">
-                {this.props.team ? (
-                  <h1>{this.props.team.name}</h1>
-                ) : (
-                  <h1>Toodu</h1>
-                )}
+              <Link to="/dashboard">
+                {this.props.team
+                  ? <h1>{this.props.team.name}</h1>
+                  : <h1>Toodu</h1>}
               </Link>
             </h1>
           </div>
 
-          {this.props.currentUser && (
+          {this.props.currentUser &&
             <div className="header__end">
               <button
                 className="header__inviteButton"
@@ -63,6 +61,16 @@ export class Header extends Component {
                 </div>
                 <ul className="dropdown">
                   <li className="dropdown__item">
+                    <Link to="/dashboard" className="dropdown__link">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="dropdown__item dropdown__item--divider">
+                    <Link to="/tasks" className="dropdown__link">
+                      My Tasks
+                    </Link>
+                  </li>
+                  <li className="dropdown__item">
                     <Link to="/settings/profile" className="dropdown__link">
                       Profile settings
                     </Link>
@@ -74,8 +82,7 @@ export class Header extends Component {
                   </li>
                 </ul>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </header>
     );

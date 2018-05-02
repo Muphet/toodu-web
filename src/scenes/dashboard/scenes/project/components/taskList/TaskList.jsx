@@ -36,7 +36,13 @@ export class TaskList extends Component {
     return (
       <ul className="taskList">
         {this.props.tasks.map(task => (
-          <li key={task.id} className="taskList__task">
+          <li
+            key={task.id}
+            className={classNames("taskList__task", {
+              "taskList__task--active": this.props.activeTask &&
+                task.id === this.props.activeTask.id
+            })}
+          >
             <div className="checkbox taskList__checkbox">
               <input
                 className="checkbox__input"
@@ -51,19 +57,18 @@ export class TaskList extends Component {
               className={classNames("taskList__link", {
                 "taskList__link--completed": task.completed
               })}
-              to={`/app/project/${this.props.projectId}/task/${task.id}`}
+              to={`/dashboard/project/${this.props.projectId}/task/${task.id}`}
             >
               {task.name}
             </Link>
             <ul className="taskList__info">
-              {task.due_date && (
+              {task.due_date &&
                 <li className="taskList__dueDate">
                   {UtilService.dueDateInWords(task.due_date)}
-                </li>
-              )}
-              <li className="taskList__user">
-                {task.user_id &&
-                  (() => {
+                </li>}
+              {task.user_id &&
+                <li className="taskList__user">
+                  {(() => {
                     const user = this.props.users.find(
                       user => user.id === task.user_id
                     );
@@ -72,10 +77,11 @@ export class TaskList extends Component {
                       <img
                         className="taskList__userAvatar"
                         src={user.gravatar_url}
+                        alt={`${user.first_name}'s avatar`}
                       />
                     );
                   })()}
-              </li>
+                </li>}
             </ul>
           </li>
         ))}

@@ -13,7 +13,6 @@
 }
 
 .content__col {
-  flex: 1;
   margin-left: 12px;
   margin-right: 12px;
 }
@@ -28,4 +27,12 @@
 
 .content__col--half {
   flex-basis: 50%;
+}
+
+@media (max-width: 950px)  {
+  .content__col {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

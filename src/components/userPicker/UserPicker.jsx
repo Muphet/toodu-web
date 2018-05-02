@@ -51,8 +51,6 @@ export class UserPicker extends Component {
   render() {
     if (this.props.hidden) return null;
 
-    const selected = this.state.user || this.props.user;
-
     return (
       <div className={"userPicker " + this.props.className}>
         <ul className="userPicker__users">
@@ -64,7 +62,11 @@ export class UserPicker extends Component {
                 "userPicker__user--active": user.id === this.state.user.id
               })}
             >
-              <img src={user.gravatar_url} className="userPicker__avatar" />
+              <img
+                src={user.gravatar_url}
+                className="userPicker__avatar"
+                alt={`${user.first_name}'s avatar`}
+              />
               {user.first_name + " " + user.last_name}
             </li>
           ))}

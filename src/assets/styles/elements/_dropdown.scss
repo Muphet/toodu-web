@@ -32,8 +32,16 @@
   z-index: -1;
 }
 
-.dropdownItem:not(:last-child) {
+.dropdown__item {
   border-bottom: 1px solid $lightGrey;
+}
+
+.dropdown__item:last-child {
+  border-bottom: none;
+}
+
+.dropdown__item--divider {
+  border-bottom: 2px solid $mediumGrey;
 }
 
 .dropdown__link {

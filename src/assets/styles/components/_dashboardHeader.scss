@@ -27,3 +27,13 @@
 .dashboardHeader__action {
   margin-left: 10px;
 }
+
+@media(max-width: 700px) {
+  .dashboardHeader__container {
+    flex-direction: column;
+  }
+
+  .dashboardHeader__actions {
+    margin-top: 16px;
+  }
+}

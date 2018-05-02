@@ -17,6 +17,12 @@ export class DashboardEmpty extends Component {
         >
           Select Project
         </button>
+        <button
+          className="dashboardEmpty__action button button--green"
+          onClick={() => this.props.openModal("NewProjectModal")}
+        >
+          Create Project
+        </button>
       </div>
     );
   }

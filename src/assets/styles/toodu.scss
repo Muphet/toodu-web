@@ -11,13 +11,14 @@
 @import "elements/authLinks";
 @import "elements/button";
 @import "elements/checkbox";
-@import "elements/datePicker";
 @import "elements/dropdown";
 @import "elements/empty";
 @import "elements/input";
 @import "elements/modal";
 
 @import "components/commentList";
+@import "components/datePicker";
+@import "components/dashboardEmpty";
 @import "components/dashboardHeader";
 @import "components/form";
 @import "components/formMessage";
@@ -29,3 +30,4 @@
 @import "components/task";
 @import "components/taskList";
 @import "components/textField";
+@import "components/userPicker";

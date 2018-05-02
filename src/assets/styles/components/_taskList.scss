@@ -35,3 +35,44 @@
   opacity: 0.6;
   text-decoration: line-through;
 }
+
+.taskList__info {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.taskList__dueDate {
+  font-size: 12px;
+  background-image: url("../icons/calendar.svg");
+  background-size: 12px;
+  background-position: 6px center;
+  background-color: $lightBlue;
+  padding: 3px 6px;
+  padding-left: 22px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+.taskList__user {
+  width: 24px;
+  height: 24px;
+  background-color: $lightGrey;
+  background-image: url("../icons/user-grey.svg");
+  background-position: center;
+  background-size: 16px;
+  border-radius: 50%;
+  margin-left: 5px;
+  overflow: hidden;
+}
+
+.taskList__userAvatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $mediumGrey;
+}

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import UtilService from "../../../../../../services/UtilService";
 import taskApi from "../../../../../../core/tasks/tasksApi.js";
 import taskListContainer from "./taskListContainer.js";
 
@@ -13,8 +14,9 @@ export class TaskList extends Component {
     currentTaskId: PropTypes.string
   };
 
-  async componentDidMount(e) {
+  componentDidMount(e) {
     this.props.getTasksForProject();
+    this.props.getUsers();
   }
 
   updateComplete(taskId, completed) {
@@ -26,7 +28,7 @@ export class TaskList extends Component {
   render() {
     if (!this.props.tasks.length)
       return (
-        <div className="empty">
+        <div className="empty empty--white">
           <p>No tasks yet...</p>
         </div>
       );
@@ -53,6 +55,28 @@ export class TaskList extends Component {
             >
               {task.name}
             </Link>
+            <ul className="taskList__info">
+              {task.due_date && (
+                <li className="taskList__dueDate">
+                  {UtilService.dueDateInWords(task.due_date)}
+                </li>
+              )}
+              <li className="taskList__user">
+                {task.user_id &&
+                  (() => {
+                    const user = this.props.users.find(
+                      user => user.id === task.user_id
+                    );
+                    if (!user) return null;
+                    return (
+                      <img
+                        className="taskList__userAvatar"
+                        src={user.gravatar_url}
+                      />
+                    );
+                  })()}
+              </li>
+            </ul>
           </li>
         ))}
       </ul>

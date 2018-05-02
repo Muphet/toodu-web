@@ -26,7 +26,7 @@ export default class Form extends Component {
     errors: null,
     message: null,
     fields: this.props.fields.reduce((fields, field) => {
-      fields[field.name] = field.initialValue;
+      fields[field.name] = field.initialValue || "";
       return fields;
     }, {})
   };

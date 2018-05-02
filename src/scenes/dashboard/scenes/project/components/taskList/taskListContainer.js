@@ -1,8 +1,10 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
+import { getUsers } from "../../../../../../core/users/usersActions";
 import { getTasksForProject } from "../../../../../../core/tasks/tasksActions";
 
 const tasksSelector = state => state.core.tasks.data;
+const usersSelector = state => state.core.users.data;
 const currentProjectIdSelector = (state, props) => props.projectId;
 const activeTaskIdSelector = state => state.scenes.dashboard.activeTask;
 
@@ -16,7 +18,8 @@ const tasksForCurrentProjectSelector = createSelector(
 
 const mapStateToProps = (state, props) => ({
   tasks: tasksForCurrentProjectSelector(state, props),
-  activeTaskId: activeTaskIdSelector(state)
+  activeTaskId: activeTaskIdSelector(state),
+  users: usersSelector(state)
 });
 
-export default connect(mapStateToProps, { getTasksForProject });
+export default connect(mapStateToProps, { getTasksForProject, getUsers });

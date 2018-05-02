@@ -1,0 +1,32 @@
+.userPicker {
+  display: inline-block;
+  background: $white;
+  border-radius: $borderRadius;
+  box-shadow: 1px 1px 10px rgba($black, 0.2);
+  border: 1px solid darken($lightBlue, 5%);
+}
+
+.userPicker__user {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background-color: $lightBlue;
+  }
+}
+
+.userPicker__user--active {
+  background-color: $blue;
+  color: $white;
+  &:hover {
+    background-color: $blue;
+  }
+}
+
+.userPicker__avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}

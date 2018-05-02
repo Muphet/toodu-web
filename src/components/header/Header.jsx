@@ -26,7 +26,6 @@ export class Header extends Component {
   }
 
   fetch() {
-    this.props.getUsers();
     this.props.getCurrentUser();
     this.props.getTeam();
   }

@@ -20,11 +20,6 @@ export default class TextField extends Component {
   }
 
   render() {
-    const Input =
-      this.props.type === "textarea"
-        ? props => <textarea {...props} />
-        : props => <input {...props} />;
-
     return (
       <div className="textField">
         {this.props.label &&
@@ -33,15 +28,26 @@ export default class TextField extends Component {
               {this.props.label}
             </label>
           )}
-        <Input
-          className="textField__input input"
-          name={this.props.name}
-          id={this.props.name}
-          type={this.props.type}
-          value={this.props.value}
-          onChange={this.handleChange.bind(this)}
-          placeholder={this.props.label}
-        />
+        {this.props.type === "textarea" ? (
+          <textarea
+            className="textField__input input"
+            name={this.props.name}
+            id={this.props.name}
+            value={this.props.value}
+            onChange={this.handleChange.bind(this)}
+            placeholder={this.props.label}
+          />
+        ) : (
+          <input
+            className="textField__input input"
+            name={this.props.name}
+            id={this.props.name}
+            type={this.props.type}
+            value={this.props.value}
+            onChange={this.handleChange.bind(this)}
+            placeholder={this.props.label}
+          />
+        )}
       </div>
     );
   }

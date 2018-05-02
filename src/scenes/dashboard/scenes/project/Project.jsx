@@ -32,7 +32,7 @@ export class Project extends Component {
     if (!this.props.project.id) return <p>Project not found</p>;
 
     return (
-      <div className="content__col content__col--half">
+      <div className="project content__col content__col--half">
         <NewTask projectId={this.props.project.id} />
         <TaskList projectId={this.props.project.id} />
       </div>

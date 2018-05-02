@@ -1,0 +1,27 @@
+.checkbox__input {
+  display: none;
+}
+
+.checkbox__label {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: $borderRadius;
+  border: 1px solid $mediumGrey;
+  background-size: 16px;
+  background-position: center;
+  background-color: $white;
+  cursor: pointer;
+  &:hover {
+    background-image: url("../icons/check-grey.svg");
+  }
+}
+
+.checkbox__input:checked + .checkbox__label {
+  background-color: lighten($blue, 30%);
+  border-color: $blue;
+  background-image: url("../icons/check-white.svg");
+  &:hover {
+    background-image: none;
+  }
+}

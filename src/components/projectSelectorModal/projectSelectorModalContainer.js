@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
+import { closeModal } from "../../core/modal/modalActions";
 import { getProjects } from "../../core/projects/projectsActions";
 import {
   getStars,
@@ -35,5 +36,6 @@ export default connect(mapStateToProps, {
   getProjects,
   getStars,
   destroyStar,
-  createStar
+  createStar,
+  closeModal
 });

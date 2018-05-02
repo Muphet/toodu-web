@@ -1,5 +1,5 @@
 import React from "react";
-
+import classNames from "classnames";
 import Form from "../form/Form";
 import FormErrors from "../formErrors/FormErrors";
 import FormMessage from "../formMessage/FormMessage";
@@ -23,7 +23,11 @@ export default class InlineForm extends Form {
             onChange={e => this.updateField(field.name, e.target.value)}
             placeholder={field.label}
           />
-          <button className="button button--green inlineForm__button">
+          <button
+            className={classNames("button button--green inlineForm__button", {
+              "button--loading": this.state.submitting
+            })}
+          >
             {this.props.submitText}
           </button>
         </div>

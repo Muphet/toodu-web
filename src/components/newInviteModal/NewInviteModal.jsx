@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import invitesApi from "../../core/invites/invitesApi";
-import newInviteModalContainer from "./newInviteModalContainer";
 import Form from "../form/Form";
 
 export class NewInviteModal extends Component {
@@ -8,7 +7,6 @@ export class NewInviteModal extends Component {
 
   async createInvite({ email }) {
     const res = await invitesApi.create({ email });
-    this.props.closeModal();
     return res;
   }
 
@@ -36,4 +34,4 @@ export class NewInviteModal extends Component {
   }
 }
 
-export default newInviteModalContainer(NewInviteModal);
+export default NewInviteModal;

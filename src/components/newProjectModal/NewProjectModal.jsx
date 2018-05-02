@@ -9,6 +9,7 @@ export class NewProjectModal extends Component {
   async createProject({ name }) {
     const res = await projectsApi.create({ name });
     this.props.closeModal();
+    this.props.navigate(`/app/project/${res.data.id}`);
     return res;
   }
 

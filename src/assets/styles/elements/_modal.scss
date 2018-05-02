@@ -41,14 +41,18 @@
 }
 
 .modal__search {
+  position: relative;
   width: 100%;
   padding: 10px 16px 10px 48px;
   background-color: $lightGrey;
   border: none;
+  border-radius: 0;
+  border-top: 1px solid $mediumGrey;
   border-bottom: 1px solid $mediumGrey;
   background-image: url("../icons/search-grey.svg");
   background-position: 16px center;
   background-size: 22px;
+  z-index: 2;
 }
 
 .modal__body {

@@ -6,10 +6,10 @@ $button-colors: (
 
 .button {
   appearance: none;
+  position: relative;
   border: none;
   border-radius: $borderRadius;
   display: inline-block;
-  color: $white;
   cursor: pointer;
   padding: 8px 16px;
 }
@@ -34,5 +34,37 @@ $button-colors: (
     &:active {
       background: darken($color, 5%);
     }
+
+    &.button--loading:before {
+      border-color: rgba(contrast($color), 0.15);
+      border-top-color: contrast($color);
+    }
+  }
+}
+
+.button--loading {
+  color: transparent;
+  text-shadow: none;
+  user-select: none;
+  &:before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 0.5em);
+    top: calc(50% - 0.5em);
+    width: 1em;
+    height: 1em;
+    border: 2px solid rgba($black, 0.15);
+    border-top: 2px solid $black;
+    border-radius: 50%;
+    animation: buttonLoadingAnimation 0.6s linear infinite;
+  }
+}
+
+@keyframes buttonLoadingAnimation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

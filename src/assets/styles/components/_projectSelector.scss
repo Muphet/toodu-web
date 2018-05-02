@@ -1,0 +1,55 @@
+.projectSelector {
+  height: 270px;
+  background-color: $lightGrey;
+  overflow-y: auto;
+}
+
+.projectSelector__project {
+  position: relative;
+  background-color: $white;
+  border-bottom: 1px solid $lightGrey;
+}
+
+.projectSelector__link {
+  padding: 16px;
+  display: block;
+  &:hover {
+    background: $lightBlue;
+  }
+}
+
+.projectSelector__actions {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.projectSelector__action {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: $mediumGrey;
+  background-size: 16px;
+  background-position: center;
+
+  &:hover {
+    background-color: lighten($mediumGrey, 2%);
+  }
+}
+
+.projectSelector__action--star {
+  background-image: url("../icons/star.svg");
+}
+
+.projectSelector__action--unstar {
+  background-image: url("../icons/star-white.svg");
+  background-color: #ffdf00;
+  &:hover {
+    background-color: lighten(#ffdf00, 2%);
+  }
+}

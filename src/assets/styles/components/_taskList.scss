@@ -1,0 +1,33 @@
+.taskList {
+  margin-top: 12px;
+}
+
+.taskList__task {
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.taskList__checkbox {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.taskList__link {
+  display: block;
+  padding: 12px 20px 12px 70px;
+  background: $white;
+  border: 1px solid $mediumGrey;
+  border-radius: $borderRadius;
+  transition: background-color ease-out 0.2s;
+  &:hover {
+    background-color: $lightBlue;
+  }
+}
+
+.taskList__link--completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}

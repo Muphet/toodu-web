@@ -1,0 +1,8 @@
+.formMessage {
+  background-color: rgba($green, 0.15);
+  border: 1px solid $green;
+  padding: 10px 16px;
+  color: darken($green, 10%);
+  margin-bottom: 16px;
+  border-radius: $borderRadius;
+}

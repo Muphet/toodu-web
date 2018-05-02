@@ -1,0 +1,8 @@
+.formErrors {
+  background-color: rgba($red, 0.15);
+  border: 1px solid $red;
+  padding: 10px 16px;
+  color: darken($red, 10%);
+  margin-bottom: 16px;
+  border-radius: $borderRadius;
+}

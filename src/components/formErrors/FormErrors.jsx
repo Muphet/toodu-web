@@ -10,7 +10,7 @@ export default class FormErrors extends Component {
     if (!this.props.errors) return null;
 
     return (
-      <ul>
+      <ul className="formErrors">
         {Object.keys(this.props.errors).map(field => (
           <li key={field}>{`${field} ${this.props.errors[field][0]}`}</li>
         ))}

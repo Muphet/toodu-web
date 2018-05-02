@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-
+import classNames from "classnames";
 import TextField from "../textField/TextField";
 import FormErrors from "../formErrors/FormErrors";
 import FormMessage from "../formMessage/FormMessage";
@@ -92,7 +92,11 @@ export default class Form extends Component {
           />
         ))}
         <div className="form__buttons">
-          <button className="button button--green form__button">
+          <button
+            className={classNames("button button--green form__button", {
+              "button--loading": this.state.submitting
+            })}
+          >
             {this.props.submitText}
           </button>
         </div>

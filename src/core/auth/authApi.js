@@ -7,9 +7,9 @@ const authApi = {
   },
 
   signup(signupData) {
-    const { teamName, ...signupData } = signupData;
+    const { teamName, ...data } = signupData;
     return ApiService.post("/auth", {
-      ...signupData,
+      ...data,
       teamAttributes: { teamName }
     }).then(res => {
       res.data.message =

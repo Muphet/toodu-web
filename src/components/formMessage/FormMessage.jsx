@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 export default class FormMessage extends Component {
@@ -8,6 +8,10 @@ export default class FormMessage extends Component {
 
   render() {
     if (!this.props.message) return null;
-    return <p>{this.props.message}</p>
+    return (
+      <div className="formMessage">
+        <p>{this.props.message}</p>
+      </div>
+    );
   }
 }

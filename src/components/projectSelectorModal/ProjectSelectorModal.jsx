@@ -10,13 +10,14 @@ export class ProjectSelectorModal extends Component {
     getStars: PropTypes.func.isRequired,
     destroyStar: PropTypes.func.isRequired,
     createStar: PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired,
     stars: PropTypes.array.isRequired,
     projects: PropTypes.array.isRequired,
     starredProjectIds: PropTypes.array.isRequired
   };
 
   state = {
-    filteredProjects: [],
+    projects: [],
     search: ""
   };
 
@@ -44,7 +45,7 @@ export class ProjectSelectorModal extends Component {
 
   render() {
     const projects = this.state.search
-      ? this.state.filteredProjects
+      ? this.state.projects
       : this.props.projects;
 
     return (
@@ -55,27 +56,42 @@ export class ProjectSelectorModal extends Component {
         <input
           type="text"
           value={this.state.search}
-          className="modal__search"
+          className="modal__search input"
           onChange={this.search.bind(this)}
           placeholder="Search for a project..."
         />
         <main>
-          <ul>
-            {!projects.length && <li>No projects found...</li>}
+          <ul className="projectSelector">
+            {!projects.length && (
+              <li className="empty">
+                <p>No projects found...</p>
+              </li>
+            )}
             {projects.map(project => (
-              <li key={project.id}>
-                <Link to={`/app/project/${project.id}`}>{project.name}</Link>
-                <div>
-                  {this.props.starredProjectIds.includes(project.id)
-                    ? <button onClick={() => this.unstar(project.id)}>
-                        unstar
-                      </button>
-                    : <button
-                        onClick={() =>
-                          this.props.createStar({ project_id: project.id })}
-                      >
-                        star
-                      </button>}
+              <li key={project.id} className="projectSelector__project">
+                <Link
+                  className="projectSelector__link"
+                  onClick={this.props.closeModal}
+                  to={`/app/project/${project.id}`}
+                >
+                  {project.name}
+                </Link>
+                <div className="projectSelector__actions">
+                  {this.props.starredProjectIds.includes(project.id) ? (
+                    <button
+                      title="Unstar this project"
+                      className="projectSelector__action projectSelector__action--unstar"
+                      onClick={() => this.unstar(project.id)}
+                    />
+                  ) : (
+                    <button
+                      title="Star this project"
+                      className="projectSelector__action projectSelector__action--star"
+                      onClick={() =>
+                        this.props.createStar({ project_id: project.id })
+                      }
+                    />
+                  )}
                 </div>
               </li>
             ))}

@@ -6,8 +6,7 @@
 
 .task__header {
   border-bottom: 2px solid $mediumGrey;
-  margin-bottom: 16px;
-  padding: 12px;
+  padding: 10px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,8 +33,9 @@
   border-radius: 20px;
   padding: 6px 16px 6px 40px;
   background-image: url("../icons/calendar.svg");
-  background-position: 16px calc(50% - 1px);
+  background-position: 16px calc(50% - 2px);
   background-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   &:hover {
     background-color: $lightGrey;

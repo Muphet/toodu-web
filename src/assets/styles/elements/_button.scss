@@ -12,6 +12,11 @@ $button-colors: (
   display: inline-block;
   cursor: pointer;
   padding: 8px 16px;
+  transition: all 0.1s ease-out;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba($black, 0.1);
+  }
 }
 
 .button:disabled {
@@ -25,7 +30,6 @@ $button-colors: (
   .button--#{$name} {
     background-color: $color;
     color: contrast($color);
-    text-shadow: 1px 1px 2px rgba(invertContrast($color), 0.5);
 
     &:hover {
       background-color: lighten($color, 5%);

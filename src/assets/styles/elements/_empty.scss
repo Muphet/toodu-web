@@ -1,5 +1,5 @@
 .empty {
-  background: $lightestGrey;
+  background-color: $lightestGrey;
   color: $darkGrey;
   border-radius: $borderRadius;
   padding: 30px 20px;
@@ -12,6 +12,6 @@
 }
 
 .empty--white {
-  background: $white;
+  background-color: $white;
   border: 1px solid $mediumGrey;
 }

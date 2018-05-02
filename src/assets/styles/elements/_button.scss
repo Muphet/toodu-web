@@ -15,7 +15,7 @@ $button-colors: (
 }
 
 .button:disabled {
-  background: $lightGrey !important;
+  background-color: $lightGrey !important;
   color: $black !important;
   cursor: not-allowed;
   opacity: 0.5;
@@ -23,16 +23,16 @@ $button-colors: (
 
 @each $name, $color in $button-colors {
   .button--#{$name} {
-    background: $color;
+    background-color: $color;
     color: contrast($color);
     text-shadow: 1px 1px 2px rgba(invertContrast($color), 0.5);
 
     &:hover {
-      background: lighten($color, 5%);
+      background-color: lighten($color, 5%);
     }
 
     &:active {
-      background: darken($color, 5%);
+      background-color: darken($color, 5%);
     }
 
     &.button--loading:before {

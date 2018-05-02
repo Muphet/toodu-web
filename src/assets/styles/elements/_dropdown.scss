@@ -27,7 +27,7 @@
   position: absolute;
   top: -6px;
   right: 22px;
-  background: $white;
+  background-color: $white;
   transform: rotate(45deg);
   z-index: -1;
 }
@@ -40,6 +40,6 @@
   display: block;
   padding: 10px 15px;
   &:hover {
-    background: $lightBlue;
+    background-color: $lightBlue;
   }
 }

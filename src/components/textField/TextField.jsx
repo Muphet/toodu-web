@@ -12,7 +12,8 @@ export default class TextField extends Component {
   };
 
   static defaultProps = {
-    value: ""
+    value: "",
+    showLabel: true
   };
 
   handleChange(e) {

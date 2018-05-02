@@ -16,10 +16,8 @@ export class SubTaskList extends Component {
   }
 
   updateComplete(subTaskId, completed) {
-    subTaskApi.update(subTaskId, {
-      task_id: this.props.taskId,
-      completed
-    });
+    const taskId = this.props.taskId;
+    subTaskApi.update(subTaskId, { taskId, completed });
   }
 
   render() {

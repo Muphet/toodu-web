@@ -10,7 +10,7 @@ export function getCommentsForTask(taskId) {
   return dispatch => {
     dispatch({ type: GET_COMMENTS_FOR_TASK_START });
     return commentsApi
-      .get({ task_id: taskId })
+      .get({ taskId })
       .then(res => {
         dispatch({ type: GET_COMMENTS_FOR_TASK_SUCCESS, comments: res.data });
         return res.data;

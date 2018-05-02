@@ -7,13 +7,10 @@ const authApi = {
   },
 
   signup(signupData) {
+    const { teamName, ...signupData } = signupData;
     return ApiService.post("/auth", {
-      email: signupData.email,
-      password: signupData.password,
-      password_confirmation: signupData.passwordConfirmation,
-      first_name: signupData.firstName,
-      last_name: signupData.firstName,
-      team_attributes: { name: signupData.teamName }
+      ...signupData,
+      teamAttributes: { teamName }
     }).then(res => {
       res.data.message =
         "You have been sent an email with instructions for completing your registration";
@@ -24,15 +21,12 @@ const authApi = {
   sendResetEmail(email) {
     return ApiService.post("/auth/password", {
       email,
-      redirect_url: ConfigService.get("host") + "/auth/reset-password"
+      redirectUrl: ConfigService.get("host") + "/auth/reset-password"
     });
   },
 
   resetPassword(resetData) {
-    return ApiService.put("/auth/password", {
-      password: resetData.password,
-      password_confirmation: resetData.passwordConfirmation
-    });
+    return ApiService.put("/auth/password", resetData);
   }
 };
 

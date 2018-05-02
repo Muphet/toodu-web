@@ -40,9 +40,9 @@ export class Task extends Component {
     this.setState({ showDatePicker: false });
   }
 
-  handleDatePick(day) {
+  handleDatePick(dueDate) {
     this.hideDatePicker();
-    tasksApi.update(this.props.task.id, { due_date: day });
+    tasksApi.update(this.props.task.id, { dueDate });
   }
 
   render() {

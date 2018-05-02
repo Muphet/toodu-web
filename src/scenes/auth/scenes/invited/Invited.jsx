@@ -13,7 +13,7 @@ export default class Invited extends Component {
   async signup(signupData) {
     const res = await usersApi.create({
       ...signupData,
-      invite_token: this.query.invite_token
+      inviteToken: this.query.invite_token
     });
     return res;
   }

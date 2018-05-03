@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Form from "../../../../../../components/form/Form";
-import commentApi from "../../../../../../core/comments/commentsApi";
+import Form from "../../../../components/form/Form";
+import commentApi from "../../../../core/comments/commentsApi";
 
 export default class NewComment extends Component {
   static propTypes = {

@@ -8,8 +8,8 @@ import {
   createStar
 } from "../../core/stars/starsActions";
 
-const projectsSelector = state => state.core.projects.data;
-const starsSelector = state => state.core.stars.data;
+const projectsSelector = state => state.core.projects;
+const starsSelector = state => state.core.stars;
 
 const sortedProjectsSelector = createSelector(
   [projectsSelector, starsSelector],

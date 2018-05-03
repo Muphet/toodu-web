@@ -5,7 +5,6 @@ import userPickerContainer from "./userPickerContainer";
 
 export class UserPicker extends Component {
   static propTypes = {
-    hidden: PropTypes.bool,
     className: PropTypes.string,
     getUsers: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
@@ -19,15 +18,6 @@ export class UserPicker extends Component {
 
   componentDidMount() {
     this.props.getUsers();
-  }
-
-  componentDidUpdate(prevProps) {
-    const prevUserId = prevProps.user && prevProps.user.id;
-    const userId = this.props.user && this.props.user.id;
-    if (prevUserId !== userId) {
-      const user = this.props.user ? this.props.user : { id: null };
-      this.setState({ user });
-    }
   }
 
   handleUserSelect(user) {
@@ -49,26 +39,16 @@ export class UserPicker extends Component {
   }
 
   render() {
-    if (this.props.hidden) return null;
-
     return (
       <div className={"userPicker " + this.props.className}>
         <ul className="userPicker__users">
           {this.props.users.map(user => (
-            <li
+            <User
               key={user.id}
-              onClick={() => this.handleUserSelect(user)}
-              className={classNames("userPicker__user", {
-                "userPicker__user--active": user.id === this.state.user.id
-              })}
-            >
-              <img
-                src={user.gravatar_url}
-                className="userPicker__avatar"
-                alt={`${user.first_name}'s avatar`}
-              />
-              {user.first_name + " " + user.last_name}
-            </li>
+              active={user.id === this.state.user.id}
+              user={user}
+              handleUserSelect={this.handleUserSelect}
+            />
           ))}
         </ul>
         <div className="datePicker__actions">
@@ -88,6 +68,25 @@ export class UserPicker extends Component {
       </div>
     );
   }
+}
+
+function User({ user, handleUserSelect, active }) {
+  return (
+    <li
+      key={user.id}
+      onClick={() => handleUserSelect(user)}
+      className={classNames("userPicker__user", {
+        "userPicker__user--active": active
+      })}
+    >
+      <img
+        src={user.gravatar_url}
+        className="userPicker__avatar"
+        alt={`${user.first_name}'s avatar`}
+      />
+      {user.first_name + " " + user.last_name}
+    </li>
+  );
 }
 
 export default userPickerContainer(UserPicker);

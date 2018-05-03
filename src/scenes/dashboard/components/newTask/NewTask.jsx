@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import InlineForm from "../../../../../../components/inlineForm/InlineForm";
-import tasksApi from "../../../../../../core/tasks/tasksApi";
+import InlineForm from "../../../../components/inlineForm/InlineForm";
+import tasksApi from "../../../../core/tasks/tasksApi";
 
 export default class NewTask extends Component {
   static propTypes = {

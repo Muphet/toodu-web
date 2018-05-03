@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { createSelector } from "reselect";
 import { openModal } from "../../../../core/modal/modalActions";
 
-const projectsSelector = state => state.core.projects.data;
+const projectsSelector = state => state.core.projects;
 const selectedProjectIdSelector = state => state.scenes.dashboard.activeProject;
 
 const selectedProjectSelector = createSelector(

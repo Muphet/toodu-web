@@ -1,31 +1,14 @@
 import UtilService from "../../services/UtilService";
-import {
-  GET_COMMENTS_FOR_TASK_START,
-  GET_COMMENTS_FOR_TASK_SUCCESS,
-  GET_COMMENTS_FOR_TASK_ERROR,
-  COMMENT_CREATED
-} from "./commentsConstants";
+import { GET_COMMENTS_FOR_TASK, COMMENT_CREATED } from "./commentsConstants";
 
-const defaultState = {
-  fetching: false,
-  error: false,
-  data: []
-};
+const defaultState = [];
 
 export default function commentsReducer(state = defaultState, action) {
   switch (action.type) {
-    case GET_COMMENTS_FOR_TASK_START:
-      return { ...state, fetching: true, error: false };
-    case GET_COMMENTS_FOR_TASK_SUCCESS:
-      return {
-        ...state,
-        fetching: false,
-        data: UtilService.merge(state.data, action.comments)
-      };
-    case GET_COMMENTS_FOR_TASK_ERROR:
-      return { ...state, fetching: false, error: true };
+    case GET_COMMENTS_FOR_TASK:
+      return UtilService.merge(state, action.comments);
     case COMMENT_CREATED:
-      return { ...state, data: state.data.concat(action.comment) };
+      return state.concat(action.comment);
     default:
       return state;
   }

@@ -1,14 +1,17 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import projectContainer from "./projectContainer";
-import TaskList from "./components/taskList/TaskList";
-import NewTask from "./components/newTask/NewTask";
+import TaskList from "../../../../components/taskList/TaskList";
+import DashboardEmpty from "../../../../components/dashboardEmpty/DashboardEmpty";
+import NewTask from "../../../../components/newTask/NewTask";
 
 export class Project extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     changeProject: PropTypes.func.isRequired,
-    project: PropTypes.object.isRequired
+    project: PropTypes.object.isRequired,
+    tasks: PropTypes.array.isRequired,
+    currentTaskId: PropTypes.string
   };
 
   static defaultProps = {
@@ -18,6 +21,7 @@ export class Project extends Component {
   componentDidMount() {
     this.props.changeProject(this.props.match.params.projectId);
     this.props.getProject(this.props.match.params.projectId);
+    this.props.getTasksForProject(this.props.match.params.projectId);
   }
 
   componentWillUnmount() {
@@ -33,12 +37,16 @@ export class Project extends Component {
   }
 
   render() {
-    if (!this.props.project.id) return <p>Project not found</p>;
+    if (!this.props.project.id) return <DashboardEmpty />;
 
     return (
       <div className="project content__col content__col--half">
         <NewTask projectId={this.props.project.id} />
-        <TaskList projectId={this.props.project.id} />
+        <TaskList
+          projectId={this.props.project.id}
+          tasks={this.props.tasks}
+          currentTaskId={this.props.currentTaskId}
+        />
       </div>
     );
   }

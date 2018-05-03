@@ -1,34 +1,20 @@
 import UtilService from "../../services/UtilService";
 import {
-  GET_SUB_TASKS_FOR_TASK_START,
-  GET_SUB_TASKS_FOR_TASK_SUCCESS,
-  GET_SUB_TASKS_FOR_TASK_ERROR,
+  GET_SUB_TASKS_FOR_TASK,
   SUB_TASK_CREATED,
   SUB_TASK_UPDATED
 } from "./subTasksConstants";
 
-const defaultState = {
-  fetching: false,
-  error: false,
-  data: []
-};
+const defaultState = [];
 
-export default function tasksReducer(state = defaultState, action) {
+export default function subTasksReducer(state = defaultState, action) {
   switch (action.type) {
-    case GET_SUB_TASKS_FOR_TASK_START:
-      return { ...state, fetching: true, error: false };
-    case GET_SUB_TASKS_FOR_TASK_SUCCESS:
-      return {
-        ...state,
-        fetching: false,
-        data: UtilService.merge(state.data, action.subTasks)
-      };
-    case GET_SUB_TASKS_FOR_TASK_ERROR:
-      return { ...state, fetching: false, error: true };
+    case GET_SUB_TASKS_FOR_TASK:
+      return UtilService.merge(state, action.subTasks);
     case SUB_TASK_CREATED:
-      return { ...state, data: state.data.concat(action.subTask) };
+      return state.concat(action.subTask);
     case SUB_TASK_UPDATED:
-      return { ...state, data: UtilService.merge(state.data, action.subTask) };
+      return UtilService.merge(state, action.subTask);
     default:
       return state;
   }

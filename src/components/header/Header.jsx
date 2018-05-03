@@ -37,14 +37,16 @@ export class Header extends Component {
           <div className="header__start">
             <h1 className="header__title">
               <Link to="/dashboard">
-                {this.props.team
-                  ? <h1>{this.props.team.name}</h1>
-                  : <h1>Toodu</h1>}
+                {this.props.team ? (
+                  <h1>{this.props.team.name}</h1>
+                ) : (
+                  <h1>Toodu</h1>
+                )}
               </Link>
             </h1>
           </div>
 
-          {this.props.currentUser &&
+          {this.props.currentUser && (
             <div className="header__end">
               <button
                 className="header__inviteButton"
@@ -59,34 +61,42 @@ export class Header extends Component {
                     className="header__avatar"
                   />
                 </div>
-                <ul className="dropdown">
-                  <li className="dropdown__item">
-                    <Link to="/dashboard" className="dropdown__link">
-                      Dashboard
-                    </Link>
-                  </li>
-                  <li className="dropdown__item dropdown__item--divider">
-                    <Link to="/tasks" className="dropdown__link">
-                      My Tasks
-                    </Link>
-                  </li>
-                  <li className="dropdown__item">
-                    <Link to="/settings/profile" className="dropdown__link">
-                      Profile settings
-                    </Link>
-                  </li>
-                  <li className="dropdown__item">
-                    <Link to="/auth/logout" className="dropdown__link">
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
+
+                <DropdownMenu />
               </div>
-            </div>}
+            </div>
+          )}
         </div>
       </header>
     );
   }
+}
+
+function DropdownMenu() {
+  return (
+    <ul className="dropdown">
+      <li className="dropdown__item">
+        <Link to="/dashboard" className="dropdown__link">
+          Dashboard
+        </Link>
+      </li>
+      <li className="dropdown__item dropdown__item--divider">
+        <Link to="/tasks" className="dropdown__link">
+          My Tasks
+        </Link>
+      </li>
+      <li className="dropdown__item">
+        <Link to="/settings/profile" className="dropdown__link">
+          Profile settings
+        </Link>
+      </li>
+      <li className="dropdown__item">
+        <Link to="/auth/logout" className="dropdown__link">
+          Logout
+        </Link>
+      </li>
+    </ul>
+  );
 }
 
 export default headerContainer(Header);

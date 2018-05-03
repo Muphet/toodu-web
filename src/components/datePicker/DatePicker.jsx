@@ -5,7 +5,6 @@ import DayPicker from "react-day-picker";
 
 export default class DatePicker extends Component {
   static propTypes = {
-    hidden: PropTypes.bool,
     className: PropTypes.string,
     day: PropTypes.instanceOf(Date),
     onCancel: PropTypes.func.isRequired,
@@ -13,7 +12,7 @@ export default class DatePicker extends Component {
   };
 
   state = {
-    day: this.props.day
+    day: this.props.day || { id: null }
   };
 
   handleDaySelect(day, { selected }) {
@@ -35,8 +34,6 @@ export default class DatePicker extends Component {
   }
 
   render() {
-    if (this.props.hidden) return null;
-
     return (
       <div className={"datePicker " + this.props.className}>
         <DayPicker

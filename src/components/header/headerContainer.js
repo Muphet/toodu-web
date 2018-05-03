@@ -1,18 +1,12 @@
 import { connect } from "react-redux";
-import { createSelector } from "reselect";
 import { getTeam } from "../../core/teams/teamsActions";
 import { openModal } from "../../core/modal/modalActions";
-import { getUsers, getCurrentUser } from "../../core/users/usersActions";
+import { getUsers } from "../../core/users/usersActions";
+import { getCurrentUser } from "../../core/auth/authActions";
 
-const teamSelector = state => state.core.team.data;
-const usersSelector = state => state.core.users.data;
+const teamSelector = state => state.core.team;
 const authenticatedSelector = state => state.core.auth.authenticated;
-const currentUserIdSelector = state => state.core.users.currentUserId;
-
-const currentUserSelector = createSelector(
-  [usersSelector, currentUserIdSelector],
-  (users, currentUserId) => users.find(user => user.id === currentUserId)
-);
+const currentUserSelector = state => state.core.auth.currentUser;
 
 const mapStateToProps = state => ({
   team: teamSelector(state),

@@ -47,7 +47,7 @@ export class UserPicker extends Component {
               key={user.id}
               active={user.id === this.state.user.id}
               user={user}
-              handleUserSelect={this.handleUserSelect}
+              handleUserSelect={this.handleUserSelect.bind(this)}
             />
           ))}
         </ul>

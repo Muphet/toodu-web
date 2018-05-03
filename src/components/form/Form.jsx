@@ -70,6 +70,7 @@ export default class Form extends Component {
 
   submitError(err) {
     if (this.unmounted) return;
+    console.log(err);
     this.setState({
       submitting: false,
       errors: err.response.data.errors,

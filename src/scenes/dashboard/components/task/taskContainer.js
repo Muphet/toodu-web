@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
-import { getTask } from "../../../../../../core/tasks/tasksActions";
-import { getSubTasksForTask } from "../../../../../../core/subTasks/subTasksActions";
-import { getCommentsForTask } from "../../../../../../core/comments/commentsActions";
-import { changeTask } from "../../../../dashboardActions";
+import { getTask } from "../../../../core/tasks/tasksActions";
+import { getSubTasksForTask } from "../../../../core/subTasks/subTasksActions";
+import { getCommentsForTask } from "../../../../core/comments/commentsActions";
+import { changeTask } from "../../dashboardActions";
 
 const tasksSelector = state => state.core.tasks;
 const subTasksSelector = state => state.core.subTasks;
 const commentsSelector = state => state.core.comments;
 const usersSelector = state => state.core.users;
-const currentTaskIdSelector = state => state.scenes.dashboard.activeTask;
+const currentTaskIdSelector = (state, props) => props.match.params.taskId;
 
 const taskSelector = createSelector(
   [tasksSelector, currentTaskIdSelector],
@@ -39,9 +39,9 @@ const assignedUserSelector = createSelector(
 
 const mapStateToProps = (state, props) => ({
   task: taskSelector(state, props),
-  comments: commentsForTaskSelector(state),
-  subTasks: subTasksForTaskSelector(state),
-  assignedUser: assignedUserSelector(state)
+  comments: commentsForTaskSelector(state, props),
+  subTasks: subTasksForTaskSelector(state, props),
+  assignedUser: assignedUserSelector(state, props)
 });
 
 export default connect(mapStateToProps, {

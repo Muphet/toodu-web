@@ -6,7 +6,6 @@ import headerContainer from "./headerContainer";
 export class Header extends Component {
   static propTypes = {
     getUsers: PropTypes.func.isRequired,
-    getCurrentUser: PropTypes.func.isRequired,
     getTeam: PropTypes.func.isRequired,
     authenticated: PropTypes.bool.isRequired,
     team: PropTypes.object,
@@ -26,7 +25,6 @@ export class Header extends Component {
   }
 
   fetch() {
-    this.props.getCurrentUser();
     this.props.getTeam();
   }
 

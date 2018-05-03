@@ -11,7 +11,7 @@ const defaultState = [];
 export default function tasksReducer(state = defaultState, action) {
   switch (action.type) {
     case GET_TASKS:
-      return action.tasks;
+      return UtilService.merge(state, action.tasks);
     case GET_TASK:
       return UtilService.merge(state, action.task);
     case TASK_CREATED:

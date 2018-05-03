@@ -1,25 +1,22 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import taskContainer from "./taskContainer";
-import SubTaskList from "../../../../components/subTaskList/SubTaskList";
-import CommentList from "../../../../components/commentList/CommentList";
-import NewComment from "../../../../components/newComment/NewComment";
-import NewSubTask from "../../../../components/newSubTask/NewSubTask";
-import TaskHeader from "../../../../components/taskHeader/TaskHeader";
+import SubTaskList from "../subTaskList/SubTaskList";
+import CommentList from "../commentList/CommentList";
+import NewComment from "../newComment/NewComment";
+import NewSubTask from "../newSubTask/NewSubTask";
+import TaskHeader from "../taskHeader/TaskHeader";
 
 export class Task extends Component {
   static propTypes = {
-    match: PropTypes.object.isRequired,
+    match: PropTypes.shape({
+      match: PropTypes.shape({ taskId: PropTypes.string.isRequired })
+    }),
     changeTask: PropTypes.func.isRequired,
     subTasks: PropTypes.array.isRequired,
     comments: PropTypes.array.isRequired,
     task: PropTypes.object,
     assignedUser: PropTypes.object
-  };
-
-  state = {
-    showDatePicker: false,
-    showUserPicker: false
   };
 
   componentDidMount() {

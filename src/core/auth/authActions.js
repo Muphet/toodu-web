@@ -1,5 +1,4 @@
-import usersApi from "../users/usersApi";
-import { CHANGE_AUTHENTICATED, GET_CURRENT_USER } from "./authConstants";
+import { CHANGE_AUTHENTICATED, UPDATE_CURRENT_USER } from "./authConstants";
 
 export function changeAuthenticated(authenticated) {
   return {
@@ -8,11 +7,6 @@ export function changeAuthenticated(authenticated) {
   };
 }
 
-export function getCurrentUser() {
-  return dispatch => {
-    return usersApi.getOne("current").then(res => {
-      dispatch({ type: GET_CURRENT_USER, user: res.data });
-      return res.data;
-    });
-  };
+export function updateCurrentUser(user) {
+  return { type: UPDATE_CURRENT_USER, user };
 }

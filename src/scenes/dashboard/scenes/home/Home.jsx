@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import DashboardEmpty from "../../components/dashboardEmpty/DashboardEmpty";
 import DashboardHomeHeader from "./components/dashboardHomeHeader/DashboardHomeHeader";
 import Project from "./components/project/Project";
-import Task from "./components/task/Task";
+import Task from "../../components/task/Task";
 
 export default class Dashboard extends Component {
   static propTypes = {};

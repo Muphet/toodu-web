@@ -7,7 +7,6 @@ import TaskListItem from "../taskListItem/TaskListItem";
 export class TaskList extends Component {
   static propTypes = {
     tasks: PropTypes.array.isRequired,
-    projectId: PropTypes.string.isRequired,
     getUsers: PropTypes.func.isRequired,
     tasksWithUsers: PropTypes.array.isRequired,
     linkPath: PropTypes.string.isRequired,

@@ -1,5 +1,8 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import Tasks from "./components/tasks/Tasks";
+import Task from "../../components/task/Task";
 import DashboardMyTasksHeader from "./components/dashboardMyTasksHeader/DashboardMyTasksHeader";
 
 export default class MyTasks extends Component {
@@ -10,7 +13,8 @@ export default class MyTasks extends Component {
       <div>
         <DashboardMyTasksHeader />
         <main className="container content content--center">
-          <h1>My Tasks</h1>
+          <Tasks />
+          <Route path="/dashboard/tasks/:taskId" component={Task} />
         </main>
       </div>
     );

@@ -1,4 +1,4 @@
-import { CHANGE_AUTHENTICATED, GET_CURRENT_USER } from "./authConstants";
+import { CHANGE_AUTHENTICATED, UPDATE_CURRENT_USER } from "./authConstants";
 
 const defaultState = {
   authenticated: false,
@@ -9,7 +9,7 @@ export default function authReducer(state = defaultState, action) {
   switch (action.type) {
     case CHANGE_AUTHENTICATED:
       return { ...state, authenticated: action.authenticated };
-    case GET_CURRENT_USER:
+    case UPDATE_CURRENT_USER:
       return { ...state, currentUser: action.user };
     default:
       return state;

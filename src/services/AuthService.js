@@ -1,7 +1,10 @@
 import qs from "qs";
 import ApiService from "./ApiService";
 import WebSocketService from "./WebSocketService";
-import { changeAuthenticated } from "../core/auth/authActions";
+import {
+  changeAuthenticated,
+  updateCurrentUser
+} from "../core/auth/authActions";
 
 class AuthService {
   constructor() {
@@ -41,7 +44,8 @@ class AuthService {
 
   authenticate() {
     return ApiService.get("/auth/validate_token", this.auth)
-      .then(() => {
+      .then(res => {
+        this.store.dispatch(updateCurrentUser(res.data.data));
         this.updateAuthenticated(true);
         WebSocketService.connect();
       })

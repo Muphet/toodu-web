@@ -11,6 +11,15 @@ export function getTasksForProject(projectId) {
   };
 }
 
+export function getTasksForUser(userId) {
+  return dispatch => {
+    return tasksApi.get({ userId }).then(res => {
+      dispatch({ type: GET_TASKS, tasks: res.data });
+      return res.data;
+    });
+  };
+}
+
 export function getTask(taskId) {
   return dispatch => {
     return tasksApi.getOne(taskId).then(res => {

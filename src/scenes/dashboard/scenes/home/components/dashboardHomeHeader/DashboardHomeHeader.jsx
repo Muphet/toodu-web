@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import dashboardHeaderContainer from "./dashboardHeaderContainer";
+import dashboardHomeHeaderContainer from "./dashboardHomeHeaderContainer";
 
-export class DashboardHeader extends Component {
+export class DashboardHomeHeader extends Component {
   static propTypes = {
     selectedProject: PropTypes.object
   };
@@ -14,13 +14,15 @@ export class DashboardHeader extends Component {
         <div className="dashboardHeader__container container">
           <div className="dashboardHeader__start">
             <h2 className="dashboardHeader__title">
-              {this.props.selectedProject
-                ? <Link
-                    to={`/dashboard/project/${this.props.selectedProject.id}`}
-                  >
-                    {this.props.selectedProject.name}
-                  </Link>
-                : "Select a project..."}
+              {this.props.selectedProject ? (
+                <Link
+                  to={`/dashboard/project/${this.props.selectedProject.id}`}
+                >
+                  {this.props.selectedProject.name}
+                </Link>
+              ) : (
+                "Select a project..."
+              )}
             </h2>
           </div>
           <div className="dashboardHeader__end">
@@ -45,4 +47,4 @@ export class DashboardHeader extends Component {
   }
 }
 
-export default dashboardHeaderContainer(DashboardHeader);
+export default dashboardHomeHeaderContainer(DashboardHomeHeader);

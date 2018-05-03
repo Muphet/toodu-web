@@ -81,7 +81,7 @@ function DropdownMenu() {
         </Link>
       </li>
       <li className="dropdown__item dropdown__item--divider">
-        <Link to="/tasks" className="dropdown__link">
+        <Link to="/dashboard/tasks" className="dropdown__link">
           My Tasks
         </Link>
       </li>

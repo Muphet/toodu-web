@@ -9,7 +9,7 @@ export default class TaskListItem extends Component {
   static propTypes = {
     task: PropTypes.object.isRequired,
     onComplete: PropTypes.func.isRequired,
-    projectId: PropTypes.string.isRequired,
+    linkTo: PropTypes.string.isRequired,
     user: PropTypes.object,
     active: PropTypes.bool
   };
@@ -33,12 +33,10 @@ export default class TaskListItem extends Component {
           onChange={this.handleComplete.bind(this)}
         />
         <Link
+          to={this.props.linkTo}
           className={classNames("taskList__link", {
             "taskList__link--completed": this.props.task.completed
           })}
-          to={`/dashboard/project/${this.props.projectId}/task/${
-            this.props.task.id
-          }`}
         >
           {this.props.task.name}
         </Link>

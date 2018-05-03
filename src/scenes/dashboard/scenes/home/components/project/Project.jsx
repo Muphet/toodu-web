@@ -46,6 +46,7 @@ export class Project extends Component {
           projectId={this.props.project.id}
           tasks={this.props.tasks}
           currentTaskId={this.props.currentTaskId}
+          linkPath={`/dashboard/project/${this.props.project.id}/task/`}
         />
       </div>
     );

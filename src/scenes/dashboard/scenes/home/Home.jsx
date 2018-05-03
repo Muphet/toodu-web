@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import DashboardHeader from "../../components/dashboardHeader/DashboardHeader";
 import DashboardEmpty from "../../components/dashboardEmpty/DashboardEmpty";
+import DashboardHomeHeader from "./components/dashboardHomeHeader/DashboardHomeHeader";
 import Project from "./components/project/Project";
 import Task from "./components/task/Task";
 
@@ -12,7 +12,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div>
-        <DashboardHeader />
+        <DashboardHomeHeader />
         <main className="container content content--center">
           <Route path="/dashboard/project/:projectId" component={Project} />
           <Route

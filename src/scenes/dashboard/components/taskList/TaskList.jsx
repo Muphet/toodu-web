@@ -10,6 +10,7 @@ export class TaskList extends Component {
     projectId: PropTypes.string.isRequired,
     getUsers: PropTypes.func.isRequired,
     tasksWithUsers: PropTypes.array.isRequired,
+    linkPath: PropTypes.string.isRequired,
     currentTaskId: PropTypes.string
   };
 
@@ -39,7 +40,7 @@ export class TaskList extends Component {
             task={task}
             onComplete={this.updateComplete.bind(this)}
             user={task.user}
-            projectId={this.props.projectId}
+            linkTo={this.props.linkPath + task.id}
             active={
               this.props.activeTask && task.id === this.props.activeTask.id
             }

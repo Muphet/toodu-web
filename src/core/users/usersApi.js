@@ -14,11 +14,13 @@ const usersApi = {
   },
 
   update(id, user) {
-    return ApiService.post(`/users/${id}`, user);
+    return ApiService.put(`/users/${id}`, user);
   },
 
   destroy(id) {
-    return ApiService.post(`/users/${id}`);
+    if (id === "current") {
+      return ApiService.delete("/auth");
+    }
   }
 };
 

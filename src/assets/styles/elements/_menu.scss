@@ -1,0 +1,39 @@
+.menu {
+  background-color: $white;
+  margin-right: 50px;
+  border-radius: $borderRadius;
+  border: 1px solid $mediumGrey;
+}
+
+.menu__heading {
+  font-size: 20px;
+  padding: 16px;
+  border-bottom: 2px solid $mediumGrey;
+}
+
+.menu__item {
+  border-bottom: 1px solid $lightGrey;
+}
+
+.menu__item:last-child {
+  border-bottom: none;
+}
+
+.menu__link {
+  display: block;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.menu__link:hover {
+  background-color: $lightGrey;
+}
+
+.menu__link--active {
+  background-color: $blue;
+  color: $white; 
+}
+
+.menu__link--active:hover {
+  background-color: lighten($blue, 8%);
+}

@@ -1,30 +1,25 @@
-import "./settings.scss";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, NavLink, Redirect } from "react-router-dom";
+import settingsContainer from "./settingsContainer.js";
 import Profile from "./scenes/profile/Profile";
+import Admin from "./scenes/admin/Admin";
 
-export default class Settings extends Component {
-  static propTypes = {};
+export class Settings extends Component {
+  static propTypes = {
+    openModal: PropTypes.func.isRequired
+  };
 
   render() {
     return (
-      <div className="container is-fluid  settings-container ">
-        <div className="columns">
-
-          <div className="column is-3">
-            <aside className="menu">
-              <h3 className="menu-label">Settings</h3>
-              <ul className="menu-list">
-                <li>
-                  <Link to="/settings/profile">Profile settings</Link>
-                </li>
-              </ul>
-            </aside>
-          </div>
-
-          <div className="column is-9">
+      <div className="container">
+        <div className="content">
+          <Menu openModal={this.props.openModal} />
+          <div className="content__col content__col--fill">
             <Switch>
+              <Redirect exact from="/settings" to="/settings/profile" />
               <Route path="/settings/profile" component={Profile} />
+              <Route path="/settings/admin" component={Admin} />
             </Switch>
           </div>
         </div>
@@ -32,3 +27,53 @@ export default class Settings extends Component {
     );
   }
 }
+
+function Menu({ openModal }) {
+  return (
+    <aside className="content__col content__col--menu menu">
+      <h3 className="menu__heading">Settings</h3>
+      <ul className="menu__list">
+        <li className="menu__item">
+          <NavLink
+            to="/settings/profile"
+            className="menu__link"
+            activeClassName="menu__link--active"
+          >
+            Profile settings
+          </NavLink>
+        </li>
+        <li className="menu__item">
+          <NavLink
+            to="/settings/admin"
+            className="menu__link"
+            activeClassName="menu__link--active"
+          >
+            Admin settings
+          </NavLink>
+        </li>
+      </ul>
+      <h3 className="menu__heading">Other</h3>
+      <ul className="menu__list">
+        <li className="menu__item">
+          <div
+            className="menu__link"
+            onClick={() => openModal("NewInviteModal")}
+          >
+            Invite a new user
+          </div>
+        </li>
+        <li className="menu__item">
+          <NavLink
+            to="/auth/logout"
+            className="menu__link"
+            activeClassName="menu__link--active"
+          >
+            Log out
+          </NavLink>
+        </li>
+      </ul>
+    </aside>
+  );
+}
+
+export default settingsContainer(Settings);

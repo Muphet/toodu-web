@@ -18,7 +18,7 @@ const tasksApi = {
   },
 
   destroy(id) {
-    return ApiService.put(`/tasks/${id}`);
+    return ApiService.delete(`/tasks/${id}`);
   }
 };
 

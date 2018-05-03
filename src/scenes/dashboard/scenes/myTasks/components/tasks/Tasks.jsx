@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import tasksContainer from "./tasksContainer";
 import TaskList from "../../../../components/taskList/TaskList";
 
@@ -27,8 +28,12 @@ export class Tasks extends Component {
     return (
       <div className="content__col content__col--half">
         {Object.keys(this.props.tasksByProject).map(projectId => (
-          <div>
-            <h3>{this.getProjectName(projectId)}</h3>
+          <div className="tasks">
+            <h3 className="tasks__heading">
+              <Link to={`/dashboard/project/${projectId}`}>
+                {this.getProjectName(projectId)}
+              </Link>
+            </h3>
             <TaskList
               tasks={this.props.tasksByProject[projectId]}
               currentTaskId={this.props.currentTaskId}

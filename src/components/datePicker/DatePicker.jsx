@@ -17,7 +17,7 @@ export default class DatePicker extends Component {
 
   handleDaySelect(day, { selected }) {
     if (selected) {
-      this.setState({ day: undefined });
+      this.setState({ day: null });
     } else {
       this.setState({ day });
     }

@@ -19,7 +19,9 @@ const taskSelector = createSelector(
 const subTasksForTaskSelector = createSelector(
   [subTasksSelector, currentTaskIdSelector],
   (subTasks, currentTaskId) =>
-    subTasks.filter(subTask => subTask.task_id === currentTaskId)
+    subTasks
+      .filter(subTask => subTask.task_id === currentTaskId)
+      .sort((a, b) => (a.completed ? 1 : -1))
 );
 
 const commentsForTaskSelector = createSelector(

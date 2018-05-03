@@ -62,7 +62,6 @@ export default class Form extends Component {
     if (this.unmounted) return;
     this.setState({
       submitting: false,
-      fields: this.props.fields,
       message: res.data.message,
       errors: null
     });
@@ -70,7 +69,6 @@ export default class Form extends Component {
 
   submitError(err) {
     if (this.unmounted) return;
-    console.log(err);
     this.setState({
       submitting: false,
       errors: err.response.data.errors,

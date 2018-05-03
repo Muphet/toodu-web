@@ -24,24 +24,23 @@ export class CommentList extends Component {
       <ul className="commentList">
         {this.props.commentsWithUsers.map(
           comment =>
-            comment.user && (
-              <li key={comment.id} className="commentList__comment">
-                <img
-                  className="commentList__avatar"
-                  src={comment.user.gravatar_url}
-                  alt="avatar"
-                />
-                <div className="commentList__wrapper">
-                  <h6 className="commentList__name">
-                    {comment.user.first_name}
-                  </h6>
-                  <time className="commentList__time">
-                    {new Date(comment.created_at).toLocaleDateString()}
-                  </time>
-                  <p className="commentList__content">{comment.content}</p>
-                </div>
-              </li>
-            )
+            comment.user &&
+            <li key={comment.id} className="commentList__comment">
+              <img
+                className="commentList__avatar"
+                src={comment.user.gravatar_url}
+                alt="avatar"
+              />
+              <div className="commentList__wrapper">
+                <h6 className="commentList__name">
+                  {comment.user.first_name + " " + comment.user.last_name}
+                </h6>
+                <time className="commentList__time">
+                  {new Date(comment.created_at).toLocaleDateString()}
+                </time>
+                <p className="commentList__content">{comment.content}</p>
+              </div>
+            </li>
         )}
       </ul>
     );

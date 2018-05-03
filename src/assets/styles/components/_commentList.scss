@@ -10,29 +10,33 @@
 
 .commentList__wrapper {
   position: relative;
-  padding: 12px;
-  border: 1px solid $mediumGrey;
-  flex: 1;
+  padding: 12px 28px 12px 12px;
   background-color: $white;
+  border: 1px solid darken($lightBlue, 5%);
+  flex: 0 1 auto;
+  min-width: 33%;
   border-radius: $borderRadius;
-  &:before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-left: 1px solid $mediumGrey;
-    border-top: 1px solid $mediumGrey;
-    transform: rotate(-45deg);
-    left: -6px;
-    top: 17px;
-    background-color: $white;
-  }
+  box-shadow: 1px 2px 7px rgba($black, 0.025);
+}
+
+.commentList__wrapper:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-left: 1px solid $mediumGrey;
+  border-top: 1px solid $mediumGrey;
+  transform: rotate(-45deg);
+  left: -6px;
+  top: 17px;
+  background-color: $white;
 }
 
 .commentList__avatar {
   width: 40px;
-  border-radius: $borderRadius;
+  border-radius: 50%;
   margin-right: 16px;
+  box-shadow: 1px 2px 7px rgba($black, 0.1);
 }
 
 .commentList__name {
@@ -41,10 +45,11 @@
 }
 
 .commentList__time {
-  color: $darkGrey;
+  color: darken($lightBlue, 18%);
   font-size: 13px;
 }
 
 .commentList__content {
   padding-top: 10px;
+  white-space: pre-line;
 }

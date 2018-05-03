@@ -23,9 +23,11 @@ export class ModalRoot extends Component {
         <div className="modal__box">
           <ModalContent />
         </div>
-        <button className="modal__close" onClick={this.props.closeModal}>
-          Close
-        </button>
+        <button
+          title="close"
+          className="modal__close"
+          onClick={this.props.closeModal}
+        />
       </div>
     );
   }

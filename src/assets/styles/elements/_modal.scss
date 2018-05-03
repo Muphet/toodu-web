@@ -16,13 +16,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(darken($blue, 35%), 0.8);
 }
 
 .modal__close {
   position: absolute;
   top: 20px;
   right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  background-image: url("../icons/close-white.svg");
+  background-size: 100%;
+  border: none;
+  cursor: pointer;
 }
 
 .modal__box {

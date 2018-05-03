@@ -18,7 +18,7 @@
 
 .task__footer {
   padding: 16px;
-  background-color: lighten($lightBlue, 3%);
+  background-color: lighten($lightBlue, 2%);
   border-top: 1px solid darken($lightBlue, 3%);
 }
 
@@ -29,16 +29,17 @@
 
 .task__dueDate {
   position: relative;
-  border: 1px solid $mediumGrey;
-  border-radius: 20px;
-  padding: 6px 16px 6px 40px;
+  border: 1px solid $lightBlue;
+  border-radius: $borderRadius;
+  padding: 4px 12px 4px 34px;
+  background-color: $lightBlue;
   background-image: url("../icons/calendar.svg");
-  background-position: 16px calc(50% - 2px);
+  background-position: 10px calc(50% - 2px);
   background-size: 16px;
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background-color: $lightGrey;
+    border-color: lighten($blue, 30%);
   }
 }
 

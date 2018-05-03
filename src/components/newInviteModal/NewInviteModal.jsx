@@ -5,9 +5,8 @@ import Form from "../form/Form";
 export class NewInviteModal extends Component {
   static propTypes = {};
 
-  async createInvite({ email }) {
-    const res = await invitesApi.create({ email });
-    return res;
+  createInvite({ email }) {
+    return invitesApi.create({ email });
   }
 
   render() {

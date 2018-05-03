@@ -18,7 +18,10 @@ export default class Verified extends Component {
             <h1 className="authBox__title">Your email has been verified</h1>
           </header>
           <main className="authBox__body">
-            <Link to="/" className="button button--green">
+            <Link
+              to="/auth/login"
+              className="button button--green button--fullwidth"
+            >
               Get started
             </Link>
           </main>

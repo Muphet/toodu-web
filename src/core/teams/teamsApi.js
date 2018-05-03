@@ -10,7 +10,7 @@ const teamsApi = {
   },
 
   destroy(id) {
-    return ApiService.put(`/teams/${id}`);
+    return ApiService.delete(`/teams/${id}`);
   }
 };
 

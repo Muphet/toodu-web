@@ -14,11 +14,11 @@ const projectsApi = {
   },
 
   update(id, project) {
-    return ApiService.post(`/projects/${id}`, project);
+    return ApiService.put(`/projects/${id}`, project);
   },
 
   destroy(id) {
-    return ApiService.post(`/projects/${id}`);
+    return ApiService.delete(`/projects/${id}`);
   }
 };
 

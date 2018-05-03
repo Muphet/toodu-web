@@ -14,11 +14,11 @@ const followsApi = {
   },
 
   update(id, follow) {
-    return ApiService.post(`/follows/${id}`, follow);
+    return ApiService.put(`/follows/${id}`, follow);
   },
 
   destroy(id) {
-    return ApiService.post(`/follows/${id}`);
+    return ApiService.delete(`/follows/${id}`);
   }
 };
 

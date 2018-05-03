@@ -18,7 +18,7 @@ const subTasksApi = {
   },
 
   destroy(id) {
-    return ApiService.put(`/sub_tasks/${id}`);
+    return ApiService.delete(`/sub_tasks/${id}`);
   }
 };
 

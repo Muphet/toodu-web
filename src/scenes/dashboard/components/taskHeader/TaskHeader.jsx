@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import taskHeaderContainer from "./tasksHeaderContainer.js";
 import tasksApi from "../../../../core/tasks/tasksApi";
 import UtilService from "../../../../services/UtilService";
 import DatePicker from "../../../../components/datePicker/DatePicker";
 import UserPicker from "../../../../components/userPicker/UserPicker";
 
-export default class TaskHeader extends Component {
+export class TaskHeader extends Component {
   static propTypes = {
     task: PropTypes.object.isRequired,
     assignedUser: PropTypes.object
@@ -16,8 +17,12 @@ export default class TaskHeader extends Component {
     showUserPicker: false
   };
 
+  componentDidMount() {
+    this.props.getUsers();
+  }
+
   showDatePicker() {
-    this.setState({ showDatePicker: true });
+    this.setState({ showDatePicker: true, showUserPicker: false });
   }
 
   hideDatePicker(e) {
@@ -30,7 +35,7 @@ export default class TaskHeader extends Component {
   }
 
   showUserPicker() {
-    this.setState({ showUserPicker: true });
+    this.setState({ showUserPicker: true, showDatePicker: false });
   }
 
   hideUserPicker(e) {
@@ -56,34 +61,33 @@ export default class TaskHeader extends Component {
                 ? UtilService.dueDateInWords(this.props.task.due_date)
                 : "Not set"}
             </p>
-            {this.state.showDatePicker && (
+            {this.state.showDatePicker &&
               <DatePicker
                 onConfirm={this.handleDatePick.bind(this)}
                 onCancel={this.hideDatePicker.bind(this)}
                 day={new Date(this.props.task.due_date)}
                 className="task__datePicker"
-              />
-            )}
+              />}
           </div>
           <div className="task__user" onClick={this.showUserPicker.bind(this)}>
-            {this.props.assignedUser && (
+            {this.props.assignedUser &&
               <img
                 className="task__userAvatar"
                 alt={`${this.props.assignedUser.first_name}'s avatar`}
                 src={this.props.assignedUser.gravatar_url}
-              />
-            )}
-            {this.state.showUserPicker && (
+              />}
+            {this.state.showUserPicker &&
               <UserPicker
                 onConfirm={this.handleUserPick.bind(this)}
                 onCancel={this.hideUserPicker.bind(this)}
                 user={this.props.assignedUser}
                 className="task__userPicker"
-              />
-            )}
+              />}
           </div>
         </div>
       </header>
     );
   }
 }
+
+export default taskHeaderContainer(TaskHeader);

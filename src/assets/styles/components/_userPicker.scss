@@ -1,9 +1,15 @@
 .userPicker {
   display: inline-block;
+  width: 300px;
   background-color: $white;
   border-radius: $borderRadius;
   box-shadow: 1px 1px 10px rgba($black, 0.2);
   border: 1px solid darken($lightBlue, 5%);
+}
+
+.userPicker__users {
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .userPicker__user {

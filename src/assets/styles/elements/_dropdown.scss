@@ -46,8 +46,27 @@
 
 .dropdown__link {
   display: block;
-  padding: 10px 15px;
+  padding: 10px 15px 10px 50px;
+  background-size: 16px;
+  background-position: 15px center;
+  cursor: pointer;
   &:hover {
     background-color: $lightBlue;
   }
+}
+
+.dropdown__link--home {
+  background-image: url("../icons/home.svg");
+}
+
+.dropdown__link--check {
+  background-image: url("../icons/check-circle.svg");
+}
+
+.dropdown__link--settings {
+  background-image: url("../icons/settings.svg");
+}
+
+.dropdown__link--logout {
+  background-image: url("../icons/log-out.svg");
 }

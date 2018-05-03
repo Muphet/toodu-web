@@ -1,0 +1,27 @@
+.settings__header {
+  padding: 8px 0;
+  margin-bottom: 25px;
+  border-bottom: 2px solid $mediumGrey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings__title {
+  font-size: 32px;
+}
+
+.settings__gravatar {
+  max-width: 170px;
+  margin-left: 25px;
+  .button {
+    width: 100%;
+  }
+}
+
+.settings__gravatarImg {
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  box-shadow: 1px 1px 7px rgba($black, 0.1);
+}

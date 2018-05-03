@@ -2,10 +2,16 @@
   padding-top: 24px;
   padding-bottom: 24px;
   display: flex;
+  align-items: flex-start;
 }
 
 .content--stacked {
   flex-direction: column;
+}
+
+.content--flat {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .content--center {
@@ -27,6 +33,14 @@
 
 .content__col--half {
   flex-basis: 50%;
+}
+
+.content__col--menu {
+  flex-basis: 250px;
+}
+
+.content__col--fill {
+  flex: 1;
 }
 
 @media (max-width: 950px)  {

@@ -64,17 +64,21 @@ function NotAdmin() {
 
 function AdminContent({ updateTeam }) {
   return (
-    <Form
-      submitText="Update"
-      onSubmit={updateTeam}
-      fields={[
-        {
-          name: "name",
-          type: "text",
-          label: "Enter the new name for your team"
-        }
-      ]}
-    />
+    <div className="content content--flat">
+      <div className="content__col settings__form">
+        <Form
+          submitText="Update"
+          onSubmit={updateTeam}
+          fields={[
+            {
+              name: "name",
+              type: "text",
+              label: "Enter the new name for your team"
+            }
+          ]}
+        />
+      </div>
+    </div>
   );
 }
 

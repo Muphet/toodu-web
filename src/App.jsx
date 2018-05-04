@@ -4,6 +4,7 @@ import { ConnectedRouter } from "react-router-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/header/Header";
 import ModalRoot from "./components/modalRoot/ModalRoot";
+import OfflineNotice from "./components/offlineNotice/OfflineNotice";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import CodeSplittingService from "./services/CodeSplittingService.js";
 
@@ -32,6 +33,7 @@ export default function App({ store, history }) {
             </Switch>
           </main>
           <ModalRoot />
+          <OfflineNotice />
         </div>
       </ConnectedRouter>
     </Provider>

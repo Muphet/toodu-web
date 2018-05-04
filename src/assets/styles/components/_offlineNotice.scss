@@ -1,0 +1,33 @@
+.offlineNotice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba($black, 0.95);
+  border-radius: $borderRadius;
+  padding: 20px;
+  box-shadow: 1px 1px 6px rgba($black, 0.2);
+  animation: offlineNotice__appear 5s ease-out;
+  z-index: 99;
+  max-width: 500px;
+}
+
+@keyframes offlineNotice__appear {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.offlineNotice__heading {
+  color: $white;
+}
+
+.offlineNotice__text {
+  color: $white;
+  font-size: 13px;
+}

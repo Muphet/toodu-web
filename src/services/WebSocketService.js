@@ -1,12 +1,15 @@
 import ConfigService from "../services/ConfigService";
 import qs from "qs";
 import { TEAM_DESTROYED } from "../core/teams/teamsConstants";
+import { disconnected, connected } from "../core/meta/metaActions";
 import AuthService from "./AuthService";
 
 class WebSocketService {
   constructor() {
     this.socket = null;
     this.store = null;
+    this.lastPing = null;
+    this.reconnectInterval = null;
   }
 
   init(store) {
@@ -46,24 +49,39 @@ class WebSocketService {
   }
 
   isConnected() {
-    if (!this.socket) return false;
-    return this.socket.readyState === this.socket.OPEN;
+    return Date.now() - this.lastPing < 6000;
   }
 
   handleMessage(message) {
     const data = JSON.parse(message.data);
     if (data.type === "welcome") return;
     if (data.type === "confirm_subscription") return;
-    if (data.type === "ping") return;
+    if (data.type === "ping") return this.setLastPing(data);
     if (data.message.type === TEAM_DESTROYED) AuthService.logout();
     this.store.dispatch(data.message);
   }
 
+  setLastPing(data) {
+    this.lastPing = data.message * 1000;
+  }
+
+  startReconnectLoop() {
+    this.reconnectInterval = setInterval(() => {
+      if (this.isConnected()) return;
+      this.store.dispatch(disconnected());
+      this.connect();
+    }, 10000);
+  }
+
   handleOpen(e) {
+    this.store.dispatch(connected());
     this.subscribe("TeamChannel");
+    clearInterval(this.reconnectInterval);
+    this.startReconnectLoop();
   }
 
   handleClose(e) {
+    clearInterval(this.reconnectInterval);
     console.log(e);
   }
 

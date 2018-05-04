@@ -24,7 +24,7 @@ export class Profile extends Component {
         </header>
         <div className="settings__content">
           <div className="content content--flat">
-            <div className="content__col content__col--fill">
+            <div className="content__col settings__form">
               <Form
                 submitText="Update"
                 onSubmit={this.updateUser.bind(this)}

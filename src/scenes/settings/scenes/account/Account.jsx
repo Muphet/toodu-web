@@ -35,7 +35,7 @@ export default class Account extends Component {
         </header>
         <div className="settings__content">
           <div className="content content--flat">
-            <div className="content__col content__col--fill">
+            <div className="content__col settings__form">
               <Form
                 submitText="Change password"
                 onSubmit={this.updatePassword.bind(this)}

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import AuthService from "../../../../services/AuthService";
 import teamsApi from "../../../../core/teams/teamsApi.js";
 import adminContainer from "./adminContainer.js";
 import Form from "../../../../components/form/Form";
@@ -23,9 +24,7 @@ export class Admin extends Component {
 
   deleteTeam() {
     if (window.confirm("Are you sure you want to delete your team?")) {
-      teamsApi
-        .destroy("current")
-        .then(() => this.props.navigate("/auth/login"));
+      teamsApi.destroy("current").then(() => AuthService.logout());
     }
   }
 
@@ -34,17 +33,21 @@ export class Admin extends Component {
       <div className="settings">
         <header className="settings__header">
           <h2 className="settings__title">Admin</h2>
-          <button
-            className="button button--red"
-            onClick={this.deleteTeam.bind(this)}
-          >
-            Delete my team
-          </button>
+          {this.props.currentUser.admin && (
+            <button
+              className="button button--red"
+              onClick={this.deleteTeam.bind(this)}
+            >
+              Delete my team
+            </button>
+          )}
         </header>
         <div className="settings__content">
-          {this.props.currentUser.admin
-            ? <AdminContent updateTeam={this.updateTeam.bind(this)} />
-            : <NotAdmin />}
+          {this.props.currentUser.admin ? (
+            <AdminContent updateTeam={this.updateTeam.bind(this)} />
+          ) : (
+            <NotAdmin />
+          )}
         </div>
       </div>
     );

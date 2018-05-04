@@ -16,25 +16,11 @@ export class Profile extends Component {
     });
   }
 
-  deleteUser() {
-    if (window.confirm("Are you sure you want to delete your account?")) {
-      usersApi
-        .destroy("current")
-        .then(() => this.props.navigate("/auth/login"));
-    }
-  }
-
   render() {
     return (
       <div className="settings">
         <header className="settings__header">
           <h2 className="settings__title">Profile</h2>
-          <button
-            className="button button--red"
-            onClick={this.deleteUser.bind(this)}
-          >
-            Delete my account
-          </button>
         </header>
         <div className="settings__content">
           <div className="content content--flat">

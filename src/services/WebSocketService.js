@@ -1,5 +1,6 @@
 import ConfigService from "../services/ConfigService";
 import qs from "qs";
+import { TEAM_DESTROYED } from "../core/teams/teamsConstants";
 import AuthService from "./AuthService";
 
 class WebSocketService {
@@ -54,7 +55,7 @@ class WebSocketService {
     if (data.type === "welcome") return;
     if (data.type === "confirm_subscription") return;
     if (data.type === "ping") return;
-
+    if (data.message.type === TEAM_DESTROYED) AuthService.logout();
     this.store.dispatch(data.message);
   }
 

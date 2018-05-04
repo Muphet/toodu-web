@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Switch, Route, NavLink, Redirect } from "react-router-dom";
 import settingsContainer from "./settingsContainer.js";
 import Profile from "./scenes/profile/Profile";
+import Account from "./scenes/account/Account";
 import Admin from "./scenes/admin/Admin";
 
 export class Settings extends Component {
@@ -19,6 +20,7 @@ export class Settings extends Component {
             <Switch>
               <Redirect exact from="/settings" to="/settings/profile" />
               <Route path="/settings/profile" component={Profile} />
+              <Route path="/settings/account" component={Account} />
               <Route path="/settings/admin" component={Admin} />
             </Switch>
           </div>
@@ -39,7 +41,16 @@ function Menu({ openModal }) {
             className="menu__link"
             activeClassName="menu__link--active"
           >
-            Profile settings
+            Profile
+          </NavLink>
+        </li>
+        <li className="menu__item">
+          <NavLink
+            to="/settings/account"
+            className="menu__link"
+            activeClassName="menu__link--active"
+          >
+            Account
           </NavLink>
         </li>
         <li className="menu__item">
@@ -48,7 +59,7 @@ function Menu({ openModal }) {
             className="menu__link"
             activeClassName="menu__link--active"
           >
-            Admin settings
+            Admin
           </NavLink>
         </li>
       </ul>

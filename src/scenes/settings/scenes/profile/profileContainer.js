@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
-import { navigate } from "../../../../core/router/routerActions";
 
 const currentUserSelector = state => state.core.auth.currentUser;
 const usersSelector = state => state.core.users;
@@ -15,4 +14,4 @@ const mapStateToProps = (state, props) => ({
   currentUser: currentUserWithAvatarSelector(state, props)
 });
 
-export default connect(mapStateToProps, { navigate });
+export default connect(mapStateToProps);

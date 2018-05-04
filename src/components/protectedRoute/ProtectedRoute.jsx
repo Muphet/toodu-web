@@ -26,12 +26,18 @@ export class ProtectedRoute extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.authenticated && !this.props.authenticated) {
+      this.setState({ authenticating: false, authenticated: false });
+    }
+  }
+
   authenticated() {
     this.setState({ authenticating: false, authenticated: true });
   }
 
   notAuthenticated() {
-    this.setState({ authenticating: false });
+    this.setState({ authenticating: false, authenticated: false });
   }
 
   render() {

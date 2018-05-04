@@ -27,6 +27,10 @@ const authApi = {
 
   resetPassword(resetData) {
     return ApiService.put("/auth/password", resetData);
+  },
+
+  updatePassword(passwordData) {
+    return ApiService.put("/auth", passwordData);
   }
 };
 

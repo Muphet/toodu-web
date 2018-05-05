@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Tasks from "./components/tasks/Tasks";
 import Task from "../../components/task/Task";
-import DashboardMyTasksHeader from "./components/dashboardMyTasksHeader/DashboardMyTasksHeader";
+import DashboardMyTasksHeader
+  from "./components/dashboardMyTasksHeader/DashboardMyTasksHeader";
 
 export default class MyTasks extends Component {
   static propTypes = {};

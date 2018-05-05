@@ -44,8 +44,8 @@ export class Profile extends Component {
                 ]}
               />
             </div>
-            <div className="content__col">
-              <figure className="settings__gravatar">
+            <div className="content__col settings__gravatar">
+              <figure>
                 <img
                   className="settings__gravatarImg"
                   alt="Your current gravatar"

@@ -37,3 +37,10 @@
 .menu__link--active:hover {
   background-color: lighten($blue, 8%);
 }
+
+@media (max-width: 800px) {
+  .menu {
+    margin-bottom: 50px;
+    margin-right: 0;
+  }
+}

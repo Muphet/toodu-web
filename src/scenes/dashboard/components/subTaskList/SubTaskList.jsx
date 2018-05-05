@@ -17,7 +17,7 @@ export default class SubTaskList extends Component {
     if (!this.props.subTasks.length)
       return (
         <div className="empty empty--white">
-          <p>No tasks yet...</p>
+          <p>No sub-tasks</p>
         </div>
       );
 

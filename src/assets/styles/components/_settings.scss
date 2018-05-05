@@ -31,3 +31,15 @@
   display: block;
   width: 100%;
 }
+
+@media (max-width: 800px) {
+  .settings__form {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .settings__gravatar {
+    display: none;
+  }
+}

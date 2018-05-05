@@ -16,7 +16,7 @@ export class CommentList extends Component {
     if (!this.props.commentsWithUsers.length)
       return (
         <div className="empty empty--white">
-          <p>No comments yet...</p>
+          <p>No comments</p>
         </div>
       );
 

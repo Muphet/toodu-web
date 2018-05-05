@@ -14,7 +14,7 @@ export default function projectsReducer(state = defaultState, action) {
     case GET_PROJECT:
       return UtilService.merge(state, action.project);
     case PROJECT_CREATED:
-      return state.data.concat(action.project);
+      return state.concat(action.project);
     default:
       return state;
   }

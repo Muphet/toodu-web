@@ -14,7 +14,7 @@ export class Settings extends Component {
   render() {
     return (
       <div className="container">
-        <div className="content">
+        <div className="content content--collapse">
           <Menu openModal={this.props.openModal} />
           <div className="content__col content__col--fill">
             <Switch>

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 import SceneLoader from "../sceneLoader/SceneLoader";
+import OfflineNotice from "../offlineNotice/OfflineNotice";
 import protectedRouteContainer from "./protectedRouteContainer.js";
 
 export class ProtectedRoute extends Component {
@@ -42,7 +43,13 @@ export class ProtectedRoute extends Component {
 
   render() {
     if (this.state.authenticating) return <SceneLoader />;
-    else if (this.state.authenticated) return <Route {...this.props} />;
+    else if (this.state.authenticated)
+      return (
+        <React.Fragment>
+          <Route {...this.props} />
+          <OfflineNotice />
+        </React.Fragment>
+      );
     else return <Redirect to="/auth/login" />;
   }
 }

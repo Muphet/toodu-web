@@ -14,3 +14,9 @@
 .tasks__heading a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 950px) {
+  .tasks:not(:only-child) {
+    display: none;
+  }
+}

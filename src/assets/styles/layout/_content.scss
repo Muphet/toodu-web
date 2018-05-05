@@ -44,9 +44,17 @@
 }
 
 @media (max-width: 950px) {
-  .content__col {
+  .content__col--half {
     flex-basis: 100%;
     margin-left: 0;
     margin-right: 0;
   }
 }
+
+@media (max-width: 800px) {
+  .content--collapse {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+

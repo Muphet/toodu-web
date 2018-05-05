@@ -63,15 +63,24 @@ export default class Form extends Component {
     this.setState({
       submitting: false,
       message: res.data.message,
-      errors: null
+      errors: null,
+      fields: this.props.fields.reduce((fields, field) => {
+        fields[field.name] = field.initialValue
+          ? this.state.fields[field.name]
+          : "";
+        return fields;
+      }, {})
     });
   }
 
   submitError(err) {
     if (this.unmounted) return;
+    const errors = err.message === "Network Error"
+      ? "There was a network issue, check your connection."
+      : err.response.data.errors;
     this.setState({
+      errors,
       submitting: false,
-      errors: err.response.data.errors,
       message: null
     });
   }

@@ -13,7 +13,7 @@ export default function authReducer(state = defaultState, action) {
     case UPDATE_CURRENT_USER:
       return { ...state, currentUser: action.user };
     case USER_UPDATED:
-      if (action.user.id === state.currentUser.id) {
+      if (state.currentUser && action.user.id === state.currentUser.id) {
         return { ...state, currentUser: action.user };
       }
       return state;

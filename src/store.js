@@ -14,6 +14,7 @@ import subTasksReducer from "./core/subTasks/subTasksReducer";
 import commentsReducer from "./core/comments/commentsReducer";
 import starsReducer from "./core/stars/starsReducer";
 import modalReducer from "./core/modal/modalReducer";
+import notificationsReducer from "./core/notifications/notificationsReducer";
 import metaReducer from "./core/meta/metaReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
@@ -29,6 +30,7 @@ const appReducer = combineReducers({
     comments: commentsReducer,
     stars: starsReducer,
     modal: modalReducer,
+    notifications: notificationsReducer,
     meta: metaReducer
   }),
   scenes: combineReducers({

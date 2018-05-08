@@ -37,6 +37,7 @@
   cursor: pointer;
   width: 30px;
   height: 30px;
+  margin-left: 10px;
   padding: 0;
   outline: none;
   border: none;
@@ -49,4 +50,22 @@
   &:hover {
     background-color: lighten($green, 5%);
   }
+}
+
+.header__notifications {
+  background-color: rgba($lightBlue, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: $blue;
+  margin-left: 10px;
+  margin: 12px 0;
+}
+
+.header__notifications--active {
+  background-color: $red;
+  color: $white;
 }

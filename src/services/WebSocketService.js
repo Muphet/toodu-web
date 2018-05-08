@@ -54,6 +54,7 @@ class WebSocketService {
 
   handleMessage(message) {
     const data = JSON.parse(message.data);
+    console.log(data);
     if (data.type === "welcome") return;
     if (data.type === "confirm_subscription") return;
     if (data.type === "ping") return this.setLastPing(data);
@@ -76,6 +77,7 @@ class WebSocketService {
   handleOpen(e) {
     this.store.dispatch(connected());
     this.subscribe("TeamChannel");
+    this.subscribe("UserChannel");
     clearInterval(this.reconnectInterval);
     this.startReconnectLoop();
   }

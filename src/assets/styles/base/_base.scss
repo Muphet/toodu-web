@@ -17,7 +17,7 @@ body {
 }
 
 body {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 pre,
@@ -93,4 +93,17 @@ textarea,
 [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: $mediumGrey;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  background-color: $mediumGrey;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $darkGrey;
 }

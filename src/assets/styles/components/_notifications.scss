@@ -1,16 +1,21 @@
-.notification {
+.notifications {
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.notifications__notification {
   display: flex;
   align-items: flex-start;
   padding: 10px 15px 10px 15px;
 }
 
-.notification__avatar {
+.notifications__avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 15px;
 }
 
-.notification__text {
+.notifications__text {
   margin-top: 3px;
 }

@@ -53,18 +53,18 @@ export class Notifications extends Component {
   render() {
     return (
       <ul
-        className="dropdown"
+        className="dropdown notifications"
         ref={node => {
           this.node = node;
         }}
       >
         {!this.props.notifications.length && (
-          <li className="notification">No new notifications</li>
+          <li className="notifications__notification">No new notifications</li>
         )}
         {this.props.notifications.map(notification => (
           <li key={notification.id} className="dropdown__item">
             <Link
-              className="notification"
+              className="notifications__notification"
               onClick={this.close.bind(this)}
               to={`/dashboard/project/${notification.task.project_id}/task/${
                 notification.task_id
@@ -74,16 +74,16 @@ export class Notifications extends Component {
                 <img
                   src={notification.actor.gravatar_url}
                   alt={`${notification.actor.first_name}'s avatar`}
-                  className="notification__avatar"
+                  className="notifications__avatar"
                 />
               ) : (
                 <img
                   src={this.props.currentUser.gravatar_url}
                   alt="Your avatar"
-                  className="notification__avatar"
+                  className="notifications__avatar"
                 />
               )}
-              <p className="notification__text">{notification.message}</p>
+              <p className="notifications__text">{notification.message}</p>
             </Link>
           </li>
         ))}

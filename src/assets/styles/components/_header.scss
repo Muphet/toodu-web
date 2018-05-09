@@ -53,19 +53,34 @@
 }
 
 .header__notifications {
-  background-color: rgba($lightBlue, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  background-color: rgba($lightBlue, 0.5);
+  background-image: url("../icons/bell-blue.svg");
+  background-position: center;
+  background-size: 16px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   color: $blue;
   margin-left: 10px;
   margin: 12px 0;
+  &:hover {
+    background-color: rgba($lightBlue, 0.8);
+  }
 }
 
-.header__notifications--active {
+.header__notificationCount {
   background-color: $red;
   color: $white;
+  display: block;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
 }

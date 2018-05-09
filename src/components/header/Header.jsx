@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
 import HeaderMenu from "../headerMenu/HeaderMenu";
 import Notifications from "../notifications/Notifications";
 import headerContainer from "./headerContainer";
@@ -63,32 +62,28 @@ export class Header extends Component {
           <div className="header__start">
             <h1 className="header__title">
               <Link to="/dashboard">
-                {this.props.team ? (
-                  <h1>{this.props.team.name}</h1>
-                ) : (
-                  <h1>Toodu</h1>
-                )}
+                {this.props.team
+                  ? <h1>{this.props.team.name}</h1>
+                  : <h1>Toodu</h1>}
               </Link>
             </h1>
           </div>
 
-          {this.props.currentUser && (
+          {this.props.currentUser &&
             <div className="header__end">
               <div className="has-dropdown">
                 <div
-                  className={classNames("header__notifications", {
-                    "header__notifications--active":
-                      this.props.notificationCount > 0
-                  })}
+                  className="header__notifications"
                   onClick={this.showNotifications.bind(this)}
                 >
-                  <p>{this.props.notificationCount}</p>
+                  <p className="header__notificationCount">
+                    {this.props.notificationCount}
+                  </p>
                 </div>
-                {this.state.showNotifications && (
+                {this.state.showNotifications &&
                   <Notifications
                     onClickOutside={this.hideNotifications.bind(this)}
-                  />
-                )}
+                  />}
               </div>
               <button
                 className="header__inviteButton"
@@ -104,12 +99,10 @@ export class Header extends Component {
                   />
                 </div>
 
-                {this.state.showMenu && (
-                  <HeaderMenu onClickOutside={this.hideMenu.bind(this)} />
-                )}
+                {this.state.showMenu &&
+                  <HeaderMenu onClickOutside={this.hideMenu.bind(this)} />}
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </header>
     );

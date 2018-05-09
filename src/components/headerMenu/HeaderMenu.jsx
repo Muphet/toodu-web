@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import headerMenuContainer from "./headerMenuContainer";
 
 export class HeaderMenu extends Component {
   static propTypes = {
-    onClickOutside: PropTypes.func.isRequired
+    onClickOutside: PropTypes.func.isRequired,
+    locationKey: PropTypes.string.isRequired
   };
 
   handleOutsideClick = this.handleOutsideClick.bind(this);
@@ -15,6 +17,12 @@ export class HeaderMenu extends Component {
 
   componentWillUnmount() {
     document.removeEventListener("click", this.handleOutsideClick, false);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.locationKey !== this.props.locationKey) {
+      this.props.onClickOutside();
+    }
   }
 
   handleOutsideClick(e) {
@@ -65,4 +73,4 @@ export class HeaderMenu extends Component {
   }
 }
 
-export default HeaderMenu;
+export default headerMenuContainer(HeaderMenu);

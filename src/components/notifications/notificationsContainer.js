@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
-import { getNotifications } from "../../core/notifications/notificationsActions";
+import {
+  getNotifications
+} from "../../core/notifications/notificationsActions";
 import { getTask } from "../../core/tasks/tasksActions";
 import { getUsers } from "../../core/users/usersActions";
 
@@ -8,13 +10,6 @@ const notificationsSelector = state => state.core.notifications;
 const currentUserSelector = state => state.core.auth.currentUser;
 const usersSelector = state => state.core.users;
 const tasksSelector = state => state.core.tasks;
-
-const currentUserWithAvatarSelector = createSelector(
-  [usersSelector, currentUserSelector],
-  (users, currentUser) => {
-    return users.find(user => user.id === currentUser.id);
-  }
-);
 
 const unseenNotificationsSelector = createSelector(
   [notificationsSelector],
@@ -37,8 +32,9 @@ const notificationsWithActorAndTaskSelector = createSelector(
   [notificationsWithActorSelector, tasksSelector],
   (notifications, tasks) => {
     return notifications.map(notification => {
-      notification.task =
-        tasks.find(task => task.id === notification.task_id) || {};
+      notification.task = tasks.find(
+        task => task.id === notification.task_id
+      ) || {};
       return notification;
     });
   }
@@ -46,7 +42,7 @@ const notificationsWithActorAndTaskSelector = createSelector(
 
 const mapStateToProps = state => ({
   notifications: notificationsWithActorAndTaskSelector(state),
-  currentUser: currentUserWithAvatarSelector(state)
+  currentUser: currentUserSelector(state)
 });
 
 export default connect(mapStateToProps, {

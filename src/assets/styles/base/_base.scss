@@ -10,6 +10,7 @@ body {
   margin: 0;
   height: 100%;
   box-sizing: border-box;
+  min-width: 320px;
   background-color: $lightestGrey;
   color: $black;
   font-family: $sansSerif;

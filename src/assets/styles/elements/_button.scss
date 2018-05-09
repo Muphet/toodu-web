@@ -78,3 +78,9 @@ $button-colors: (
     transform: rotate(360deg);
   }
 }
+
+@media(max-width: 370px) {
+  .button {
+    font-size: 14px;
+  }
+}

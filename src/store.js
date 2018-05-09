@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import { routerReducer, routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import WebSocketService from "./services/WebSocketService.js";
 import AuthService from "./services/AuthService.js";
 import ApiService from "./services/ApiService.js";
-import { CHANGE_AUTHENTICATED } from "./core/auth/authConstants";
+import OnlineService from "./services/OnlineService.js";
 
 import authReducer from "./core/auth/authReducer";
 import teamsReducer from "./core/teams/teamsReducer";
@@ -20,9 +22,15 @@ import notificationsReducer from "./core/notifications/notificationsReducer";
 import metaReducer from "./core/meta/metaReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
-const appReducer = combineReducers({
-  router: routerReducer,
-  core: combineReducers({
+const corePersistConfig = {
+  key: "core",
+  storage,
+  blacklist: ["modal", "meta", "auth"]
+};
+
+const coreReducer = persistReducer(
+  corePersistConfig,
+  combineReducers({
     auth: authReducer,
     team: teamsReducer,
     users: usersReducer,
@@ -35,20 +43,27 @@ const appReducer = combineReducers({
     modal: modalReducer,
     notifications: notificationsReducer,
     meta: metaReducer
-  }),
-  scenes: combineReducers({
-    dashboard: dashboardReducer
   })
+);
+
+const scenesReducer = combineReducers({
+  dashboard: dashboardReducer
 });
 
-const rootReducer = (state, action) => {
-  if (action.type === CHANGE_AUTHENTICATED) {
-    if (!action.authenticated) {
-      state = undefined;
-    }
-  }
-  return appReducer(state, action);
+const rootPersistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["router", "core"]
 };
+
+const rootReducer = persistReducer(
+  rootPersistConfig,
+  combineReducers({
+    router: routerReducer,
+    core: coreReducer,
+    scenes: scenesReducer
+  })
+);
 
 export default function configureStore(history, initialState = {}) {
   const enhancers = compose(
@@ -57,10 +72,12 @@ export default function configureStore(history, initialState = {}) {
   );
 
   const store = createStore(rootReducer, initialState, enhancers);
+  const persistor = persistStore(store);
 
   ApiService.init(store);
   WebSocketService.init(store);
   AuthService.init(store);
+  OnlineService.init(store);
 
-  return store;
+  return { store, persistor };
 }

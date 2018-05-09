@@ -6,7 +6,7 @@
   border-radius: $borderRadius;
   padding: 20px;
   box-shadow: 1px 1px 6px rgba($black, 0.2);
-  animation: offlineNotice__appear 5s ease-out;
+  animation: offlineNotice__appear 3s ease-out;
   z-index: 99;
   max-width: 500px;
 }
@@ -23,11 +23,7 @@
   }
 }
 
-.offlineNotice__heading {
-  color: $white;
-}
-
 .offlineNotice__text {
   color: $white;
-  font-size: 13px;
+  font-size: 14px;
 }

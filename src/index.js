@@ -7,10 +7,10 @@ import configureStore from "./store";
 import App from "./App";
 
 const history = createHistory();
-const store = configureStore(history);
+const { store, persistor } = configureStore(history);
 
 ReactDOM.render(
-  <App store={store} history={history} />,
+  <App store={store} persistor={persistor} history={history} />,
   document.getElementById("root")
 );
 

@@ -14,16 +14,17 @@ class ApiService {
 
   isOffline() {
     const state = this.store.getState();
-    if (state.core.meta.connected) {
+    if (state.core.meta.online) {
       return false;
     } else {
       alert("You are offline, Toodu is in read-only mode.");
-      return true;
+      return Promise.reject({ message: "Network Error" });
     }
   }
 
   post(url, data) {
-    if (this.isOffline()) return;
+    const offlineErr = this.isOffline();
+    if (offlineErr) return offlineErr;
     return axios
       .post(url, data, { headers: AuthService.auth })
       .then(this.setAuth);
@@ -36,14 +37,16 @@ class ApiService {
   }
 
   put(url, data) {
-    if (this.isOffline()) return;
+    const offlineErr = this.isOffline();
+    if (offlineErr) return offlineErr;
     return axios
       .put(url, data, { headers: AuthService.auth })
       .then(this.setAuth);
   }
 
   delete(url) {
-    if (this.isOffline()) return;
+    const offlineErr = this.isOffline();
+    if (offlineErr) return offlineErr;
     return axios.delete(url, { headers: AuthService.auth }).then(this.setAuth);
   }
 

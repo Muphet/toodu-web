@@ -4,17 +4,13 @@ import offlineNoticeContainer from "./offlineNoticeContainer";
 
 export class OfflineNotice extends Component {
   render() {
-    if (this.props.connected) return null;
+    if (this.props.online) return null;
 
     return (
       <div className="offlineNotice">
-        <h4 className="offlineNotice__heading">
+        <h4 className="offlineNotice__text">
           Toodu is running in offline mode
         </h4>
-        <p className="offlineNotice__text">
-          While in offline mode you will be able to view your tasks but you
-          won't receive updates and can't make any changes.
-        </p>
       </div>
     );
   }

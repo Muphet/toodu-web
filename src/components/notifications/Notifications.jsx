@@ -52,42 +52,41 @@ export class Notifications extends Component {
 
   render() {
     return (
-      <ul
-        className="dropdown notifications"
+      <div
+        className="dropdown"
         ref={node => {
           this.node = node;
         }}
       >
-        {!this.props.notifications.length && (
-          <li className="notifications__notification">No new notifications</li>
-        )}
-        {this.props.notifications.map(notification => (
-          <li key={notification.id} className="dropdown__item">
-            <Link
-              className="notifications__notification"
-              onClick={this.close.bind(this)}
-              to={`/dashboard/project/${notification.task.project_id}/task/${
-                notification.task_id
-              }`}
-            >
-              {notification.actor ? (
-                <img
-                  src={notification.actor.gravatar_url}
-                  alt={`${notification.actor.first_name}'s avatar`}
-                  className="notifications__avatar"
-                />
-              ) : (
-                <img
-                  src={this.props.currentUser.gravatar_url}
-                  alt="Your avatar"
-                  className="notifications__avatar"
-                />
-              )}
-              <p className="notifications__text">{notification.message}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+        <ul className="notifications">
+          {!this.props.notifications.length &&
+            <li className="notifications__notification">
+              No new notifications
+            </li>}
+          {this.props.notifications.map(notification => (
+            <li key={notification.id} className="dropdown__item">
+              <Link
+                className="notifications__notification"
+                onClick={this.close.bind(this)}
+                to={`/dashboard/project/${notification.task.project_id}/task/${notification.task_id}`}
+              >
+                {notification.actor
+                  ? <img
+                      src={notification.actor.gravatar_url}
+                      alt={`${notification.actor.first_name}'s avatar`}
+                      className="notifications__avatar"
+                    />
+                  : <img
+                      src={this.props.currentUser.gravatar_url}
+                      alt="Your avatar"
+                      className="notifications__avatar"
+                    />}
+                <p className="notifications__text">{notification.message}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }

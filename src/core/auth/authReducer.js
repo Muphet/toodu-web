@@ -1,3 +1,5 @@
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import { CHANGE_AUTHENTICATED, UPDATE_CURRENT_USER } from "./authConstants";
 import { USER_UPDATED } from "../users/usersConstants";
 
@@ -6,7 +8,7 @@ const defaultState = {
   currentUser: null
 };
 
-export default function authReducer(state = defaultState, action) {
+export function authReducer(state = defaultState, action) {
   switch (action.type) {
     case CHANGE_AUTHENTICATED:
       return { ...state, authenticated: action.authenticated };
@@ -21,3 +23,11 @@ export default function authReducer(state = defaultState, action) {
       return state;
   }
 }
+
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["currentUser"]
+};
+
+export default persistReducer(authPersistConfig, authReducer);

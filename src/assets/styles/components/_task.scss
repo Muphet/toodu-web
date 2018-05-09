@@ -22,6 +22,15 @@
   border-top: 1px solid darken($lightBlue, 3%);
 }
 
+.task__nameWrap {
+  display: flex;
+  align-items: center;
+}
+
+.task__checkbox {
+  margin-right: 15px;
+}
+
 .task__actions {
   display: flex;
   align-items: center;
@@ -77,4 +86,28 @@
   z-index: 3;
   right: 0;
   top: 40px;
+}
+
+.task__follow {
+  width: 35px;
+  height: 35px;
+  border: 1px solid $mediumGrey;
+  background-image: url("../icons/bell-off-grey.svg");
+  background-position: center;
+  background-size: 20px;
+  border-radius: 50%;
+  margin-left: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: $lightGrey;
+  }
+}
+
+.task__follow--active {
+  background-color: lighten($blue, 10%);
+  background-image: url("../icons/bell-white.svg");
+  border-color: $blue;
+  &:hover {
+    background-color: $blue;
+  }
 }

@@ -13,10 +13,6 @@ const followsApi = {
     return ApiService.post("/follows", follow);
   },
 
-  update(id, follow) {
-    return ApiService.put(`/follows/${id}`, follow);
-  },
-
   destroy(id) {
     return ApiService.delete(`/follows/${id}`);
   }

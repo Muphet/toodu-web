@@ -13,6 +13,7 @@ import tasksReducer from "./core/tasks/tasksReducer";
 import subTasksReducer from "./core/subTasks/subTasksReducer";
 import commentsReducer from "./core/comments/commentsReducer";
 import starsReducer from "./core/stars/starsReducer";
+import followsReducer from "./core/follows/followsReducer";
 import modalReducer from "./core/modal/modalReducer";
 import notificationsReducer from "./core/notifications/notificationsReducer";
 import metaReducer from "./core/meta/metaReducer";
@@ -29,6 +30,7 @@ const appReducer = combineReducers({
     subTasks: subTasksReducer,
     comments: commentsReducer,
     stars: starsReducer,
+    follows: followsReducer,
     modal: modalReducer,
     notifications: notificationsReducer,
     meta: metaReducer

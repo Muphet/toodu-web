@@ -7,15 +7,23 @@
   <meta name="theme-color" content="#0667d0">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/images/icons/icon-72x72.png">
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/icons/icon-384x384.png">
   <title>Toodu</title>
   <meta name="description" content="Toodu is a collaborative, real-time task management app for teams.">
 </head>
 
 <body>
-  <noscript>
-    Toodu requires JavaScript to run. Please enable JavaScript in your browser.
-  </noscript>
+
   <div id="root"></div>
+
+  <noscript>
+    <div class="noScript">
+      <img src="%PUBLIC_URL%/images/icons/icon-384x384.png" />
+      <h1>Toodu requires JavaScript to run.</h1>
+      <p>Please enable JavaScript in your browser.</p>
+    </div>
+  </noscript>
+
 </body>
 
 </html>

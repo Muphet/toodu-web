@@ -3,6 +3,7 @@ import { routerReducer, routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import WebSocketService from "./services/WebSocketService.js";
 import AuthService from "./services/AuthService.js";
+import ApiService from "./services/ApiService.js";
 import { CHANGE_AUTHENTICATED } from "./core/auth/authConstants";
 
 import authReducer from "./core/auth/authReducer";
@@ -57,6 +58,7 @@ export default function configureStore(history, initialState = {}) {
 
   const store = createStore(rootReducer, initialState, enhancers);
 
+  ApiService.init(store);
   WebSocketService.init(store);
   AuthService.init(store);
 

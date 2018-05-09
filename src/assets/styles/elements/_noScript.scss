@@ -1,0 +1,25 @@
+.noScript {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $blue;
+  color: $white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.noScript h1 {
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.noScript img {
+  width: 152px;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,5 @@
+{
+  "host": "http://toodu.surge.sh",
+  "api_base_url": "http://toodu-api.herokuapp.com",
+  "websocket_url": "ws://toodu-api.herokuapp.com/cable"
+}

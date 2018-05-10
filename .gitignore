@@ -1,11 +1,6 @@
 # dependencies
 /node_modules
 
-# config
-src/config/production.json
-src/config/development.json
-src/config/test.json
-
 # production
 /build
 

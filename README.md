@@ -18,3 +18,5 @@ Note. The API is hosted on a free Heroku dyno so can be slow to spin up.
 ### Feature Todos
 
 * User mentions in comments
+* Pagination is needed
+* Loaders while API data is fetched where relevant

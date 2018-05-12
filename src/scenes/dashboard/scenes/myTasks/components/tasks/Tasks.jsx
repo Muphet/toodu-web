@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import tasksContainer from "./tasksContainer";
 import TaskList from "../../../../components/taskList/TaskList";
 
@@ -27,17 +27,23 @@ export class Tasks extends Component {
   render() {
     if (!Object.keys(this.props.tasksByProject).length) {
       return (
-        <div className="dashboardEmpty">
-          <h3 className="dashboardEmpty__heading">
-            You have no assigned tasks!
-          </h3>
-          <Link
-            to="/dashboard"
-            className="dashboardEmpty__action button button--blue"
-          >
-            Go to your team dashboard
-          </Link>
-        </div>
+        <Route
+          exact
+          path="/dashboard/tasks"
+          component={() => (
+            <div className="dashboardEmpty">
+              <h3 className="dashboardEmpty__heading">
+                You have no assigned tasks!
+              </h3>
+              <Link
+                to="/dashboard"
+                className="dashboardEmpty__action button button--blue"
+              >
+                Go to your team dashboard
+              </Link>
+            </div>
+          )}
+        />
       );
     }
     return (

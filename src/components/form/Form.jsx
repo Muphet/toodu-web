@@ -75,6 +75,7 @@ export default class Form extends Component {
 
   submitError(err) {
     if (this.unmounted) return;
+    console.log(err, err.response);
     const errors = err.message === "Network Error"
       ? "There was a network issue, check your connection."
       : err.response.data.errors;

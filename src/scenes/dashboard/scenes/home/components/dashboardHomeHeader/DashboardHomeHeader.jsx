@@ -14,27 +14,25 @@ export class DashboardHomeHeader extends Component {
         <div className="dashboardHeader__container container">
           <div className="dashboardHeader__start">
             <h2 className="dashboardHeader__title">
-              {this.props.selectedProject ? (
-                <Link
-                  to={`/dashboard/project/${this.props.selectedProject.id}`}
-                >
-                  {this.props.selectedProject.name}
-                </Link>
-              ) : (
-                "Select a project..."
-              )}
+              {this.props.selectedProject
+                ? <Link
+                    to={`/dashboard/project/${this.props.selectedProject.id}`}
+                  >
+                    wehd iuweiw heoif oiewf iwehof iwoef ih
+                  </Link>
+                : "Select a project..."}
             </h2>
           </div>
           <div className="dashboardHeader__end">
             <div className="dashboardHeader__actions">
               <button
-                className="dashboardHeader__action button button--blue"
+                className="dashboardHeader__action dashboardHeader__action--select button button--blue"
                 onClick={() => this.props.openModal("ProjectSelectorModal")}
               >
                 Select Project
               </button>
               <button
-                className="dashboardHeader__action button button--green"
+                className="dashboardHeader__action dashboardHeader__action--add button button--green"
                 onClick={() => this.props.openModal("NewProjectModal")}
               >
                 Create Project

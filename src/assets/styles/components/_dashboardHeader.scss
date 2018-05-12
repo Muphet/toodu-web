@@ -13,11 +13,20 @@
 .dashboardHeader__start,
 .dashboardHeader__end {
   display: flex;
+  overflow: hidden;
   align-items: center;
+  min-width: 0;
+}
+
+.dashboardHeader__end {
+  flex-shrink: 0;
 }
 
 .dashboardHeader__title {
   font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dashboardHeader__actions {
@@ -29,15 +38,25 @@
 }
 
 @media(max-width: 700px) {
-  .dashboardHeader__container {
-    flex-direction: column;
-  }
-
-  .dashboardHeader__actions {
-    margin-top: 16px;
+  .dashboardHeader__title {
+    font-size: 22px;
   }
 
   .dashboardHeader__action {
-    margin: 0 5px;
+    color: transparent;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: 16px;
+  }
+
+  .dashboardHeader__action--select {
+    background-image: url("../icons/chevron-down-white.svg");
+  }
+
+  .dashboardHeader__action--add {
+    background-image: url("../icons/plus-white.svg");
   }
 }

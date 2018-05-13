@@ -67,7 +67,7 @@ export class ProtectedRoute extends Component {
           <Route {...this.props} />
         </React.Fragment>
       );
-    else return <Redirect to="/auth/login" />;
+    else return <Redirect to="/auth/logout" />;
   }
 }
 

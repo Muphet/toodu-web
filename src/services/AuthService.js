@@ -39,6 +39,7 @@ class AuthService {
   clear() {
     this.auth = {};
     this.updateAuthenticated(false);
+    this.store.dispatch(updateCurrentUser(null));
     localStorage.removeItem("auth");
   }
 
@@ -57,7 +58,12 @@ class AuthService {
 
   logout() {
     this.clear();
-    return ApiService.delete("/auth/sign_out");
+    const state = this.store.getState();
+    if (state.core.meta.online) {
+      return ApiService.delete("/auth/sign_out");
+    } else {
+      return Promise.reject({ message: "Network Error" });
+    }
   }
 
   updateAuthenticated(authenticated) {

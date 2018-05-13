@@ -17,7 +17,6 @@ class ApiService {
     if (state.core.meta.online) {
       return false;
     } else {
-      alert("You are offline, Toodu is in read-only mode.");
       return Promise.reject({ message: "Network Error" });
     }
   }

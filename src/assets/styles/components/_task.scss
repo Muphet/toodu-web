@@ -111,3 +111,32 @@
     background-color: $blue;
   }
 }
+
+@media(max-width: 600px) {
+  .task__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task__nameWrap {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $lightGrey;
+    width: 100%;
+  }
+
+  .task__actions {
+    width: 100%;
+  }
+
+  .task__dueDate {
+    margin-right: auto;
+  }
+
+  .task__datePicker {
+    position: absolute;
+    z-index: 3;
+    right: -160px;
+    top: 40px;
+  }
+}

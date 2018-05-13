@@ -50,6 +50,9 @@
     border-radius: 50%;
     background-position: center;
     background-size: 16px;
+    &:hover {
+      transform: none;
+    }
   }
 
   .dashboardHeader__action--select {

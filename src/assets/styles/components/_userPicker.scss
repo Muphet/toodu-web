@@ -36,3 +36,9 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+
+@media(max-width: 550px) {
+  .userPicker {
+    width: 280px;
+  }
+}

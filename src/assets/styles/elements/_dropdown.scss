@@ -70,3 +70,18 @@
 .dropdown__link--logout {
   background-image: url("../icons/log-out.svg");
 }
+
+@media(max-width: 500px) {
+  .header .has-dropdown {
+    position: static;
+  }
+
+  .header .dropdown {
+    left: 20px;
+    top: 50px;
+    width: calc(100vw - 50px);
+    &:before {
+      display: none;
+    }
+  }
+}

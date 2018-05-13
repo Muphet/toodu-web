@@ -18,7 +18,7 @@ export class DashboardHomeHeader extends Component {
                 ? <Link
                     to={`/dashboard/project/${this.props.selectedProject.id}`}
                   >
-                    wehd iuweiw heoif oiewf iwehof iwoef ih
+                    {this.props.selectedProject.name}
                   </Link>
                 : "Select a project..."}
             </h2>

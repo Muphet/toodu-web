@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import taskApi from "../../../../core/tasks/tasksApi.js";
 import taskListContainer from "./taskListContainer.js";
 import TaskListItem from "../taskListItem/TaskListItem";
+import TaskFilter from "../taskFilter/TaskFilter";
 
 export class TaskList extends Component {
   static propTypes = {
@@ -11,6 +12,10 @@ export class TaskList extends Component {
     tasksWithUsers: PropTypes.array.isRequired,
     linkPath: PropTypes.string.isRequired,
     currentTaskId: PropTypes.string
+  };
+
+  state = {
+    filteredTasks: this.props.tasksWithUsers.filter(task => !task.completed)
   };
 
   componentDidMount(e) {
@@ -23,6 +28,10 @@ export class TaskList extends Component {
     });
   }
 
+  filter(filteredTasks) {
+    this.setState({ filteredTasks });
+  }
+
   render() {
     if (!this.props.tasks.length)
       return (
@@ -32,20 +41,26 @@ export class TaskList extends Component {
       );
 
     return (
-      <ul className="taskList">
-        {this.props.tasksWithUsers.map(task => (
-          <TaskListItem
-            key={task.id}
-            task={task}
-            onComplete={this.updateComplete.bind(this)}
-            user={task.user}
-            linkTo={this.props.linkPath + task.id}
-            active={
-              this.props.activeTask && task.id === this.props.activeTask.id
-            }
-          />
-        ))}
-      </ul>
+      <div>
+        <TaskFilter
+          onFilter={this.filter.bind(this)}
+          tasks={this.props.tasksWithUsers}
+        />
+        <ul className="taskList">
+          {this.state.filteredTasks.map(task => (
+            <TaskListItem
+              key={task.id}
+              task={task}
+              onComplete={this.updateComplete.bind(this)}
+              user={task.user}
+              linkTo={this.props.linkPath + task.id}
+              active={
+                this.props.activeTask && task.id === this.props.activeTask.id
+              }
+            />
+          ))}
+        </ul>
+      </div>
     );
   }
 }

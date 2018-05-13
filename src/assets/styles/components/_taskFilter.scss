@@ -1,0 +1,43 @@
+.taskFilter {
+  display: flex;
+  background-color: $lightBlue;
+}
+
+.taskFilter__option {
+  flex: 1;
+  border: 1px solid darken($lightBlue, 5%);
+  border-radius: $borderRadius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.taskFilter__option:last-child {
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.taskFilter__option:first-child {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.taskFilter__option:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.taskFilter__option--active {
+  background-color: $blue;
+  border-color: darken($blue, 13%);
+  color: $white;
+}

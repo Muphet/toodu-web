@@ -11,6 +11,7 @@ const tasksByProjectForCurrentUserSelector = createSelector(
   [tasksSelector, currentUserSelector],
   (tasks, currentUser) =>
     tasks.reduce((grouped, task) => {
+      if (task.completed) return grouped;
       if (task.user_id !== currentUser.id) return grouped;
       if (!grouped[task.project_id]) grouped[task.project_id] = [];
       grouped[task.project_id].push(task);

@@ -11,7 +11,12 @@ export class TaskList extends Component {
     getUsers: PropTypes.func.isRequired,
     tasksWithUsers: PropTypes.array.isRequired,
     linkPath: PropTypes.string.isRequired,
-    currentTaskId: PropTypes.string
+    currentTaskId: PropTypes.string,
+    filter: PropTypes.bool
+  };
+
+  static defaultProps = {
+    filter: true
   };
 
   state = {
@@ -42,10 +47,11 @@ export class TaskList extends Component {
 
     return (
       <div>
-        <TaskFilter
-          onFilter={this.filter.bind(this)}
-          tasks={this.props.tasksWithUsers}
-        />
+        {this.props.filter &&
+          <TaskFilter
+            onFilter={this.filter.bind(this)}
+            tasks={this.props.tasksWithUsers}
+          />}
         <ul className="taskList">
           {this.state.filteredTasks.map(task => (
             <TaskListItem

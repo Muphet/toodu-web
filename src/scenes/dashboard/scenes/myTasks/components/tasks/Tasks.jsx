@@ -59,6 +59,7 @@ export class Tasks extends Component {
               tasks={this.props.tasksByProject[projectId]}
               currentTaskId={this.props.currentTaskId}
               linkPath="/dashboard/tasks/"
+              filter={false}
             />
           </div>
         ))}

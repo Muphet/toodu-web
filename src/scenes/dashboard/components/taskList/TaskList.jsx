@@ -38,20 +38,21 @@ export class TaskList extends Component {
   }
 
   render() {
-    if (!this.props.tasks.length)
+    if (!this.state.filteredTasks.length)
       return (
         <div className="empty empty--white">
-          <p>No tasks yet...</p>
+          <p>No tasks</p>
         </div>
       );
 
     return (
       <div>
-        {this.props.filter &&
+        {this.props.filter && (
           <TaskFilter
             onFilter={this.filter.bind(this)}
             tasks={this.props.tasksWithUsers}
-          />}
+          />
+        )}
         <ul className="taskList">
           {this.state.filteredTasks.map(task => (
             <TaskListItem

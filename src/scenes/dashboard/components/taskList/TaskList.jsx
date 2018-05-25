@@ -38,13 +38,6 @@ export class TaskList extends Component {
   }
 
   render() {
-    if (!this.state.filteredTasks.length)
-      return (
-        <div className="empty empty--white">
-          <p>No tasks</p>
-        </div>
-      );
-
     return (
       <div>
         {this.props.filter && (
@@ -53,20 +46,26 @@ export class TaskList extends Component {
             tasks={this.props.tasksWithUsers}
           />
         )}
-        <ul className="taskList">
-          {this.state.filteredTasks.map(task => (
-            <TaskListItem
-              key={task.id}
-              task={task}
-              onComplete={this.updateComplete.bind(this)}
-              user={task.user}
-              linkTo={this.props.linkPath + task.id}
-              active={
-                this.props.activeTask && task.id === this.props.activeTask.id
-              }
-            />
-          ))}
-        </ul>
+        {this.state.filteredTasks.length ? (
+          <ul className="taskList">
+            {this.state.filteredTasks.map(task => (
+              <TaskListItem
+                key={task.id}
+                task={task}
+                onComplete={this.updateComplete.bind(this)}
+                user={task.user}
+                linkTo={this.props.linkPath + task.id}
+                active={
+                  this.props.activeTask && task.id === this.props.activeTask.id
+                }
+              />
+            ))}
+          </ul>
+        ) : (
+          <div className="empty empty--white">
+            <p>No tasks</p>
+          </div>
+        )}
       </div>
     );
   }

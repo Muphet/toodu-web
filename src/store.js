@@ -7,6 +7,7 @@ import WebSocketService from "./services/WebSocketService.js";
 import AuthService from "./services/AuthService.js";
 import ApiService from "./services/ApiService.js";
 import OnlineService from "./services/OnlineService.js";
+import { CHANGE_AUTHENTICATED } from "./core/auth/authConstants";
 
 import authReducer from "./core/auth/authReducer";
 import teamsReducer from "./core/teams/teamsReducer";
@@ -50,20 +51,30 @@ const scenesReducer = combineReducers({
   dashboard: dashboardReducer
 });
 
-const rootPersistConfig = {
-  key: "root",
+const appPersistConfig = {
+  key: "app",
   storage,
   blacklist: ["router", "core"]
 };
 
-const rootReducer = persistReducer(
-  rootPersistConfig,
+const appReducer = persistReducer(
+  appPersistConfig,
   combineReducers({
     router: routerReducer,
     core: coreReducer,
     scenes: scenesReducer
   })
 );
+
+const rootReducer = (state, action) => {
+  // clear the state when the user logs out
+  if (action.type === CHANGE_AUTHENTICATED) {
+    if (!action.authenticated) {
+      state = undefined;
+    }
+  }
+  return appReducer(state, action);
+};
 
 export default function configureStore(history, initialState = {}) {
   const enhancers = compose(

@@ -10,11 +10,13 @@ class AuthService {
   constructor() {
     this.authenticated = false;
     this.store = null;
+    this.persistor = null;
     this.auth = this.get();
   }
 
-  init(store) {
+  init(store, persistor) {
     this.store = store;
+    this.persistor = persistor;
   }
 
   set(auth) {
@@ -58,6 +60,7 @@ class AuthService {
 
   logout() {
     this.clear();
+    this.persistor.purge();
     const state = this.store.getState();
     if (state.core.meta.online) {
       return ApiService.delete("/auth/sign_out");

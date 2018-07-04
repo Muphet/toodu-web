@@ -87,7 +87,7 @@ export default function configureStore(history, initialState = {}) {
 
   ApiService.init(store);
   WebSocketService.init(store);
-  AuthService.init(store);
+  AuthService.init(store, persistor);
   OnlineService.init(store);
 
   return { store, persistor };

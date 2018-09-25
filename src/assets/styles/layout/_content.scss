@@ -5,10 +5,6 @@
   align-items: flex-start;
 }
 
-.content--stacked {
-  flex-direction: column;
-}
-
 .content--flat {
   padding-top: 0;
   padding-bottom: 0;
@@ -16,6 +12,15 @@
 
 .content--center {
   justify-content: center;
+}
+
+.content--stacked {
+  flex-direction: column;
+}
+
+.content--stacked.content--center {
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .content__col {
@@ -32,7 +37,8 @@
 }
 
 .content__col--half {
-  flex-basis: 50%;
+  flex: 50%;
+  max-width: 50%;
 }
 
 .content__col--menu {
@@ -46,6 +52,7 @@
 @media (max-width: 950px) {
   .content__col--half {
     flex-basis: 100%;
+    max-width: 100%;
     margin-left: 0;
     margin-right: 0;
   }

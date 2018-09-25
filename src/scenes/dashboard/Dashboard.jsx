@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <Switch>
-        <Redirect exact from="/dashboard" to="/dashboard/project" />
+        <Redirect exact from="/dashboard" to="/dashboard/tasks" />
         <Route path="/dashboard/project" component={Home} />
         <Route path="/dashboard/tasks" component={MyTasks} />
       </Switch>

@@ -21,7 +21,6 @@ export class Login extends Component {
       <div>
         <div className="authBox">
           <header className="authBox__header">
-            <figure className="authBox__icon authBox__icon--user" />
             <h1 className="authBox__title">Log in</h1>
           </header>
           <main className="authBox__body">

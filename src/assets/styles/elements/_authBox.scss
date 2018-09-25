@@ -2,46 +2,25 @@
   position: relative;
   background-color: $white;
   border-radius: $borderRadius;
-  width: 400px;
-  margin-top: 50px;
+  width: 500px;
   border: 1px solid darken($lightBlue, 5%);
 }
 
 .authBox__header {
-  padding-top: 70px;
-  padding-bottom: 20px;
-  background-color: $lightBlue;
+  padding: 18px 25px;
+  border-bottom: 1px solid $lightBlue;
 }
 
 .authBox__body {
-  padding: 30px 20px;
-}
-
-.authBox__icon {
-  position: absolute;
-  top: -50px;
-  left: calc(50% - 50px);
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: $lightGrey;
-  background-position: center;
-  background-size: 80px;
-  border: 3px solid $white;
-  box-shadow: 0 0 0 2px $mediumGrey;
-}
-
-.authBox__icon--user {
-  background-image: url("../icons/user-grey.svg");
+  padding: 30px 25px;
 }
 
 .authBox__title {
-  text-align: center;
   font-weight: bold;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
   .authBox {
-    width: 100%;
+    width: calc(100vw - 40px);
   }
 }

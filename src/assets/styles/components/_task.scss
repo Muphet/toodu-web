@@ -29,6 +29,13 @@
   padding-right: 10px;
 }
 
+.task__title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 240px;
+}
+
 .task__checkbox {
   margin-right: 15px;
 }

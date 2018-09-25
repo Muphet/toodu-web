@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
 import { getTeam } from "../../core/teams/teamsActions";
-import { openModal } from "../../core/modal/modalActions";
 import { getUsers } from "../../core/users/usersActions";
 import {
   getNotifications
@@ -28,6 +27,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   getTeam,
   getUsers,
-  openModal,
   getNotifications
 });

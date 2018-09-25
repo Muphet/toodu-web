@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";
 import Login from "./scenes/login/Login";
 import Signup from "./scenes/signup/Signup";
@@ -14,7 +14,13 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <main className="container content content--center">
+      <main className="container container--background content content--stacked content--center">
+        <header className="authHeader">
+          <h1 className="authHeader__title">
+            <Link to="/dashboard"> Toodu </Link>
+          </h1>
+        </header>
+        
         <Switch>
           <Route exact path="/auth/login" component={Login} />
           <Route exact path="/auth/signup" component={Signup} />

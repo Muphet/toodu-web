@@ -78,7 +78,9 @@ export class TaskHeader extends Component {
             id={`task_header_complete_${this.props.task.id}`}
             onChange={this.updateComplete.bind(this)}
           />
-          <h2 className="task__title">{this.props.task.name}</h2>
+          <h2 title={this.props.task.name} className="task__title">
+            {this.props.task.name}
+          </h2>
         </div>
         <div className="task__actions">
           <div

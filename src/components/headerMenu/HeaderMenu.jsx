@@ -6,10 +6,12 @@ import headerMenuContainer from "./headerMenuContainer";
 export class HeaderMenu extends Component {
   static propTypes = {
     onClickOutside: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
     locationKey: PropTypes.string.isRequired
   };
 
   handleOutsideClick = this.handleOutsideClick.bind(this);
+  inviteNewUser = this.inviteNewUser.bind(this);
 
   componentDidMount() {
     document.addEventListener("click", this.handleOutsideClick, false);
@@ -23,6 +25,11 @@ export class HeaderMenu extends Component {
     if (prevProps.locationKey !== this.props.locationKey) {
       this.props.onClickOutside();
     }
+  }
+
+  inviteNewUser() {
+    this.props.onClickOutside();
+    this.props.openModal("NewInviteModal");
   }
 
   handleOutsideClick(e) {
@@ -39,11 +46,6 @@ export class HeaderMenu extends Component {
           this.node = node;
         }}
       >
-        <li className="dropdown__item">
-          <Link to="/dashboard" className="dropdown__link dropdown__link--home">
-            Dashboard
-          </Link>
-        </li>
         <li className="dropdown__item dropdown__item--divider">
           <Link
             to="/dashboard/tasks"
@@ -59,6 +61,14 @@ export class HeaderMenu extends Component {
           >
             Settings
           </Link>
+        </li>
+        <li className="dropdown__item">
+          <div
+            onClick={ this.inviteNewUser }
+            className="dropdown__link dropdown__link--user"
+          >
+            Invite new user
+          </div>
         </li>
         <li className="dropdown__item">
           <Link

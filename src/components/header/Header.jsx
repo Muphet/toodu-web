@@ -76,20 +76,16 @@ export class Header extends Component {
                   className="header__notifications"
                   onClick={this.showNotifications.bind(this)}
                 >
-                  <p className="header__notificationCount">
-                    {this.props.notificationCount}
-                  </p>
+                  {!!this.props.notificationCount &&
+                    <p className="header__notificationCount">
+                      {this.props.notificationCount}
+                    </p>}
                 </div>
                 {this.state.showNotifications &&
                   <Notifications
                     onClickOutside={this.hideNotifications.bind(this)}
                   />}
               </div>
-              <button
-                className="header__inviteButton"
-                onClick={() => this.props.openModal("NewInviteModal")}
-                title="Invite a new user"
-              />
               <div className="has-dropdown" onClick={this.showMenu.bind(this)}>
                 <div className="header__user">
                   <img

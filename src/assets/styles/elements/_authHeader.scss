@@ -1,0 +1,17 @@
+.authHeader {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.authHeader__title {
+  color: $white;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+@media (max-width: 550px) {
+  .authHeader {
+    text-align: center;
+    margin: 30px 0;
+  }
+}

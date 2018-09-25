@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { createSelector } from "reselect";
+import { openModal } from "../../../../../../core/modal/modalActions";
 import { getTasksForUser } from "../../../../../../core/tasks/tasksActions";
 import { getProjects } from "../../../../../../core/projects/projectsActions";
 
@@ -27,5 +28,6 @@ const mapStateToProps = (state, props) => ({
 
 export default connect(mapStateToProps, {
   getTasksForUser,
-  getProjects
+  getProjects,
+  openModal
 });

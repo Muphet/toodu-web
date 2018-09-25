@@ -63,8 +63,8 @@ export class ProjectSelectorModal extends Component {
         <main>
           <ul className="projectSelector">
             {!projects.length && (
-              <li className="empty">
-                <p>No projects found...</p>
+              <li className="empty empty--modal">
+                <p>No projects found</p>
               </li>
             )}
             {projects.map(project => (

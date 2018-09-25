@@ -24,6 +24,28 @@ export class Tasks extends Component {
     if (project) return project.name;
   }
 
+  renderSelectProjectButton() {
+    return (
+      <button
+        onClick={ () => this.props.openModal("ProjectSelectorModal") }
+        className="dashboardEmpty__action button button--blue"
+      >
+        Select a project
+      </button>
+    )
+  }
+
+  renderCreateProjectButton() {
+    return (
+      <button
+        onClick={ () => this.props.openModal("NewProjectModal") }
+        className="dashboardEmpty__action button button--green"
+      >
+        create a project
+      </button>
+    )
+  }
+
   render() {
     if (!Object.keys(this.props.tasksByProject).length) {
       return (
@@ -35,12 +57,9 @@ export class Tasks extends Component {
               <h3 className="dashboardEmpty__heading">
                 You have no assigned tasks!
               </h3>
-              <Link
-                to="/dashboard"
-                className="dashboardEmpty__action button button--blue"
-              >
-                Go to your team dashboard
-              </Link>
+              {this.props.projects.length
+                ? this.renderSelectProjectButton()
+                : this.renderCreateProjectButton()}
             </div>
           )}
         />

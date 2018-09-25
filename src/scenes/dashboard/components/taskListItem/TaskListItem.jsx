@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import UtilService from "../../../../services/UtilService";
 import Checkbox from "../../../../components/checkbox/Checkbox";
 
 export default class TaskListItem extends Component {
@@ -34,6 +33,7 @@ export default class TaskListItem extends Component {
         />
         <Link
           to={this.props.linkTo}
+          title={this.props.task.name}
           className={classNames("taskList__link", {
             "taskList__link--completed": this.props.task.completed
           })}
@@ -41,20 +41,11 @@ export default class TaskListItem extends Component {
           {this.props.task.name}
         </Link>
         <ul className="taskList__info">
-          {this.props.task.due_date && (
-            <DueDateBadge dueDate={this.props.task.due_date} />
-          )}
           {this.props.user && <AssignedUserBadge user={this.props.user} />}
         </ul>
       </li>
     );
   }
-}
-
-function DueDateBadge({ dueDate }) {
-  return (
-    <li className="taskList__dueDate">{UtilService.dueDateInWords(dueDate)}</li>
-  );
 }
 
 function AssignedUserBadge({ user }) {

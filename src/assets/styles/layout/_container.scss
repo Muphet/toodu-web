@@ -6,6 +6,12 @@
   margin-right: auto;
 }
 
+.container--background {
+  max-width: 100%;
+  height: 100%;
+  background-color: $blue;
+}
+
 @media (max-width: 450px) {
   .container {
     padding-left: 15px;

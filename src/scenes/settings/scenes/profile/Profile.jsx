@@ -44,23 +44,6 @@ export class Profile extends Component {
                 ]}
               />
             </div>
-            <div className="content__col settings__gravatar">
-              <figure>
-                <img
-                  className="settings__gravatarImg"
-                  alt="Your current gravatar"
-                  src={this.props.currentUser.gravatar_url}
-                />
-                <a
-                  href="https://gravatar.com"
-                  className="button button--blue"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Change
-                </a>
-              </figure>
-            </div>
           </div>
         </div>
       </div>

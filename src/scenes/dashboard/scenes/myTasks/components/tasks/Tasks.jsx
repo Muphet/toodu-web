@@ -23,48 +23,38 @@ export class Tasks extends Component {
     );
     if (project) return project.name;
   }
+  
+  renderEmpty() {
+    const modal = this.props.projects.length ? "ProjectSelectorModal" : "NewProjectModal";
+    const text = this.props.projects.length ? "Select a project" : "Create a project";
+    const color = this.props.projects.length ? "blue" : "green";
 
-  renderSelectProjectButton() {
     return (
-      <button
-        onClick={ () => this.props.openModal("ProjectSelectorModal") }
-        className="dashboardEmpty__action button button--blue"
-      >
-        Select a project
-      </button>
-    )
-  }
-
-  renderCreateProjectButton() {
-    return (
-      <button
-        onClick={ () => this.props.openModal("NewProjectModal") }
-        className="dashboardEmpty__action button button--green"
-      >
-        create a project
-      </button>
-    )
+      <Route
+        exact
+        path="/dashboard/tasks"
+        component={() => (
+          <div className="dashboardEmpty">
+            <h3 className="dashboardEmpty__heading">
+              You have no assigned tasks!
+            </h3>
+            <button
+              onClick={ () => this.props.openModal(modal) }
+              className={`dashboardEmpty__action button button--${color}`}
+            >
+              {text}
+            </button>
+          </div>
+        )}
+      />
+    );
   }
 
   render() {
     if (!Object.keys(this.props.tasksByProject).length) {
-      return (
-        <Route
-          exact
-          path="/dashboard/tasks"
-          component={() => (
-            <div className="dashboardEmpty">
-              <h3 className="dashboardEmpty__heading">
-                You have no assigned tasks!
-              </h3>
-              {this.props.projects.length
-                ? this.renderSelectProjectButton()
-                : this.renderCreateProjectButton()}
-            </div>
-          )}
-        />
-      );
+      this.renderEmpty();
     }
+
     return (
       <div className="tasks content__col content__col--half">
         {Object.keys(this.props.tasksByProject).map(projectId => (

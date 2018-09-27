@@ -7,6 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import SceneLoader from "./components/sceneLoader/SceneLoader";
 import Header from "./components/header/Header";
 import ModalRoot from "./components/modalRoot/ModalRoot";
+import ToastsRoot from "./components/toastsRoot/ToastsRoot";
 import OfflineNotice from "./components/offlineNotice/OfflineNotice";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import CodeSplittingService from "./services/CodeSplittingService.js";
@@ -48,6 +49,7 @@ const AppRouter = withRouter(({ location }) => {
         </Switch>
       </main>
       <ModalRoot />
+      <ToastsRoot />
       <OfflineNotice />
     </div>
   )

@@ -21,6 +21,7 @@ import followsReducer from "./core/follows/followsReducer";
 import modalReducer from "./core/modal/modalReducer";
 import notificationsReducer from "./core/notifications/notificationsReducer";
 import metaReducer from "./core/meta/metaReducer";
+import toastsReducer from "./core/toasts/toastsReducer";
 import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 
 const corePersistConfig = {
@@ -43,7 +44,8 @@ const coreReducer = persistReducer(
     follows: followsReducer,
     modal: modalReducer,
     notifications: notificationsReducer,
-    meta: metaReducer
+    meta: metaReducer,
+    toasts: toastsReducer
   })
 );
 

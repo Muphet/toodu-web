@@ -1,0 +1,41 @@
+.toasts {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99;
+  max-width: 500px;
+}
+
+.toasts__toast {
+  background: rgba($black, 0.95);
+  border-radius: $borderRadius;
+  padding: 20px;
+  box-shadow: 1px 1px 6px rgba($black, 0.2);
+  animation: toasts__appear 3s ease-out;
+  margin-bottom: 12px;
+}
+
+.toasts__toast--success {
+  background: rgba($green, 0.95);
+}
+
+.toasts__toast--error {
+  background: rgba($red, 0.95);
+}
+
+@keyframes toasts__appear {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.toasts__text {
+  color: $white;
+  font-size: 14px;
+}

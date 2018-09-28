@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import tasksContainer from "./tasksContainer";
 import TaskList from "../../../../components/taskList/TaskList";
+import SceneLoader from '../../../../../../components/sceneLoader/SceneLoader';
 
 export class Tasks extends Component {
   static propTypes = {
@@ -12,9 +13,17 @@ export class Tasks extends Component {
     projects: PropTypes.array.isRequired
   };
 
+  state = {
+    fetching: true
+  }
+
   componentWillMount() {
-    this.props.getTasksForUser(this.props.currentUser.id);
-    this.props.getProjects();
+    Promise.all([
+      this.props.getTasksForUser(this.props.currentUser.id),
+      this.props.getProjects()
+    ]).then(() => {
+      this.setState({ fetching: false });
+    });
   }
 
   getProjectName(projectId) {
@@ -51,8 +60,10 @@ export class Tasks extends Component {
   }
 
   render() {
+    if (this.state.fetching) return <SceneLoader />;
+
     if (!Object.keys(this.props.tasksByProject).length) {
-      this.renderEmpty();
+      return this.renderEmpty();
     }
 
     return (

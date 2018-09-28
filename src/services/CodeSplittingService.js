@@ -1,11 +1,12 @@
+import React from 'react';
 import Loadable from "react-loadable";
 import SceneLoader from "../components/sceneLoader/SceneLoader";
 
 class CodeSplittingService {
-  scene(path) {
+  scene(path, loaderTheme) {
     return Loadable({
       loader: () => import(`../scenes/${path}`),
-      loading: SceneLoader
+      loading: () => <SceneLoader theme={loaderTheme} />
     });
   }
 }

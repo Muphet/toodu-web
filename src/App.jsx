@@ -43,7 +43,7 @@ const AppRouter = withRouter(({ location }) => {
           />
           <Route
             path="/auth"
-            component={CodeSplittingService.scene("auth/Auth")}
+            component={CodeSplittingService.scene("auth/Auth", 'light')}
           />
           <Route component={CodeSplittingService.scene("error/Error")} />
         </Switch>

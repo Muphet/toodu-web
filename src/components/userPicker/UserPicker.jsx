@@ -9,7 +9,7 @@ export class UserPicker extends Component {
     getUsers: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     onConfirm: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.object
   };
 
   state = {

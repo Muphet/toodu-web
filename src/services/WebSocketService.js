@@ -1,7 +1,10 @@
 import ConfigService from "../services/ConfigService";
 import qs from "qs";
+import notificationsApi from '../core/notifications/notificationsApi';
 import { TEAM_DESTROYED } from "../core/teams/teamsConstants";
+import { NOTIFICATION_CREATED } from '../core/notifications/notificationsConstants';
 import { disconnected, connected } from "../core/meta/metaActions";
+import { addToast } from '../core/toasts/toastsActions';
 import AuthService from "./AuthService";
 
 class WebSocketService {
@@ -57,8 +60,24 @@ class WebSocketService {
     if (data.type === "welcome") return;
     if (data.type === "confirm_subscription") return;
     if (data.type === "ping") return this.setLastPing(data);
-    if (data.message.type === TEAM_DESTROYED) AuthService.logout();
+
+    this.handleSideEffects(data.message);
+    
     this.store.dispatch(data.message);
+  }
+
+  handleSideEffects(message) {
+    switch (message.type) {
+      case TEAM_DESTROYED:
+        return AuthService.logout();
+      case NOTIFICATION_CREATED:
+        notificationsApi.update(message.notification.id, { seen: true })
+        return this.store.dispatch(
+          addToast(message.notification.message)
+        );
+      default:
+        return null; 
+    }
   }
 
   setLastPing(data) {

@@ -60,10 +60,13 @@ class AuthService {
 
   logout() {
     this.clear();
-    this.persistor.purge();
     const state = this.store.getState();
+    const purgePromise = this.persistor.purge();
     if (state.core.meta.online) {
-      return ApiService.delete("/auth/sign_out");
+      return Promise.all([
+        ApiService.delete("/auth/sign_out"),
+        purgePromise
+      ]);
     } else {
       return Promise.reject({ message: "Network Error" });
     }

@@ -27,7 +27,7 @@ import dashboardReducer from "./scenes/dashboard/dashboardReducer";
 const corePersistConfig = {
   key: "core",
   storage,
-  blacklist: ["modal", "meta", "auth"]
+  blacklist: ["modal", "meta", "auth", "toasts"]
 };
 
 const coreReducer = persistReducer(

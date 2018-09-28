@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import tasksContainer from "./tasksContainer";
 import TaskList from "../../../../components/taskList/TaskList";
-import SceneLoader from '../../../../../../components/sceneLoader/SceneLoader';
 
 export class Tasks extends Component {
   static propTypes = {

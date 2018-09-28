@@ -26,13 +26,15 @@ class ApiService {
     if (offlineErr) return offlineErr;
     return axios
       .post(url, data, { headers: AuthService.auth })
-      .then(this.setAuth);
+      .then(this.setAuth)
+      .catch(this.handleError.bind(this));
   }
 
   get(url, params) {
     return axios
       .get(url, { params, headers: AuthService.auth })
-      .then(this.setAuth);
+      .then(this.setAuth)
+      .catch(this.handleError.bind(this));
   }
 
   put(url, data) {
@@ -40,18 +42,30 @@ class ApiService {
     if (offlineErr) return offlineErr;
     return axios
       .put(url, data, { headers: AuthService.auth })
-      .then(this.setAuth);
+      .then(this.setAuth)
+      .catch(this.handleError.bind(this));
   }
 
   delete(url) {
     const offlineErr = this.isOffline();
     if (offlineErr) return offlineErr;
-    return axios.delete(url, { headers: AuthService.auth }).then(this.setAuth);
+    return axios
+      .delete(url, { headers: AuthService.auth })
+      .then(this.setAuth)
+      .catch(this.handleError.bind(this));
   }
 
   setAuth(res) {
     AuthService.set(res.headers);
     return res;
+  }
+
+  handleError(error) {
+    if (error.response.status === 401) {
+      AuthService.logout();
+    }
+  
+    throw error;
   }
 }
 

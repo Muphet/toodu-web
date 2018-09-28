@@ -13,17 +13,9 @@ export class Tasks extends Component {
     projects: PropTypes.array.isRequired
   };
 
-  state = {
-    fetching: true
-  }
-
   componentWillMount() {
-    Promise.all([
-      this.props.getTasksForUser(this.props.currentUser.id),
-      this.props.getProjects()
-    ]).then(() => {
-      this.setState({ fetching: false });
-    });
+    this.props.getTasksForUser(this.props.currentUser.id);
+    this.props.getProjects();
   }
 
   getProjectName(projectId) {
@@ -32,38 +24,48 @@ export class Tasks extends Component {
     );
     if (project) return project.name;
   }
-  
-  renderEmpty() {
-    const modal = this.props.projects.length ? "ProjectSelectorModal" : "NewProjectModal";
-    const text = this.props.projects.length ? "Select a project" : "Create a project";
-    const color = this.props.projects.length ? "blue" : "green";
 
+  renderCreateProjectButton() {
     return (
-      <Route
-        exact
-        path="/dashboard/tasks"
-        component={() => (
-          <div className="dashboardEmpty">
-            <h3 className="dashboardEmpty__heading">
-              You have no assigned tasks!
-            </h3>
-            <button
-              onClick={ () => this.props.openModal(modal) }
-              className={`dashboardEmpty__action button button--${color}`}
-            >
-              {text}
-            </button>
-          </div>
-        )}
-      />
-    );
+      <button
+        onClick={ () => this.props.openModal("NewProjectModal") }
+        className="dashboardEmpty__action button button--green"
+      >
+        Create a project
+      </button>
+    )
+  }
+
+  renderSelectProjectButton() {
+    return (
+      <button
+        onClick={ () => this.props.openModal("ProjectSelectorModal") }
+        className="dashboardEmpty__action button button--blue"
+      >
+        Select a project
+      </button>
+    )
   }
 
   render() {
-    if (this.state.fetching) return <SceneLoader />;
-
     if (!Object.keys(this.props.tasksByProject).length) {
-      return this.renderEmpty();
+      return (
+        <Route
+          exact
+          path="/dashboard/tasks"
+          component={() => (
+            <div className="dashboardEmpty">
+              <h3 className="dashboardEmpty__heading">
+                You have no assigned tasks!
+              </h3>
+              {this.props.projects.length
+                ? this.renderSelectProjectButton()
+                : this.renderCreateProjectButton()
+              }
+            </div>
+          )}
+        />
+      )
     }
 
     return (

@@ -2,7 +2,7 @@
 
 Toodu Web is the frontend for [Toodu API](https://github.com/bhnywl/toodu-api).
 
-It is a Progressive Web App for collaborative task management, built in React using my custom [fork of create-react-app](https://github.com/bhnywl/create-react-app).
+It is a Progressive Web App for collaborative task management, built in React using [create-react-app](https://github.com/facebook/create-react-app).
 
 A live demo can be found [here](https://toodu.surge.sh). You can log in as the demo account:
 
